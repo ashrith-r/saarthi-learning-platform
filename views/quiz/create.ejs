@@ -1,0 +1,267 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+
+
+<div class="create-quiz-page py-5">
+  <div class="container" style="max-width: 900px;">
+    <!-- Title Section -->
+    <div class="mb-4 d-flex justify-content-between align-items-center">
+      <div>
+        <h1 class="fw-bold text-dark mb-1">Create quiz</h1>
+        <p class="text-secondary">Group questions from the question bank into a custom quiz for students.</p>
+      </div>
+      <a href="/admin" class="btn btn-outline-secondary rounded-pill px-3">
+        <i class="bi bi-arrow-left me-1"></i>Back
+      </a>
+    </div>
+
+    <!-- Main Form Card -->
+    <form action="/admin/quiz/create" method="POST" class="needs-validation" novalidate><input type="hidden" name="_csrf" value="<%= csrfToken %>">
+      <div class="glass-card p-4 mb-4">
+        <h5 class="fw-bold text-primary mb-4 d-flex align-items-center gap-2">
+          <span class="step-badge">1</span> Quiz Metadata
+        </h5>
+        
+        <div class="row g-3">
+          <!-- Quiz Title -->
+          <div class="col-12">
+            <label for="quizTitle" class="form-label">Quiz Title</label>
+            <input type="text" id="quizTitle" name="title" class="form-control form-control-lg border-2" placeholder="e.g. Weekly Assessment - Matrices" required>
+            <div class="invalid-feedback">Please enter a quiz title.</div>
+          </div>
+
+          <!-- Exam Selector -->
+          <div class="col-md-4">
+            <label for="examSelect" class="form-label">Select Exam</label>
+            <select id="examSelect" class="form-select border-2" required>
+              <option value="" disabled selected>Choose Exam</option>
+              <% exams.forEach(exam => { %>
+                <option value="<%= exam._id %>"><%= exam.examName %></option>
+              <% }) %>
+            </select>
+            <div class="invalid-feedback">Please select an exam.</div>
+          </div>
+
+          <!-- Subject Selector -->
+          <div class="col-md-4">
+            <label for="subjectSelect" class="form-label">Select Subject</label>
+            <select id="subjectSelect" class="form-select border-2" disabled required>
+              <option value="" disabled selected>Choose Exam first</option>
+            </select>
+            <div class="invalid-feedback">Please select a subject.</div>
+          </div>
+
+          <!-- Chapter Selector -->
+          <div class="col-md-4">
+            <label for="chapterSelect" class="form-label">Link to Chapter (Quiz target)</label>
+            <select id="chapterSelect" name="chapterID" class="form-select border-2" disabled required>
+              <option value="" disabled selected>Choose Subject first</option>
+            </select>
+            <div class="invalid-feedback">Please select a target chapter.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Question Selection Card -->
+      <div class="glass-card p-4">
+        <h5 class="fw-bold text-primary mb-3 d-flex align-items-center gap-2">
+          <span class="step-badge">2</span> Select Questions
+        </h5>
+        <p class="text-muted small mb-4">Select questions below. Questions are loaded dynamically once you choose an Exam and a Subject above.</p>
+
+        <!-- Dynamic Questions List -->
+        <div id="questionsContainer" class="d-grid gap-3">
+          <div class="text-center py-5 text-secondary">
+            <i class="bi bi-arrow-up-circle fs-1 mb-2 d-block"></i>
+            <span>Please select an Exam and a Subject to load questions from the bank.</span>
+          </div>
+        </div>
+
+        <!-- Submit Panel -->
+        <div class="mt-4 pt-3 border-top d-flex justify-content-between align-items-center">
+          <div class="text-muted small fw-semibold">
+            <span id="selectedCount">0</span> question(s) selected
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg rounded-pill px-4" id="submitBtn" disabled>
+            <i class="bi bi-plus-circle me-1"></i>Create Quiz
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  const examSelect = document.getElementById("examSelect");
+  const subjectSelect = document.getElementById("subjectSelect");
+  const chapterSelect = document.getElementById("chapterSelect");
+  const questionsContainer = document.getElementById("questionsContainer");
+  const selectedCountSpan = document.getElementById("selectedCount");
+  const submitBtn = document.getElementById("submitBtn");
+
+  let selectedQuestionsCount = 0;
+
+  // 1. Fetch Subjects when Exam changes
+  examSelect.addEventListener("change", async () => {
+    const examId = examSelect.value;
+    if (!examId) return;
+
+    subjectSelect.disabled = true;
+    subjectSelect.innerHTML = '<option value="" disabled selected>Loading...</option>';
+    chapterSelect.disabled = true;
+    chapterSelect.innerHTML = '<option value="" disabled selected>Choose Subject first</option>';
+    questionsContainer.innerHTML = '<div class="text-center py-4 text-muted">Please select a subject to load questions.</div>';
+    updateSelectionCount(0);
+
+    try {
+      const response = await fetch(`/admin/api/subjects/${examId}`);
+      const subjects = await response.json();
+
+      subjectSelect.innerHTML = '<option value="" disabled selected>Choose Subject</option>';
+      subjects.forEach(sub => {
+        const option = document.createElement("option");
+        option.value = sub._id;
+        option.dataset.name = sub.subjectName;
+        option.textContent = sub.subjectName;
+        subjectSelect.appendChild(option);
+      });
+      subjectSelect.disabled = false;
+    } catch (error) {
+      console.error("Error fetching subjects:", error);
+      subjectSelect.innerHTML = '<option value="" disabled selected>Error loading subjects</option>';
+    }
+  });
+
+  // 2. Fetch Chapters and Questions when Subject changes
+  subjectSelect.addEventListener("change", async () => {
+    const subjectId = subjectSelect.value;
+    const selectedOption = subjectSelect.options[subjectSelect.selectedIndex];
+    const subjectName = selectedOption.dataset.name;
+    const examId = examSelect.value;
+
+    if (!subjectId || !examId) return;
+
+    // Fetch Chapters
+    chapterSelect.disabled = true;
+    chapterSelect.innerHTML = '<option value="" disabled selected>Loading...</option>';
+    try {
+      const response = await fetch(`/admin/api/chapters/${subjectId}`);
+      const chapters = await response.json();
+
+      chapterSelect.innerHTML = '<option value="" disabled selected>Choose Chapter</option>';
+      chapters.forEach(ch => {
+        const option = document.createElement("option");
+        option.value = ch._id;
+        option.textContent = ch.chapterName;
+        chapterSelect.appendChild(option);
+      });
+      chapterSelect.disabled = false;
+    } catch (error) {
+      console.error("Error fetching chapters:", error);
+      chapterSelect.innerHTML = '<option value="" disabled selected>Error loading chapters</option>';
+    }
+
+    // Fetch Questions from Question Bank filtered by exam & subject
+    questionsContainer.innerHTML = '<div class="text-center py-5 text-muted"><div class="spinner-border spinner-border-sm text-primary me-2"></div>Loading questions...</div>';
+    updateSelectionCount(0);
+
+    try {
+      const response = await fetch(`/admin/api/questions?examId=${examId}&subjectName=${encodeURIComponent(subjectName)}`);
+      const questions = await response.json();
+
+      if (questions.length === 0) {
+        questionsContainer.innerHTML = `
+          <div class="text-center py-5 text-warning border rounded bg-white">
+            <i class="bi bi-exclamation-triangle fs-1 d-block mb-2"></i>
+            <span class="fw-bold">No questions found!</span>
+            <p class="text-muted small mb-0 mt-1">There are no questions in the bank matching this Exam and Subject.</p>
+          </div>`;
+        return;
+      }
+
+      questionsContainer.innerHTML = "";
+      const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
+      questions.forEach((qsn, idx) => {
+        let diffClass = "badge-medium";
+        if (qsn.level === "Easy") diffClass = "badge-easy";
+        if (qsn.level === "Hard") diffClass = "badge-hard";
+
+        const card = document.createElement("div");
+        card.className = "question-select-card p-3 glass-card bg-white";
+        card.dataset.id = qsn._id;
+
+        card.innerHTML = `
+          <div class="d-flex align-items-start gap-3">
+            <div class="form-check pt-1">
+              <input class="form-check-input question-checkbox" type="checkbox" name="questions" value="${escapeHtml(qsn._id)}" id="qCheckbox${idx}" style="transform: scale(1.2);">
+            </div>
+            <label class="form-check-label flex-grow-1" for="qCheckbox${idx}" style="cursor: pointer;">
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <span class="badge ${diffClass} py-1 px-2.5 rounded-pill small">${escapeHtml(qsn.level)}</span>
+                <span class="badge bg-light text-secondary py-1 px-2 rounded-pill small border">${escapeHtml(qsn.chapter)}</span>
+              </div>
+              <p class="mb-2 fw-semibold text-dark">${escapeHtml(qsn.question_text)}</p>
+              ${qsn.question_img && qsn.question_img.url ? `
+                <div class="my-2">
+                  <img src="${escapeHtml(qsn.question_img.url)}" alt="Question Image" class="img-fluid rounded border" style="max-height: 120px;">
+                </div>` : ''}
+              <div class="small text-muted mt-2">
+                <strong>Options:</strong> ${qsn.options.map(opt => escapeHtml(opt.text)).filter(Boolean).join(" | ")}
+              </div>
+            </label>
+          </div>`;
+
+        // Highlight card when checkbox is clicked
+        const checkbox = card.querySelector(".question-checkbox");
+        checkbox.addEventListener("change", () => {
+          if (checkbox.checked) {
+            card.classList.add("selected");
+            updateSelectionCount(selectedQuestionsCount + 1);
+          } else {
+            card.classList.remove("selected");
+            updateSelectionCount(selectedQuestionsCount - 1);
+          }
+        });
+
+        // Click handler for card body (excluding direct checkbox click)
+        card.addEventListener("click", (e) => {
+          if (!e.target.closest("input, label")) {
+            checkbox.checked = !checkbox.checked;
+            checkbox.dispatchEvent(new Event("change"));
+          }
+        });
+
+        questionsContainer.appendChild(card);
+      });
+    } catch (error) {
+      console.error("Error fetching questions:", error);
+      questionsContainer.innerHTML = '<div class="text-center py-4 text-danger">Error loading questions from bank.</div>';
+    }
+  });
+
+  function updateSelectionCount(count) {
+    selectedQuestionsCount = count;
+    selectedCountSpan.textContent = selectedQuestionsCount;
+    if (selectedQuestionsCount > 0) {
+      submitBtn.disabled = false;
+    } else {
+      submitBtn.disabled = true;
+    }
+  }
+
+  // Frontend Bootstrap validations
+  (function () {
+    'use strict'
+    var forms = document.querySelectorAll('.needs-validation')
+    Array.prototype.slice.call(forms)
+      .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+          form.classList.add('was-validated')
+        }, false)
+      })
+  })()
+</script>

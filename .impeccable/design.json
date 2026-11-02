@@ -1,0 +1,734 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-02T19:41:18.406Z",
+  "title": "Design System: Saarthi Observatory",
+  "extensions": {
+    "colorMeta": {
+      "canvas": {
+        "role": "neutral",
+        "displayName": "Space Black",
+        "tonalRamp": [
+          "oklch(15.00% 0.01528 252.51)",
+          "oklch(26.43% 0.01528 252.51)",
+          "oklch(37.86% 0.01528 252.51)",
+          "oklch(49.29% 0.01528 252.51)",
+          "oklch(60.71% 0.01528 252.51)",
+          "oklch(72.14% 0.01528 252.51)",
+          "oklch(83.57% 0.01528 252.51)",
+          "oklch(95.00% 0.01528 252.51)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Workspace Surface",
+        "tonalRamp": [
+          "oklch(15.00% 0.02478 262.11)",
+          "oklch(26.43% 0.02478 262.11)",
+          "oklch(37.86% 0.02478 262.11)",
+          "oklch(49.29% 0.02478 262.11)",
+          "oklch(60.71% 0.02478 262.11)",
+          "oklch(72.14% 0.02478 262.11)",
+          "oklch(83.57% 0.02478 262.11)",
+          "oklch(95.00% 0.02478 262.11)"
+        ]
+      },
+      "sidebar": {
+        "role": "neutral",
+        "displayName": "Observatory Sidebar",
+        "tonalRamp": [
+          "oklch(15.00% 0.01933 258.38)",
+          "oklch(26.43% 0.01933 258.38)",
+          "oklch(37.86% 0.01933 258.38)",
+          "oklch(49.29% 0.01933 258.38)",
+          "oklch(60.71% 0.01933 258.38)",
+          "oklch(72.14% 0.01933 258.38)",
+          "oklch(83.57% 0.01933 258.38)",
+          "oklch(95.00% 0.01933 258.38)"
+        ],
+        "note": "Alpha-bearing source; synthesized opaque hue guide is not a replacement runtime palette."
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Cool White",
+        "tonalRamp": [
+          "oklch(15.00% 0.01368 258.34)",
+          "oklch(26.43% 0.01368 258.34)",
+          "oklch(37.86% 0.01368 258.34)",
+          "oklch(49.29% 0.01368 258.34)",
+          "oklch(60.71% 0.01368 258.34)",
+          "oklch(72.14% 0.01368 258.34)",
+          "oklch(83.57% 0.01368 258.34)",
+          "oklch(95.00% 0.01368 258.34)"
+        ]
+      },
+      "secondary": {
+        "role": "neutral",
+        "displayName": "Blue Grey",
+        "tonalRamp": [
+          "oklch(15.00% 0.02908 258.37)",
+          "oklch(26.43% 0.02908 258.37)",
+          "oklch(37.86% 0.02908 258.37)",
+          "oklch(49.29% 0.02908 258.37)",
+          "oklch(60.71% 0.02908 258.37)",
+          "oklch(72.14% 0.02908 258.37)",
+          "oklch(83.57% 0.02908 258.37)",
+          "oklch(95.00% 0.02908 258.37)"
+        ]
+      },
+      "blue": {
+        "role": "secondary",
+        "displayName": "Atmospheric Blue",
+        "tonalRamp": [
+          "oklch(15.00% 0.13408 257.15)",
+          "oklch(26.43% 0.13408 257.15)",
+          "oklch(37.86% 0.13408 257.15)",
+          "oklch(49.29% 0.13408 257.15)",
+          "oklch(60.71% 0.13408 257.15)",
+          "oklch(72.14% 0.13408 257.15)",
+          "oklch(83.57% 0.13408 257.15)",
+          "oklch(95.00% 0.13408 257.15)"
+        ]
+      },
+      "link": {
+        "role": "secondary",
+        "displayName": "Link Blue",
+        "tonalRamp": [
+          "oklch(15.00% 0.10526 258.76)",
+          "oklch(26.43% 0.10526 258.76)",
+          "oklch(37.86% 0.10526 258.76)",
+          "oklch(49.29% 0.10526 258.76)",
+          "oklch(60.71% 0.10526 258.76)",
+          "oklch(72.14% 0.10526 258.76)",
+          "oklch(83.57% 0.10526 258.76)",
+          "oklch(95.00% 0.10526 258.76)"
+        ]
+      },
+      "action": {
+        "role": "primary",
+        "displayName": "Action Orange",
+        "tonalRamp": [
+          "oklch(15.00% 0.13021 55.40)",
+          "oklch(26.43% 0.13021 55.40)",
+          "oklch(37.86% 0.13021 55.40)",
+          "oklch(49.29% 0.13021 55.40)",
+          "oklch(60.71% 0.13021 55.40)",
+          "oklch(72.14% 0.13021 55.40)",
+          "oklch(83.57% 0.13021 55.40)",
+          "oklch(95.00% 0.13021 55.40)"
+        ]
+      },
+      "action-hover": {
+        "role": "primary",
+        "displayName": "Action Hover",
+        "tonalRamp": [
+          "oklch(15.00% 0.11191 56.25)",
+          "oklch(26.43% 0.11191 56.25)",
+          "oklch(37.86% 0.11191 56.25)",
+          "oklch(49.29% 0.11191 56.25)",
+          "oklch(60.71% 0.11191 56.25)",
+          "oklch(72.14% 0.11191 56.25)",
+          "oklch(83.57% 0.11191 56.25)",
+          "oklch(95.00% 0.11191 56.25)"
+        ]
+      },
+      "on-action": {
+        "role": "primary",
+        "displayName": "Action Ink",
+        "tonalRamp": [
+          "oklch(15.00% 0.01030 52.80)",
+          "oklch(26.43% 0.01030 52.80)",
+          "oklch(37.86% 0.01030 52.80)",
+          "oklch(49.29% 0.01030 52.80)",
+          "oklch(60.71% 0.01030 52.80)",
+          "oklch(72.14% 0.01030 52.80)",
+          "oklch(83.57% 0.01030 52.80)",
+          "oklch(95.00% 0.01030 52.80)"
+        ]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "border",
+        "tonalRamp": [
+          "oklch(15.00% 0.00000 89.88)",
+          "oklch(26.43% 0.00000 89.88)",
+          "oklch(37.86% 0.00000 89.88)",
+          "oklch(49.29% 0.00000 89.88)",
+          "oklch(60.71% 0.00000 89.88)",
+          "oklch(72.14% 0.00000 89.88)",
+          "oklch(83.57% 0.00000 89.88)",
+          "oklch(95.00% 0.00000 89.88)"
+        ],
+        "note": "Alpha-bearing source; synthesized opaque hue guide is not a replacement runtime palette."
+      },
+      "surface-border": {
+        "role": "neutral",
+        "displayName": "surface border",
+        "tonalRamp": [
+          "oklch(15.00% 0.00000 89.88)",
+          "oklch(26.43% 0.00000 89.88)",
+          "oklch(37.86% 0.00000 89.88)",
+          "oklch(49.29% 0.00000 89.88)",
+          "oklch(60.71% 0.00000 89.88)",
+          "oklch(72.14% 0.00000 89.88)",
+          "oklch(83.57% 0.00000 89.88)",
+          "oklch(95.00% 0.00000 89.88)"
+        ],
+        "note": "Alpha-bearing source; synthesized opaque hue guide is not a replacement runtime palette."
+      },
+      "field": {
+        "role": "neutral",
+        "displayName": "Inset Black",
+        "tonalRamp": [
+          "oklch(15.00% 0.01967 257.28)",
+          "oklch(26.43% 0.01967 257.28)",
+          "oklch(37.86% 0.01967 257.28)",
+          "oklch(49.29% 0.01967 257.28)",
+          "oklch(60.71% 0.01967 257.28)",
+          "oklch(72.14% 0.01967 257.28)",
+          "oklch(83.57% 0.01967 257.28)",
+          "oklch(95.00% 0.01967 257.28)"
+        ]
+      },
+      "field-ink": {
+        "role": "neutral",
+        "displayName": "Field Ink",
+        "tonalRamp": [
+          "oklch(15.00% 0.02289 258.36)",
+          "oklch(26.43% 0.02289 258.36)",
+          "oklch(37.86% 0.02289 258.36)",
+          "oklch(49.29% 0.02289 258.36)",
+          "oklch(60.71% 0.02289 258.36)",
+          "oklch(72.14% 0.02289 258.36)",
+          "oklch(83.57% 0.02289 258.36)",
+          "oklch(95.00% 0.02289 258.36)"
+        ]
+      },
+      "field-border": {
+        "role": "neutral",
+        "displayName": "field border",
+        "tonalRamp": [
+          "oklch(15.00% 0.00000 89.88)",
+          "oklch(26.43% 0.00000 89.88)",
+          "oklch(37.86% 0.00000 89.88)",
+          "oklch(49.29% 0.00000 89.88)",
+          "oklch(60.71% 0.00000 89.88)",
+          "oklch(72.14% 0.00000 89.88)",
+          "oklch(83.57% 0.00000 89.88)",
+          "oklch(95.00% 0.00000 89.88)"
+        ],
+        "note": "Alpha-bearing source; synthesized opaque hue guide is not a replacement runtime palette."
+      },
+      "focus": {
+        "role": "secondary",
+        "displayName": "Keyboard Focus",
+        "tonalRamp": [
+          "oklch(15.00% 0.12859 54.25)",
+          "oklch(26.43% 0.12859 54.25)",
+          "oklch(37.86% 0.12859 54.25)",
+          "oklch(49.29% 0.12859 54.25)",
+          "oklch(60.71% 0.12859 54.25)",
+          "oklch(72.14% 0.12859 54.25)",
+          "oklch(83.57% 0.12859 54.25)",
+          "oklch(95.00% 0.12859 54.25)"
+        ]
+      },
+      "field-focus": {
+        "role": "secondary",
+        "displayName": "Field Focus",
+        "tonalRamp": [
+          "oklch(15.00% 0.12087 258.28)",
+          "oklch(26.43% 0.12087 258.28)",
+          "oklch(37.86% 0.12087 258.28)",
+          "oklch(49.29% 0.12087 258.28)",
+          "oklch(60.71% 0.12087 258.28)",
+          "oklch(72.14% 0.12087 258.28)",
+          "oklch(83.57% 0.12087 258.28)",
+          "oklch(95.00% 0.12087 258.28)"
+        ]
+      },
+      "selected": {
+        "role": "neutral",
+        "displayName": "selected",
+        "tonalRamp": [
+          "oklch(15.00% 0.00000 89.88)",
+          "oklch(26.43% 0.00000 89.88)",
+          "oklch(37.86% 0.00000 89.88)",
+          "oklch(49.29% 0.00000 89.88)",
+          "oklch(60.71% 0.00000 89.88)",
+          "oklch(72.14% 0.00000 89.88)",
+          "oklch(83.57% 0.00000 89.88)",
+          "oklch(95.00% 0.00000 89.88)"
+        ],
+        "note": "Alpha-bearing source; synthesized opaque hue guide is not a replacement runtime palette."
+      },
+      "selected-ink": {
+        "role": "neutral",
+        "displayName": "selected ink",
+        "tonalRamp": [
+          "oklch(15.00% 0.02756 258.36)",
+          "oklch(26.43% 0.02756 258.36)",
+          "oklch(37.86% 0.02756 258.36)",
+          "oklch(49.29% 0.02756 258.36)",
+          "oklch(60.71% 0.02756 258.36)",
+          "oklch(72.14% 0.02756 258.36)",
+          "oklch(83.57% 0.02756 258.36)",
+          "oklch(95.00% 0.02756 258.36)"
+        ]
+      },
+      "secondary-action": {
+        "role": "neutral",
+        "displayName": "secondary action",
+        "tonalRamp": [
+          "oklch(15.00% 0.00000 89.88)",
+          "oklch(26.43% 0.00000 89.88)",
+          "oklch(37.86% 0.00000 89.88)",
+          "oklch(49.29% 0.00000 89.88)",
+          "oklch(60.71% 0.00000 89.88)",
+          "oklch(72.14% 0.00000 89.88)",
+          "oklch(83.57% 0.00000 89.88)",
+          "oklch(95.00% 0.00000 89.88)"
+        ],
+        "note": "Alpha-bearing source; synthesized opaque hue guide is not a replacement runtime palette."
+      },
+      "secondary-action-ink": {
+        "role": "neutral",
+        "displayName": "secondary action ink",
+        "tonalRamp": [
+          "oklch(15.00% 0.02421 259.82)",
+          "oklch(26.43% 0.02421 259.82)",
+          "oklch(37.86% 0.02421 259.82)",
+          "oklch(49.29% 0.02421 259.82)",
+          "oklch(60.71% 0.02421 259.82)",
+          "oklch(72.14% 0.02421 259.82)",
+          "oklch(83.57% 0.02421 259.82)",
+          "oklch(95.00% 0.02421 259.82)"
+        ]
+      },
+      "secondary-action-border": {
+        "role": "neutral",
+        "displayName": "secondary action border",
+        "tonalRamp": [
+          "oklch(15.00% 0.00000 89.88)",
+          "oklch(26.43% 0.00000 89.88)",
+          "oklch(37.86% 0.00000 89.88)",
+          "oklch(49.29% 0.00000 89.88)",
+          "oklch(60.71% 0.00000 89.88)",
+          "oklch(72.14% 0.00000 89.88)",
+          "oklch(83.57% 0.00000 89.88)",
+          "oklch(95.00% 0.00000 89.88)"
+        ],
+        "note": "Alpha-bearing source; synthesized opaque hue guide is not a replacement runtime palette."
+      },
+      "secondary-action-hover": {
+        "role": "neutral",
+        "displayName": "secondary action hover",
+        "tonalRamp": [
+          "oklch(15.00% 0.00000 89.88)",
+          "oklch(26.43% 0.00000 89.88)",
+          "oklch(37.86% 0.00000 89.88)",
+          "oklch(49.29% 0.00000 89.88)",
+          "oklch(60.71% 0.00000 89.88)",
+          "oklch(72.14% 0.00000 89.88)",
+          "oklch(83.57% 0.00000 89.88)",
+          "oklch(95.00% 0.00000 89.88)"
+        ],
+        "note": "Alpha-bearing source; synthesized opaque hue guide is not a replacement runtime palette."
+      },
+      "disabled": {
+        "role": "neutral",
+        "displayName": "disabled",
+        "tonalRamp": [
+          "oklch(15.00% 0.03823 257.77)",
+          "oklch(26.43% 0.03823 257.77)",
+          "oklch(37.86% 0.03823 257.77)",
+          "oklch(49.29% 0.03823 257.77)",
+          "oklch(60.71% 0.03823 257.77)",
+          "oklch(72.14% 0.03823 257.77)",
+          "oklch(83.57% 0.03823 257.77)",
+          "oklch(95.00% 0.03823 257.77)"
+        ]
+      },
+      "disabled-ink": {
+        "role": "neutral",
+        "displayName": "disabled ink",
+        "tonalRamp": [
+          "oklch(15.00% 0.03294 257.25)",
+          "oklch(26.43% 0.03294 257.25)",
+          "oklch(37.86% 0.03294 257.25)",
+          "oklch(49.29% 0.03294 257.25)",
+          "oklch(60.71% 0.03294 257.25)",
+          "oklch(72.14% 0.03294 257.25)",
+          "oklch(83.57% 0.03294 257.25)",
+          "oklch(95.00% 0.03294 257.25)"
+        ]
+      },
+      "legacy-field-border": {
+        "role": "neutral",
+        "displayName": "Legacy Field Border",
+        "tonalRamp": [
+          "oklch(15.00% 0.00000 89.88)",
+          "oklch(26.43% 0.00000 89.88)",
+          "oklch(37.86% 0.00000 89.88)",
+          "oklch(49.29% 0.00000 89.88)",
+          "oklch(60.71% 0.00000 89.88)",
+          "oklch(72.14% 0.00000 89.88)",
+          "oklch(83.57% 0.00000 89.88)",
+          "oklch(95.00% 0.00000 89.88)"
+        ],
+        "note": "Alpha-bearing source; synthesized opaque hue guide is not a replacement runtime palette."
+      },
+      "legacy-surface-border": {
+        "role": "neutral",
+        "displayName": "Legacy Surface Border",
+        "tonalRamp": [
+          "oklch(15.00% 0.00000 89.88)",
+          "oklch(26.43% 0.00000 89.88)",
+          "oklch(37.86% 0.00000 89.88)",
+          "oklch(49.29% 0.00000 89.88)",
+          "oklch(60.71% 0.00000 89.88)",
+          "oklch(72.14% 0.00000 89.88)",
+          "oklch(83.57% 0.00000 89.88)",
+          "oklch(95.00% 0.00000 89.88)"
+        ],
+        "note": "Alpha-bearing source; synthesized opaque hue guide is not a replacement runtime palette."
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "display",
+        "purpose": "Dashboard introduction."
+      },
+      "public-display": {
+        "displayName": "public-display",
+        "purpose": "Public landing hero."
+      },
+      "headline": {
+        "displayName": "headline",
+        "purpose": "Workspace page headings."
+      },
+      "title": {
+        "displayName": "title",
+        "purpose": "Standard study card headings."
+      },
+      "body": {
+        "displayName": "body",
+        "purpose": "Base application copy."
+      },
+      "study-body": {
+        "displayName": "study-body",
+        "purpose": "Study paragraphs."
+      },
+      "label": {
+        "displayName": "label",
+        "purpose": "Material form labels."
+      },
+      "field": {
+        "displayName": "Workspace Field",
+        "purpose": "Text inputs, selects and textareas; phone-safe size."
+      }
+    },
+    "shadows": [
+      {
+        "name": "action-hover",
+        "value": "0 5px 20px -9px #ff943b85",
+        "purpose": "Warm primary-button hover glow; working cards have no shadow."
+      },
+      {
+        "name": "content-update",
+        "value": "0 12px 36px #0008",
+        "purpose": "Actionable overlay only; standard panels have no shadow."
+      }
+    ],
+    "motion": [
+      {
+        "name": "chapter-card",
+        "value": "border-color .18s ease, transform .18s ease",
+        "purpose": "Hover border and 3px lift; transform removed for reduced motion."
+      },
+      {
+        "name": "chapter-star-color",
+        "value": "color .2s ease",
+        "purpose": "Chapter link state."
+      },
+      {
+        "name": "chapter-star-transform",
+        "value": "transform .3s ease",
+        "purpose": "Hover and focus scale(1.25) rotate(20deg); removed for reduced motion."
+      },
+      {
+        "name": "camera-interpolation",
+        "value": "1200ms; 1 - (1 - t)^4",
+        "purpose": "Shortest-path yaw from current pose to authored section pose with URL-derived variation; native fallback remains available."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wide-scene",
+        "value": "1500px"
+      },
+      {
+        "name": "material-stack",
+        "value": "1100px"
+      },
+      {
+        "name": "rail-compact",
+        "value": "1199px"
+      },
+      {
+        "name": "nav-strip",
+        "value": "959px"
+      },
+      {
+        "name": "stack",
+        "value": "767px"
+      },
+      {
+        "name": "constellation-grid",
+        "value": "600px"
+      },
+      {
+        "name": "narrow",
+        "value": "479px"
+      }
+    ],
+    "sources": {
+      "tokens": "DESIGN.md frontmatter",
+      "cascade": [
+        "Bootstrap 5.3.3",
+        "public/css/style.css",
+        "public/css/studio.css",
+        "public/css/design-system.css",
+        "public/css/cosmos.css",
+        "public/css/observatory.css",
+        "public/css/workspace.css"
+      ],
+      "behavior": [
+        "public/js/observatory.js",
+        "public/js/planet-state.js",
+        "public/js/workspace.js",
+        "public/js/form-state.js",
+        "public/js/cosmos.js"
+      ],
+      "navigation": "views/study/nav.ejs",
+      "brief": ".impeccable/briefs/observatory.md",
+      "font": "public/fonts/manrope.ttf",
+      "icons": "Bootstrap Icons; previews use inline native SVG",
+      "assets": "Code-native procedural WebGL planet, deterministically seeded Canvas stars, public/images/stars.svg and native SVG chapter stars. No sparks, generated comp, seed key or raster texture.",
+      "verification": "Engine context/detector binary/cache could not initialize. Nine actual JPEG viewport captures in .impeccable/review/repair and application checks are evidence; no detector success is claimed.",
+      "layout": "views/layouts/boilerplate.ejs"
+    },
+    "browserSurfaces": {
+      "colorScheme": "dark",
+      "selection": "background:#355b86;color:#fff",
+      "scrollbars": "#3d526f #080e19",
+      "caret": "#f7a064",
+      "focus": "2px solid #f7a064; outline-offset:4px",
+      "fieldFocus": "2px solid #82b4ff; outline-offset:2px",
+      "publicNavBackdrop": "blur(16px)"
+    },
+    "contentRefresh": {
+      "intervalMs": 5000,
+      "scope": "Visible non-admin pages; replace only .learning-content when safe.",
+      "protectedPlayback": "Any iframe or playing native video prevents replacement and shows a manual refresh notice.",
+      "protectedWork": "Dirty forms and assessment runs get a notice when no safe learning-content replacement applies. Manual refresh confirms before discarding dirty input.",
+      "offline": "Keep existing content when checks fail."
+    },
+    "scene": {
+      "camera": "Authored section poses plus pathname/query variation; sessionStorage persists current pose. Scene stays mounted across supported script-free workspace navigation; other pages use native navigation.",
+      "persistentRoutes": [
+        "/dashboard",
+        "/library",
+        "/planner",
+        "/practice",
+        "/insights",
+        "/admin",
+        "/admin/materials",
+        "/admin/publishing",
+        "/admin/site-settings"
+      ],
+      "navigation": "Supported same-origin links, GET query forms and history. Failed/incompatible responses fall back to native navigation; complex editors, lessons and test runs remain native.",
+      "shaderSideCapPx": 512,
+      "pixelRatioCap": 1.5,
+      "preserveDrawingBuffer": true,
+      "frameIntervalMs": {
+        "desktop": 50,
+        "phone": 80
+      },
+      "starCap": 230,
+      "starSeed": 9173,
+      "staticStars": "public/images/stars.svg; tiled at 900px 600px",
+      "stars": "Stable positions at a fixed viewport; subtle alpha variation while animated. Resize regenerates the same deterministic seed.",
+      "reducedMotion": "Saved toggle or OS preference renders a static target pose. OS preference takes precedence and disables the toggle.",
+      "visibility": "Pause animation while hidden; lessons and test runs render quietly without a continuing loop.",
+      "fallback": "CSS circular dark silhouette with blue rim glow; responsive dimensions and positions match the shader canvas: desktop 360px/top70px/right-90px, tablet 320px/top160px/right-115px, phone 270px/top210px/right-165px.",
+      "accessibility": "Decorative scene aria-hidden, pointer-events:none.",
+      "planetCanvas": {
+        "desktop": "360px; top:70px; right:-90px; opacity:.85",
+        "tablet": "320px; top:160px; right:-115px",
+        "phone": "270px; top:210px; right:-165px; opacity:.55"
+      },
+      "particles": "Removed; no emission."
+    },
+    "copyPolicy": {
+      "titles": "Functional page and task names.",
+      "support": "Features, status and necessary instructions.",
+      "prohibited": [
+        "Promotional taglines",
+        "Motivational slogans",
+        "Fabricated claims",
+        "Emojis"
+      ]
+    },
+    "formState": {
+      "feedback": "Shared forms announce unsaved changes and saving; duplicate submission is guarded.",
+      "leaveGuard": "Supported links, GET query forms and history navigation offer inline Leave without saving / Keep editing; canceling a query clears its submitting flag. Native unload uses the browser guard.",
+      "limits": "Navigation protection does not provide autosave or universal network-failure recovery."
+    },
+    "planner": {
+      "layout": "Chronological vertical next-seven-days agenda at every viewport.",
+      "dateColumn": "80px; 70px below 767px",
+      "taskColumn": "minmax(0,1fr); wrapped task text; multiple tasks stack."
+    },
+    "releaseEvidence": {
+      "directory": ".impeccable/review/repair",
+      "captures": [
+        "admin-desktop.jpg",
+        "admin-mobile.jpg",
+        "admin-tablet.jpg",
+        "student-desktop.jpg",
+        "student-mobile.jpg",
+        "planner-desktop.jpg",
+        "planner-mobile.jpg",
+        "quiz-desktop.jpg",
+        "quiz-mobile.jpg"
+      ],
+      "actualViewportPixels": {
+        "desktop": [
+          1265,
+          889
+        ],
+        "mobile": [
+          375,
+          812
+        ],
+        "tablet": [
+          805,
+          960
+        ]
+      },
+      "limitations": [
+        "Actual JPEG viewport dimensions differ from requested overrides in the brief.",
+        "Captures are viewports, not full-page images.",
+        "Independent ship disposition covers the scored planner fix and visible batch regressions; it does not certify every screen or production release.",
+        "Engine context/detector unavailable; no generated comp or seed."
+      ]
+    }
+  },
+  "components": [
+    {
+      "name": "Primary button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Workspace primary action with hover, focus and disabled states.",
+      "html": "<button class=\"ds-primary\">Save changes</button>",
+      "css": ".ds-primary{font-family:Manrope,Inter,system-ui,sans-serif;background:#ec9657;color:#16110e;border:1px solid #f1ab77;border-radius:10px;padding:12px 18px;min-height:44px;font-size:12px;font-weight:600;cursor:pointer}.ds-primary:hover{background:#ffb47e;color:#16110d;border-color:#ffb17b;box-shadow:0 5px 20px -9px #ff943b85}.ds-primary:active{background:#ffb17b;border-color:#ffb17b}.ds-primary:focus-visible{outline:2px solid #f7a064;outline-offset:4px}.ds-primary:disabled{background:#283548;border-color:#283548;color:#9eacc0;opacity:.6;cursor:default;box-shadow:none}"
+    },
+    {
+      "name": "Secondary button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Translucent supporting action with pale cool text.",
+      "html": "<button class=\"ds-secondary\">View library</button>",
+      "css": ".ds-secondary{font-family:Manrope,Inter,system-ui,sans-serif;background:#ffffff07;color:#e0eafa;border:1px solid #ffffff30;border-radius:10px;padding:12px 18px;min-height:44px;font-size:12px;font-weight:600;cursor:pointer}.ds-secondary:hover{background:#ffffff12;color:#fff;border-color:#9fc5ff70}.ds-secondary:active{background:#ffffff07;color:#e0eafa;border-color:#ffffff30}.ds-secondary:focus-visible{outline:2px solid #f7a064;outline-offset:4px}.ds-secondary:disabled{background:#283548;border-color:#283548;color:#9eacc0;opacity:.6;cursor:default}"
+    },
+    {
+      "name": "Material field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Labeled workspace field with phone-safe text size and blue focus outline.",
+      "html": "<label class=\"ds-label\">Material title<input class=\"ds-field\" placeholder=\"Enter a clear title\"></label>",
+      "css": ".ds-label{font-family:Manrope,Inter,system-ui,sans-serif;display:block;color:#d5e5fb;font-size:14px;font-weight:600}.ds-field{font-family:Manrope,Inter,system-ui,sans-serif;display:block;width:100%;box-sizing:border-box;padding:12px;margin-top:6px;min-height:44px;background:#060b13;color:#e6f0ff;border:1px solid #ffffff25;border-radius:8px;font-size:16px;caret-color:#f7a064}.ds-field::placeholder{color:#9aadc9;opacity:1}.ds-field:hover{border-color:#ffffff25}.ds-field:focus-visible{outline:2px solid #82b4ff;outline-offset:2px;box-shadow:none}.ds-field:disabled{opacity:.6}"
+    },
+    {
+      "name": "Selected navigation",
+      "kind": "nav",
+      "refersTo": "navigation-selected",
+      "description": "Translucent selected workspace item with native link and functional label.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Learning workspace\"><a href=\"#overview\" aria-current=\"page\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 16 16\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M1 2h6v5H1V2zm8 0h6v5H9V2zM1 9h6v5H1V9zm8 0h6v5H9V9z\"/></svg>Overview<span class=\"ds-dot\" aria-hidden=\"true\"></span></a></nav>",
+      "css": ".ds-nav{font-family:Manrope,Inter,system-ui,sans-serif;padding:12px;background:rgba(7,12,20,.86)}.ds-nav a{display:flex;align-items:center;gap:12px;min-height:45px;padding:12px;border:1px solid #ffffff25;border-radius:8px;background:#ffffff0c;color:#e1edff;font-size:13px;font-weight:600;text-decoration:none}.ds-nav a:hover{background:#15253b;color:#fff}.ds-nav a:active{background:#ffffff0c;color:#e1edff}.ds-nav a:focus-visible{outline:2px solid #f7a064;outline-offset:4px}.ds-dot{margin-left:auto;width:5px;height:5px;border-radius:50%;background:#e99858}@media(max-width:959px){.ds-nav{background:transparent;overflow-x:auto;scrollbar-width:thin;scrollbar-color:#59789f #101e31}.ds-nav a{padding:10px 13px;white-space:nowrap}.ds-dot{display:none}}"
+    },
+    {
+      "name": "Study card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Opaque operational study surface without ambient shadow.",
+      "html": "<section class=\"ds-card\"><h2>Recent chapters</h2><p>No chapter progress saved.</p><a href=\"#library\">View library</a></section>",
+      "css": ".ds-card{font-family:Manrope,Inter,system-ui,sans-serif;background:var(--workspace-surface,#0b111c);color:#edf3fc;border:1px solid #ffffff18;border-radius:14px;padding:24px;margin-bottom:24px;box-shadow:none}.ds-card h2{font-size:18px;font-weight:500;letter-spacing:-.5px;margin:0 0 12px}.ds-card p{color:var(--muted,#a7b3c5);font-size:14px;line-height:1.7;overflow-wrap:anywhere}.ds-card a{color:#9bc5ff;font-size:12px;text-decoration:none;font-weight:600}.ds-card a:hover{color:#c4dcff}.ds-card a:focus-visible{outline:2px solid #f7a064;outline-offset:4px}@media(max-width:767px){.ds-card{padding:20px}}"
+    },
+    {
+      "name": "Milestone badge",
+      "kind": "chip",
+      "description": "Noninteractive earned-progress status; olive is semantic, not a brand accent.",
+      "html": "<span class=\"ds-badge\">First chapter completed</span>",
+      "css": ".ds-badge{font-family:Manrope,Inter,system-ui,sans-serif;display:inline-block;background:#26321e;color:#c8dba9;border:1px solid #435636;border-radius:6px;padding:8px 12px;font-size:10px}"
+    },
+    {
+      "name": "Chapter star",
+      "kind": "custom",
+      "description": "Real saved chapter link; native SVG geometry is keyboard operable.",
+      "html": "<a class=\"ds-star\" href=\"#chapter\"><svg viewBox=\"0 0 40 40\" aria-hidden=\"true\"><path d=\"M20 2 24 15 38 20 24 25 20 38 16 25 2 20 16 15Z\"/></svg><span>Saved chapter</span><small>Continue learning</small></a>",
+      "css": ".ds-star{font-family:Manrope,Inter,system-ui,sans-serif;display:flex;flex-direction:column;align-items:center;text-align:center;max-width:180px;color:#c5dffc;text-decoration:none;gap:10px;transition:color .2s ease}.ds-star svg{width:24px;height:24px;fill:#90c2ff;transition:transform .3s ease}.ds-star span{font-size:13px;font-weight:500}.ds-star small{font-size:11px;color:#9cafcb}.ds-star:hover{color:#fff}.ds-star:hover svg,.ds-star:focus-visible svg{transform:scale(1.25) rotate(20deg)}.ds-star:focus-visible{outline:2px solid #f7a064;outline-offset:4px;border-radius:8px}@media(prefers-reduced-motion:reduce){.ds-star,.ds-star svg{transition:none}.ds-star:hover svg,.ds-star:focus-visible svg{transform:none}}"
+    },
+    {
+      "name": "Content update notice",
+      "kind": "custom",
+      "description": "Actionable refresh notice; the same surface also hosts inline leave/stay navigation protection.",
+      "html": "<div class=\"ds-update\" role=\"status\"><span>New learning content is available. Your current work is safe.</span><button class=\"ds-refresh\">Refresh content</button></div>",
+      "css": ".ds-update{font-family:Manrope,Inter,system-ui,sans-serif;max-width:460px;background:#172a43;border:1px solid #6e94bc;color:#e3efff;border-radius:12px;padding:18px;display:flex;align-items:center;gap:20px;box-shadow:0 12px 36px #0008;font-size:13px}.ds-refresh{font-family:Manrope,Inter,system-ui,sans-serif;background:#ec9657;color:#16110e;border:1px solid #f1ab77;border-radius:10px;font-size:12px;min-height:44px;font-weight:600;padding:12px 18px;cursor:pointer}.ds-refresh:hover{background:#ffb47e;border-color:#ffb17b;box-shadow:0 5px 20px -9px #ff943b85}.ds-refresh:active{background:#ffb17b;border-color:#ffb17b}.ds-refresh:focus-visible{outline:2px solid #f7a064;outline-offset:4px}@media(max-width:767px){.ds-update{flex-direction:column;align-items:start}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Learning Observatory",
+    "overview": "A practical learning workspace sits inside a quiet observatory. Near-black space, stable layered stars, blue overhead illumination and a shaded procedural planet establish the scene. Opaque working panels protect curriculum, assessments and administration; orange identifies useful actions.\n\nAtmosphere lives in geometry, lighting and motion. Words describe the actual page, feature or next step: functional titles and necessary instructions, with no promotional or motivational taglines. The user-pinned Resq.io screenshots and Laststack reference establish the visual direction; they are not generated assets or an approved raster composition.",
+    "keyCharacteristics": [
+      "Near-black space with stable stars, blue overhead light and a dimensional side planet.",
+      "Opaque working surfaces, cool readable text and orange primary actions.",
+      "Persistent scene continuity on supported workspace pages, with native navigation elsewhere.",
+      "Functional copy, responsive controls and static reduced-motion scenes."
+    ],
+    "rules": [
+      {
+        "name": "The Task Accent Rule",
+        "body": "Orange marks primary actions; blue supports orientation and light. Historical aliases such as --purple resolve to blue and do not authorize purple accents.",
+        "section": "colors"
+      },
+      {
+        "name": "The Functional Copy Rule",
+        "body": "Titles name a destination or task. Supporting copy explains features, status or instructions. Add no promotional taglines, motivational slogans or fabricated claims.",
+        "section": "typography"
+      },
+      {
+        "name": "The Native Continuity Rule",
+        "body": "Navigation and form submission work independently of animation. Keep the scene mounted during supported workspace navigation; interpolate from the current pose to the next section pose plus URL variation over (1200ms), taking the shortest yaw path. Complex editors, lessons and tests use native navigation. Root view-transition animations are disabled.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** use the complete CSS cascade, with workspace.css last, when extending the system.",
+      "**Do** preserve stable stars, blue overhead light, a shaded planet and opaque readable task surfaces.",
+      "**Do** write functional titles, features, status messages and necessary instructions.",
+      "**Do** retain native navigation, keyboard focus, reduced motion and the no-WebGL fallback.",
+      "**Do** use genuine chapters, recorded progress and useful empty states.",
+      "**Do** preserve upload feedback and safe refresh around student work and playback.",
+      "**Do** keep the planner agenda chronological and readable at every viewport."
+    ],
+    "donts": [
+      "**Don't** restore the former light or purple identity or add emojis.",
+      "**Don't** add promotional taglines, motivational slogans or fabricated claims.",
+      "**Don't** let atmosphere obscure form labels, primary actions or navigation.",
+      "**Don't** restore sparks, fireworks or motivational decoration.",
+      "**Don't** delay navigation or submission to finish animation.",
+      "**Don't** invent a generated comp, seed key, texture asset or completed design-engine verification."
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+<% layout('/layouts/boilerplate.ejs') %>
+<main class="public-page">
+  <section class="landing-hero">
+    <h1>Exam preparation</h1>
+    <p>Lecture videos, PDF materials, practice tests and study planning.</p>
+    <div class="landing-actions"><a class="studio-button" href="<%= user?'/dashboard':'/auth/login' %>"><%= user?'Open dashboard':'Login' %></a><a class="landing-secondary" href="#exams">Browse exams</a></div>
+  </section>
+  <section class="public-section" id="exams"><div class="section-title"><h2>Exams</h2><% if(user?.admin){ %><a href="/admin/addExam" class="studio-button">Add exam</a><% } %></div><div class="exam-tiles"><% exams.forEach(exam=>{ %><a class="exam-tile" href="/subject/<%= exam._id %>"><span class="exam-symbol" aria-hidden="true"><i class="bi bi-mortarboard"></i></span><h3><%= exam.examName %></h3><p><%= exam.courseType %></p><span>View subjects</span></a><% }) %></div><% if(!exams.length){ %><p>No exams available.</p><% } %></section>
+  <section class="public-section"><div class="section-title"><h2>Announcements</h2><a href="/updates">View all</a></div><div class="public-updates"><% updates.slice(0,4).forEach(update=>{ %><article class="public-update"><span class="badge text-bg-light"><%= update.category %></span><h3><%= update.title %></h3><p><%= update.content.slice(0,180) %><%= update.content.length>180?'…':'' %></p><small><%= new Date(update.date).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}) %></small></article><% }) %><% if(!updates.length){ %><p>No announcements.</p><% } %></div></section>
+</main>

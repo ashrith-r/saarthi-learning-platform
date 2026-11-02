@@ -1,0 +1,40 @@
+﻿import mongoose from "mongoose";
+const Schema = mongoose.Schema;
+
+const userSchema = new Schema({
+  editor: { type: Boolean, default: false },
+  username:{
+    type:String,
+    trim:true,
+    required:[true,"Username is Required"]
+  },
+  email:{
+    type:String,
+    trim:true,
+    lowercase:true,
+    required:[true,"Email is Required"],
+    unique:true,
+    match:[/^\S+@\S+\.\S+$/,"Email is invalid"]
+  },
+  password:{
+    type:String,
+    required:[true,"Password is Required"]
+  },
+  verified:{
+    type:Boolean,
+    default:false
+  },
+  moderator:{
+    type:Boolean,
+    default:false
+  },admin:{
+    type:Boolean,
+    default:false
+
+  }
+});
+
+
+const userModel = mongoose.model("userModel",userSchema);
+
+export default userModel;

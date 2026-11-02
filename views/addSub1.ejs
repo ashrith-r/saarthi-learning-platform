@@ -1,0 +1,71 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<div class="container py-5">
+
+  <h2 class="mb-4">
+    Add Subject for <%= exam.examName %>
+  </h2>
+
+  <form action="/admin/subject/<%= exam._id %>/add" method="POST"><input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+
+      <div class="card mb-4 shadow-sm">
+
+        <div class="card-header fw-bold">
+          Add New Subject
+        </div>
+
+        <div class="card-body">
+   <div class="mb-3">
+            <label>Subject Name</label>
+            <input
+              type="text"
+              class="form-control"
+              name="subject[subjectName]"
+              placeholder="Physics"
+              required
+            >
+          </div>
+          <div class="mb-3">
+            <label>Subject Icon</label>
+            <input
+              type="text"
+              class="form-control"
+              name="subject[icon]"
+              placeholder=""
+            >
+          </div>
+
+          <div class="mb-3">
+            <label>Description</label>
+            <textarea required
+              class="form-control"
+              rows="3"
+              name="subject[description]"
+              
+            ></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label>Total Chapters</label>
+            <input required
+              type="number"
+              min="0"
+              class="form-control"
+              name="subject[chapterCount]"
+            >
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+    <button class="btn btn-success">
+      Save Subject Details
+    </button>
+
+  </form>
+
+</div>

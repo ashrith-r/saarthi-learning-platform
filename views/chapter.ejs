@@ -1,0 +1,157 @@
+<%layout("/layouts/boilerplate.ejs")%>
+
+
+<style>
+  .chapter-hero {
+    background:
+      linear-gradient(135deg, rgba(13, 110, 253, 0.95), rgba(32, 201, 151, 0.88)),
+      #0d6efd;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .chapter-hero::after {
+    content: "";
+    position: absolute;
+    inset: auto -6rem -8rem auto;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.14);
+  }
+
+  .chapter-hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .chapter-card {
+    border-radius: 20px;
+    transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+  }
+
+  .chapter-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 1rem 2.25rem rgba(16, 24, 40, 0.13) !important;
+    border-color: rgba(13, 110, 253, 0.28) !important;
+  }
+
+  .chapter-number {
+    width: 54px;
+    height: 54px;
+    display: grid;
+    place-items: center;
+    border-radius: 16px;
+    background: #eef5ff;
+    color: #0d6efd;
+    font-weight: 800;
+    font-size: 1.1rem;
+  }
+
+  .chapter-stat {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: #6c757d;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .chapter-link {
+    text-decoration: none;
+    color: inherit;
+  }
+</style>
+
+<main class="container py-5">
+  <% if (typeof success !== "undefined" && success.length) { %>
+    <div class="alert alert-success"><%= success[0] %></div>
+  <% } %>
+  <% if (typeof error !== "undefined" && error.length) { %>
+    <div class="alert alert-danger"><%= error[0] %></div>
+  <% } %>
+
+  <section class="chapter-hero text-white rounded-4 shadow p-4 p-md-5 mb-5">
+    <div class="chapter-hero-content row align-items-center g-4">
+      <div class="col-lg-8">
+        <div class="d-flex flex-wrap gap-2 mb-3">
+          <span class="badge bg-light text-primary fs-6"><%= examData.examName %></span>
+          <span class="badge bg-white bg-opacity-25 text-white border border-light-subtle fs-6">
+            <%= subjectData.subjectName %>
+          </span>
+        </div>
+
+        <h1 class="display-5 fw-bold mb-3">Choose a Chapter</h1>
+        <p class="lead mb-0"><%= subjectData.description %></p>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="bg-white text-dark rounded-4 p-4 shadow-sm">
+          <h2 class="fw-bold mb-0"><%= chapters.length %></h2>
+          <p class="text-muted mb-0">Chapters Available</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-4">
+    <div>
+      <h2 class="fw-bold mb-1">Chapter List</h2>
+      <p class="text-muted mb-0">Click a chapter to open lectures, notes, PYQs and practice content.</p>
+    </div>
+
+   <div class="d-flex gap-2">
+  <% if (user && user.admin) { %>
+    <a
+      href="/admin/subject/<%=subjectData._id%>/addChapter"
+      class="btn btn-success"
+    >
+      <i class="bi bi-plus-circle"></i>
+      Add Chapter
+    </a>
+  <% } %>
+
+  <a href="/exams" class="btn btn-outline-secondary">
+    <i class="bi bi-arrow-left"></i>
+    Back
+  </a>
+</div>
+  </div>
+
+  <section class="row g-4">
+    <% chapters.forEach((chapter, index) => { %>
+     <div class="col-md-6 col-xl-4">
+  <div class="position-relative">
+
+    <% if (user && user.admin) { %>
+      <a href="/admin/chapter/<%= chapter._id %>/edit"
+         class="btn btn-warning btn-sm position-absolute top-0 end-0 m-2 z-3">
+        <i class="bi bi-pencil-square"></i> Edit
+      </a>
+    <% } %>
+
+    <a href="/content/<%= chapter._id %>" class="chapter-link">
+      <article class="card chapter-card h-100 border shadow-sm">
+        <div class="card-body p-4">
+          <div class="d-flex justify-content-between align-items-start gap-3 mb-4">
+            <div class="chapter-number"><%= index + 1 %></div>
+          </div>
+
+          <h3 class="h4 fw-bold mb-2"><%= chapter.chapterName %></h3>
+          <p class="text-muted mb-4"><%= chapter.description %></p>
+
+          <div class="d-flex justify-content-between align-items-center border-top pt-3">
+            <span class="text-muted small">Open study content</span>
+            <span class="btn btn-sm btn-primary">
+              Continue <i class="bi bi-arrow-right ms-1"></i>
+            </span>
+          </div>
+        </div>
+      </article>
+    </a>
+
+  </div>
+</div>
+    <% }) %>
+  </section>
+</main>

@@ -1,0 +1,31 @@
+ <%layout("/layouts/boilerplate.ejs")%>
+ 
+
+ <div class="container mt-5 ">
+  <div class="card shadow p-4 mx-auto" style="max-width: 400px; ">
+    <h3 class="text-center mb-3">Verify Email</h3>
+
+    <p class="text-center text-muted">
+      Enter the 6-digit code sent to your email
+    </p>
+
+    <form action="/auth/verify-email" method="POST"><input type="hidden" name="_csrf" value="<%= csrfToken %>">
+  
+
+
+
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1"  aria-describedby="emailHelp" value="<%=email%>" name="email">
+    <div id="emailHelp" class="form-text"></div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">OTP</label>
+    <input type="number" class="form-control" id="exampleInputPassword1" name="otpEntered">
+  </div>
+ 
+  <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+  </div>
+</div>

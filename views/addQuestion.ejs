@@ -1,0 +1,335 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header">
+            <h3 class="mb-0">Add Question</h3>
+        </div>
+
+        <div class="card-body">
+
+            <!-- AI Auto-Fill Panel -->
+            <div class="card bg-light border-primary-subtle mb-4">
+                <div class="card-body">
+                    <h5 class="card-title text-primary fw-bold mb-2">
+                        <i class="bi bi-cpu-fill"></i> AI Auto-Fill Question
+                    </h5>
+                    <p class="text-secondary small mb-3">
+                        Enter a topic, concept, or question prompt, and Gemini will automatically generate a complete multiple-choice question, options, tags, and step-by-step solution.
+                    </p>
+                    <div class="row g-2">
+                        <div class="col-sm-9">
+                            <input type="text" id="aiPrompt" class="form-control" placeholder="e.g., Photoelectric effect threshold wavelength numerical">
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="button" id="btnGenerateAI" <%= process.env.GEMINI_API_KEY?'':'disabled' %> class="btn btn-primary w-100">
+                                <span id="aiBtnText"><i class="bi bi-magic"></i> Generate</span>
+                                <span id="aiBtnSpinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </div>
+                    <% if(!process.env.GEMINI_API_KEY){ %><p>AI generation is not configured. Add questions manually below.</p><% } %><div id="aiStatusMessage" class="small mt-2 text-danger d-none"></div>
+                </div>
+            </div>
+
+            <form action="/admin/addQuestion" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate><input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <input type="text" value="<%=id%>" name="course" hidden>
+                <!-- Question -->
+                <div class="mb-3">
+                    <label class="form-label">Question Text</label>
+                    <textarea
+                        name="question_text"
+                        class="form-control"
+                        rows="3"
+                        placeholder="Enter Question"></textarea>
+                </div>
+
+                <!-- Question Image -->
+                <div class="mb-4">
+                    <label class="form-label">Question Image</label>
+                    <input
+                        type="file"
+                        name="question_img"
+                        class="form-control"
+                        accept="image/*">
+                    <div class="form-text">
+                        Upload only if the question contains diagrams, graphs, or equations.
+                    </div>
+                </div>
+
+                <hr>
+
+                <h5 class="mb-3">Options</h5>
+
+                <!-- Option A -->
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h6>Option A</h6>
+
+                        <div class="mb-2">
+                            <input
+                                type="text"
+                                name="optionAtext"
+                                class="form-control"
+                                placeholder="Option A">
+                        </div>
+
+                        <input
+                            type="file"
+                            name="optionAImage"
+                            class="form-control"
+                            accept="image/*">
+                    </div>
+                </div>
+
+                <!-- Option B -->
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h6>Option B</h6>
+
+                        <div class="mb-2">
+                            <input
+                                type="text"
+                                name="optionBtext"
+                                class="form-control"
+                                placeholder="Option B">
+                        </div>
+
+                        <input
+                            type="file"
+                            name="optionBImage"
+                            class="form-control"
+                            accept="image/*">
+                    </div>
+                </div>
+
+                <!-- Option C -->
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h6>Option C</h6>
+
+                        <div class="mb-2">
+                            <input
+                                type="text"
+                                name="optionCtext"
+                                class="form-control"
+                                placeholder="Option C">
+                        </div>
+
+                        <input
+                            type="file"
+                            name="optionCImage"
+                            class="form-control"
+                            accept="image/*">
+                    </div>
+                </div>
+
+                <!-- Option D -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h6>Option D</h6>
+
+                        <div class="mb-2">
+                            <input
+                                type="text"
+                                name="optionDtext"
+                                class="form-control"
+                                placeholder="Option D">
+                        </div>
+
+                        <input
+                            type="file"
+                            name="optionDImage"
+                            class="form-control"
+                            accept="image/*">
+                    </div>
+                </div>
+
+                <!-- Correct Option -->
+                <div class="mb-3">
+                    <label class="form-label">Correct Option</label>
+
+                    <select class="form-select" name="correctOption" required>
+                        <option selected disabled value="">Choose Correct Option</option>
+                        <option value="0">Option A</option>
+                        <option value="1">Option B</option>
+                        <option value="2">Option C</option>
+                        <option value="3">Option D</option>
+                    </select>
+                </div>
+
+                <!-- Subject -->
+                <div class="mb-3">
+                    <label class="form-label">Subject</label>
+
+                    <select class="form-select" name="subject">
+                        <% for(let i =0;i<sub.length;i++) {%>
+                        
+                        <option value="<%=sub[i]%>"><%= sub[i] %></option>
+                     
+
+                         <%   } %>
+                    </select>
+                </div>
+    <div class="mb-3">
+                    <label class="form-label">Chapter</label>
+
+                    <input type="text" name="chapter" class="form-control" placeholder="Chapter Name">
+                </div>
+                <!-- Difficulty -->
+                <div class="mb-3">
+                    <label class="form-label">Difficulty</label>
+
+                    <select class="form-select" name="level">
+                        <option value="Easy">Easy</option>
+                        <option value="Medium" selected>Medium</option>
+                        <option value="Hard">Hard</option>
+                    </select>
+                </div>
+
+                <!-- Tags -->
+                <div class="mb-4">
+                    <label class="form-label">Tags</label>
+
+                    <input
+                        type="text"
+                        name="tags"
+                        class="form-control"
+                        placeholder="Example: Mechanics, Newton Laws, Numerical">
+                    <div class="form-text">
+                        Separate multiple tags with commas.
+                    </div>
+                </div>
+                 <div class="card mb-4">
+                    
+                    <label class="form-label">Solution</label>
+
+                        <div class="mb-2">
+                            <input
+                                type="text"
+                                name="solution_text"
+                                class="form-control"
+                                placeholder="Solution">
+                        </div>
+
+                        <input
+                            type="file"
+                            name="solution"
+                            class="form-control"
+                            accept="image/*">
+                   
+                </div>
+
+                <button class="btn btn-primary">
+                    Save Question
+                </button>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('btnGenerateAI').addEventListener('click', async () => {
+        const promptInput = document.getElementById('aiPrompt');
+        const promptVal = promptInput.value.trim();
+        const btn = document.getElementById('btnGenerateAI');
+        const btnText = document.getElementById('aiBtnText');
+        const btnSpinner = document.getElementById('aiBtnSpinner');
+        const statusMsg = document.getElementById('aiStatusMessage');
+        
+        if (!promptVal) {
+            statusMsg.textContent = "Please enter a topic or prompt first.";
+            statusMsg.classList.remove('d-none');
+            return;
+        }
+        
+        statusMsg.classList.add('d-none');
+        btn.disabled = true;
+        btnText.classList.add('d-none');
+        btnSpinner.classList.remove('d-none');
+        
+        try {
+            const subjectEl = document.querySelector('select[name="subject"]');
+            const subjectVal = subjectEl ? subjectEl.value : '';
+            const chapterEl = document.querySelector('input[name="chapter"]');
+            const chapterVal = chapterEl ? chapterEl.value : '';
+            const difficultyEl = document.querySelector('select[name="level"]');
+            const difficultyVal = difficultyEl ? difficultyEl.value : '';
+
+            const response = await fetch('/admin/api/generate-question', {
+                method: 'POST',
+                headers: {
+                    "x-csrf-token": document.querySelector('meta[name=csrf-token]').content,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    prompt: promptVal,
+                    subject: subjectVal,
+                    chapter: chapterVal,
+                    difficulty: difficultyVal
+                })
+            });
+            
+            const data = await response.json();
+            
+            if (!response.ok || !data.success) {
+                throw new Error(data.message || 'Failed to generate question details.');
+            }
+            
+            const qData = data.data;
+            
+            // Auto-fill fields
+            document.querySelector('textarea[name="question_text"]').value = qData.question_text || '';
+            document.querySelector('input[name="optionAtext"]').value = qData.options[0] || '';
+            document.querySelector('input[name="optionBtext"]').value = qData.options[1] || '';
+            document.querySelector('input[name="optionCtext"]').value = qData.options[2] || '';
+            document.querySelector('input[name="optionDtext"]').value = qData.options[3] || '';
+            
+            const correctSelect = document.querySelector('select[name="correctOption"]');
+            if (correctSelect) {
+                correctSelect.value = qData.correctOption.toString();
+            }
+            
+            if (qData.chapter && !chapterVal) {
+                document.querySelector('input[name="chapter"]').value = qData.chapter;
+            }
+            
+            document.querySelector('input[name="tags"]').value = qData.tags ? qData.tags.join(', ') : '';
+            document.querySelector('input[name="solution_text"]').value = qData.solution_text || '';
+            
+            // Highlight populated fields visually
+            const fields = [
+                'textarea[name="question_text"]',
+                'input[name="optionAtext"]',
+                'input[name="optionBtext"]',
+                'input[name="optionCtext"]',
+                'input[name="optionDtext"]',
+                'select[name="correctOption"]',
+                'input[name="chapter"]',
+                'input[name="tags"]',
+                'input[name="solution_text"]'
+            ];
+            fields.forEach(selector => {
+                const el = document.querySelector(selector);
+                if (el) {
+                    el.style.transition = 'background-color 0.5s ease';
+                    el.style.backgroundColor = '#e0f2fe';
+                    setTimeout(() => {
+                        el.style.backgroundColor = '';
+                    }, 1500);
+                }
+            });
+            
+        } catch (err) {
+            console.error(err);
+            statusMsg.textContent = err.message || 'An error occurred during generation. Make sure GEMINI_API_KEY is configured.';
+            statusMsg.classList.remove('d-none');
+        } finally {
+            btn.disabled = false;
+            btnText.classList.remove('d-none');
+            btnSpinner.classList.add('d-none');
+        }
+    });
+</script>

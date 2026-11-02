@@ -1,0 +1,170 @@
+<%layout("/layouts/boilerplate.ejs")%>
+<style>.subject-card{
+  transition: all .3s ease;
+  border-radius: 20px;
+}
+
+.subject-card:hover{
+  transform: translateY(-8px);
+  box-shadow: 0 1rem 2rem rgba(0,0,0,.12)!important;
+}
+
+.btn{
+  border-radius: 12px;
+}
+
+.card{
+  border-radius: 20px;
+}</style>
+<main class="container py-5">
+
+
+  <!-- Hero -->
+
+  <section class="bg-primary text-white rounded-4 shadow p-5 mb-5">
+
+    <div class="row align-items-center">
+
+      <div class="col-lg-8">
+
+        <span class="badge bg-light text-primary mb-3 fs-6">
+          <%= selectedExam.examName %>
+        </span>
+
+        <h1 class="display-5 fw-bold">
+          Subjects
+        </h1>
+
+        <p class="lead mb-0">
+          Select a subject to view chapters and learning resources.
+        </p>
+
+      </div>
+
+      <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
+
+        <div class="bg-white text-dark rounded-4 p-4">
+
+          <h2 class="fw-bold mb-0">
+            <%= subjectList.length %>
+          </h2>
+
+          <p class="text-muted mb-0">
+            Subjects Available
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Heading -->
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+
+    <div>
+      <h2 class="fw-bold">
+        Subjects
+      </h2>
+
+      <p class="text-muted mb-0">
+        Select a subject.
+      </p>
+    </div>
+
+  <div class="d-flex gap-2">
+  <% if (user && user.admin) { %>
+    <a
+      href="/admin/subject/<%= selectedExam._id %>/add"
+      class="btn btn-success"
+    >
+      <i class="bi bi-plus-circle"></i>
+      Add Subject
+    </a>
+    <a
+      href="/admin/<%= selectedExam._id %>/addQuestion"
+      class="btn btn-success"
+    >
+      <i class="bi bi-plus-circle"></i>
+      Add Question
+    </a>
+  <% } %>
+
+  <a href="/exams" class="btn btn-outline-secondary">
+    <i class="bi bi-arrow-left"></i>
+    Back
+  </a>
+</div>
+
+  </div>
+
+  <!-- Subject Cards -->
+
+  <div class="row g-4">
+
+    <% subjectList.forEach(subject => { %>
+
+      <div class="col-md-6 col-xl-4">
+
+        <div class="card border-0 shadow-sm h-100 subject-card">
+
+          <div class="card-body p-4">
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+
+              <div
+  class="rounded-circle bg-light d-flex justify-content-center align-items-center"
+  style="width:80px;height:80px;font-size:40px;"
+>
+  <i class="bi bi-book" aria-hidden="true"></i>
+</div>
+
+              <span class="badge bg-primary fs-6">
+                <%= subject.chapterCount %> Chapters
+              </span>
+
+            </div>
+
+            <h4 class="fw-bold mb-2">
+              <%= subject.subjectName %>
+            </h4>
+
+            <p class="text-muted mb-4">
+              <%= subject.description %>
+            </p>
+
+            <div class="d-grid">
+
+              <a
+                href="/subject/<%=subject._id%>/chapter "
+                class="btn btn-primary"
+              >
+                Start Learning
+                <i class="bi bi-arrow-right ms-2"></i>
+              </a>
+              <% if(user && user.admin) {%>
+                <a
+    href="/admin/subject/<%= subject._id %>/edit"
+    class="btn btn-warning"
+  >
+    <i class="bi bi-pencil-square"></i>
+    Edit
+  </a>
+  <%}%>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    <% }) %>
+
+  </div>
+
+</main>

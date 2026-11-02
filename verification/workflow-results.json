@@ -1,0 +1,160 @@
+{
+  "date": "2026-11-03",
+  "checks": [
+    {
+      "workflow": "all learning screens render populated data",
+      "result": "pass",
+      "method": "isolated database-backed HTTP test"
+    },
+    {
+      "workflow": "chapter notes, bookmark and completion persist",
+      "result": "pass",
+      "method": "isolated database-backed HTTP test"
+    },
+    {
+      "workflow": "planner creates tasks and rejects invalid dates",
+      "result": "pass",
+      "method": "isolated database-backed HTTP test"
+    },
+    {
+      "workflow": "start, autosave, refresh and submit a scored mock test",
+      "result": "pass",
+      "method": "isolated database-backed HTTP test"
+    },
+    {
+      "workflow": "other students cannot access attempts or edit tasks",
+      "result": "pass",
+      "method": "isolated database-backed HTTP test"
+    },
+    {
+      "workflow": "expired attempts reject saved answers and finalize results",
+      "result": "pass",
+      "method": "isolated database-backed HTTP test"
+    },
+    {
+      "workflow": "revision creates a private targeted test",
+      "result": "pass",
+      "method": "isolated database-backed HTTP test"
+    },
+    {
+      "workflow": "admin preview and draft review publishing workflow",
+      "result": "pass",
+      "method": "isolated database-backed HTTP test"
+    },
+    {
+      "workflow": "editor permissions allow review but reserve publication for administrators",
+      "result": "pass",
+      "method": "isolated database-backed HTTP test"
+    },
+    {
+      "workflow": "expiry worker finalizes abandoned assessments",
+      "result": "pass",
+      "method": "isolated database-backed HTTP test"
+    },
+    {
+      "workflow": "admin materials create, update, hide and reject unsafe links",
+      "result": "pass",
+      "method": "isolated database-backed HTTP test"
+    },
+    {
+      "workflow": "existing lecture visibility also reflects on student pages",
+      "result": "pass",
+      "method": "isolated database-backed HTTP test"
+    },
+    {
+      "workflow": "PDF upload persists in MongoDB and is readable only when published",
+      "result": "pass",
+      "method": "isolated database-backed HTTP test"
+    },
+    {
+      "workflow": "editable site name appears without rendering promotional taglines",
+      "result": "pass",
+      "method": "isolated database-backed HTTP test"
+    },
+    {
+      "workflow": "CSV preview validates before importing",
+      "result": "pass",
+      "method": "isolated database-backed HTTP test"
+    },
+    {
+      "workflow": "public pages and invalid account forms give recoverable responses",
+      "result": "pass",
+      "method": "isolated database-backed HTTP test"
+    },
+    {
+      "workflow": "all administrator editors share one workspace and live links",
+      "result": "pass",
+      "method": "isolated database-backed HTTP test"
+    },
+    {
+      "workflow": "curriculum create and edit preserves relationships and validates input",
+      "result": "pass",
+      "method": "isolated database-backed HTTP test"
+    },
+    {
+      "workflow": "ordered materials, private preview, archive and restore affect student visibility",
+      "result": "pass",
+      "method": "isolated database-backed HTTP test"
+    },
+    {
+      "workflow": "legacy materials edit through the single manager and retain metadata",
+      "result": "pass",
+      "method": "isolated database-backed HTTP test"
+    },
+    {
+      "workflow": "PDF replacement and archive enforce current-file access; invalid uploads rejected",
+      "result": "pass",
+      "method": "isolated database-backed HTTP test"
+    },
+    {
+      "workflow": "planner editing supports long titles, rescheduling and completed state",
+      "result": "pass",
+      "method": "isolated database-backed HTTP test"
+    },
+    {
+      "workflow": "simultaneous test starts share one active attempt and repeated submit is safe",
+      "result": "pass",
+      "method": "isolated database-backed HTTP test"
+    },
+    {
+      "workflow": "question creation/editing and quiz assembly persist validated content",
+      "result": "pass",
+      "method": "isolated database-backed HTTP test"
+    },
+    {
+      "workflow": "announcements and admin metrics reflect saved records, with no quote workflow",
+      "result": "pass",
+      "method": "isolated database-backed HTTP test"
+    },
+    {
+      "workflow": "all rendered internal links resolve for their authorized role",
+      "result": "pass",
+      "method": "isolated database-backed HTTP test"
+    },
+    {
+      "workflow": "planner dates follow valid browser timezones and reject invalid timezone settings",
+      "result": "pass",
+      "method": "isolated database-backed HTTP test"
+    },
+    {
+      "workflow": "verification and password reset consume valid OTPs and revoke previous sessions",
+      "result": "pass",
+      "method": "isolated database-backed HTTP test"
+    },
+    {
+      "workflow": "unsupported question images and unconfigured AI fail with useful status",
+      "result": "pass",
+      "method": "isolated database-backed HTTP test"
+    },
+    {
+      "workflow": "logout revokes access and saved work persists after signing in again",
+      "result": "pass",
+      "method": "isolated database-backed HTTP test"
+    },
+    {
+      "workflow": "Production authentication and notes survive application restart",
+      "result": "pass",
+      "method": "two production application processes, temporary database"
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+<%layout("/layouts/boilerplate.ejs")%>
+
+<main class="bg-light min-vh-100 py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-xl-10">
+
+        <div class="card border-0 shadow-lg">
+          <div class="card-header bg-primary text-white p-4">
+            <h2 class="mb-1"> Add Chapters</h2>
+            <p class="mb-0">
+              Subject:
+              <strong><%= subject.subjectName %></strong>
+            </p>
+          </div>
+
+          <div class="card-body p-4">
+
+            <form action="/admin/subject/<%= subject._id %>/addChapter" method="POST"><input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+              <input
+                type="hidden"
+                name="subjectID"
+                value="<%= subject._id %>"
+              >
+
+              <div id="chapterContainer">
+
+                <!-- First Chapter -->
+                <div class="chapter-card border rounded p-4 mb-4">
+
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="mb-0">Chapter 1</h5>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Chapter Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="chapters[0][chapterName]"
+                      required
+                    >
+                  </div>
+
+                  <div>
+                    <label class="form-label">Description</label>
+                    <textarea
+                      class="form-control"
+                      rows="4"
+                      name="chapters[0][description]"
+                      required
+                    ></textarea>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div class="d-flex gap-3 flex-wrap">
+
+                <button
+                  type="button"
+                  class="btn btn-success"
+                  onclick="addChapter()"
+                >
+                   Add Another Chapter
+                </button>
+
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                >
+                   Save Chapters
+                </button>
+
+              </div>
+
+            </form>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+let chapterIndex = 1;
+
+function addChapter() {
+
+  const container =
+    document.getElementById("chapterContainer");
+
+  const div = document.createElement("div");
+
+  div.className =
+    "chapter-card border rounded p-4 mb-4";
+
+  div.innerHTML = `
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h5>Chapter ${chapterIndex + 1}</h5>
+
+      <button
+        type="button"
+        class="btn btn-sm btn-danger"
+        onclick="this.closest('.chapter-card').remove(); updateNumbers();"
+      >
+        Remove
+      </button>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">
+        Chapter Name
+      </label>
+
+      <input
+        type="text"
+        class="form-control"
+        name="chapters[${chapterIndex}][chapterName]"
+        required
+      >
+    </div>
+
+    <div>
+      <label class="form-label">
+        Description
+      </label>
+
+      <textarea
+        class="form-control"
+        rows="4"
+        name="chapters[${chapterIndex}][description]"
+        required
+      ></textarea>
+    </div>
+  `;
+
+  container.appendChild(div);
+
+  chapterIndex++;
+}
+
+function updateNumbers() {
+  document
+    .querySelectorAll(".chapter-card h5")
+    .forEach((el, index) => {
+      el.innerText = `Chapter ${index + 1}`;
+    });
+}
+</script>

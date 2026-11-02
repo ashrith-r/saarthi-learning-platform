@@ -1,0 +1,2557 @@
+{
+  "routes": [
+    {
+      "file": "adminRoutes",
+      "method": "POST",
+      "path": "/legacy-materials/:type/:id"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "GET",
+      "path": "/materials"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "POST",
+      "path": "/materials"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "POST",
+      "path": "/material-archive/:type/:id"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "POST",
+      "path": "/material-edit/:type/:id"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "POST",
+      "path": "/materials/:id"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "GET",
+      "path": "/site-settings"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "POST",
+      "path": "/site-settings"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "GET",
+      "path": "/"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "GET",
+      "path": "/addExam"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "GET",
+      "path": "/subject/:id/addChapter"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "GET",
+      "path": "/exam/edit/:id"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "GET",
+      "path": "/content/:id/addContent"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "GET",
+      "path": "/subject/:id/edit"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "GET",
+      "path": "/chapter/:id/edit"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "GET",
+      "path": "/subject/:id/add"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "GET",
+      "path": "/lecture/:id/edit"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "GET",
+      "path": "/sheet/:id/edit"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "GET",
+      "path": "/note/:id/edit"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "GET",
+      "path": "/addUpdate"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "GET",
+      "path": "/:id/addQuestion"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "GET",
+      "path": "/questionBank"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "GET",
+      "path": "/quiz/create"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "POST",
+      "path": "/subject/:id/add"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "POST",
+      "path": "/addExam"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "POST",
+      "path": "/exam/:id/addSubject"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "POST",
+      "path": "/subject/:id/addChapter"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "POST",
+      "path": "/addLecture"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "POST",
+      "path": "/addNote"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "POST",
+      "path": "/addSheet"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "POST",
+      "path": "/exam/edit/:id"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "POST",
+      "path": "/subject/:id/edit"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "POST",
+      "path": "/chapter/:id/edit"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "POST",
+      "path": "/lecture/:id/edit"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "POST",
+      "path": "/sheet/:id/edit"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "POST",
+      "path": "/note/:id/edit"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "POST",
+      "path": "/addUpdate"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "POST",
+      "path": "/users/:id/toggle-admin"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "GET",
+      "path": "/question/edit/:id"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "POST",
+      "path": "/addQuestion"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "POST",
+      "path": "/question/edit/:id"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "POST",
+      "path": "/question/delete/:id"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "POST",
+      "path": "/quiz/create"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "GET",
+      "path": "/api/subjects/:examId"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "GET",
+      "path": "/api/chapters/:subjectId"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "GET",
+      "path": "/api/questions"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "POST",
+      "path": "/api/generate-question"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "GET",
+      "path": "/publishing"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "POST",
+      "path": "/publishing/:id"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "GET",
+      "path": "/publishing/:id/preview"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "POST",
+      "path": "/import-csv"
+    },
+    {
+      "file": "adminRoutes",
+      "method": "POST",
+      "path": "/users/:id/editor"
+    },
+    {
+      "file": "auth_routes",
+      "method": "GET",
+      "path": "/login"
+    },
+    {
+      "file": "auth_routes",
+      "method": "POST",
+      "path": "/login"
+    },
+    {
+      "file": "auth_routes",
+      "method": "POST",
+      "path": "/register"
+    },
+    {
+      "file": "auth_routes",
+      "method": "POST",
+      "path": "/verify-email"
+    },
+    {
+      "file": "auth_routes",
+      "method": "POST",
+      "path": "/logout"
+    },
+    {
+      "file": "auth_routes",
+      "method": "GET",
+      "path": "/forgot-password"
+    },
+    {
+      "file": "auth_routes",
+      "method": "POST",
+      "path": "/forgot-password"
+    },
+    {
+      "file": "auth_routes",
+      "method": "POST",
+      "path": "/reset-password"
+    },
+    {
+      "file": "render_index",
+      "method": "GET",
+      "path": "/"
+    },
+    {
+      "file": "render_index",
+      "method": "GET",
+      "path": "/subject/:id"
+    },
+    {
+      "file": "render_index",
+      "method": "GET",
+      "path": "/subject/:id/chapter"
+    },
+    {
+      "file": "render_index",
+      "method": "GET",
+      "path": "/content/:id"
+    },
+    {
+      "file": "render_index",
+      "method": "GET",
+      "path": "/updates"
+    },
+    {
+      "file": "render_index",
+      "method": "GET",
+      "path": "/dashboard"
+    },
+    {
+      "file": "render_index",
+      "method": "GET",
+      "path": "/quiz/:id"
+    },
+    {
+      "file": "render_index",
+      "method": "POST",
+      "path": "/quiz/:id/submit"
+    },
+    {
+      "file": "render_index",
+      "method": "GET",
+      "path": "/quiz/attempt/:attemptId"
+    },
+    {
+      "file": "studyRoutes",
+      "method": "GET",
+      "path": "/dashboard"
+    },
+    {
+      "file": "studyRoutes",
+      "method": "GET",
+      "path": "/library"
+    },
+    {
+      "file": "studyRoutes",
+      "method": "GET",
+      "path": "/learn/:id"
+    },
+    {
+      "file": "studyRoutes",
+      "method": "POST",
+      "path": "/learn/:id"
+    },
+    {
+      "file": "studyRoutes",
+      "method": "GET",
+      "path": "/planner"
+    },
+    {
+      "file": "studyRoutes",
+      "method": "POST",
+      "path": "/planner"
+    },
+    {
+      "file": "studyRoutes",
+      "method": "POST",
+      "path": "/planner/:id"
+    },
+    {
+      "file": "studyRoutes",
+      "method": "POST",
+      "path": "/study-goal"
+    },
+    {
+      "file": "studyRoutes",
+      "method": "GET",
+      "path": "/practice"
+    },
+    {
+      "file": "studyRoutes",
+      "method": "POST",
+      "path": "/practice/start/:id"
+    },
+    {
+      "file": "studyRoutes",
+      "method": "GET",
+      "path": "/practice/run/:id"
+    },
+    {
+      "file": "studyRoutes",
+      "method": "POST",
+      "path": "/practice/run/:id/save"
+    },
+    {
+      "file": "studyRoutes",
+      "method": "POST",
+      "path": "/practice/run/:id/submit"
+    },
+    {
+      "file": "studyRoutes",
+      "method": "GET",
+      "path": "/insights"
+    },
+    {
+      "file": "studyRoutes",
+      "method": "POST",
+      "path": "/revision"
+    },
+    {
+      "file": "studyRoutes",
+      "method": "GET",
+      "path": "/materials/:id"
+    }
+  ],
+  "templates": [
+    {
+      "file": "views\\404.ejs",
+      "links": [
+        {
+          "target": "/",
+          "label": "Back to Home"
+        }
+      ],
+      "forms": [],
+      "controls": []
+    },
+    {
+      "file": "views\\addChapter.ejs",
+      "links": [],
+      "forms": [
+        " action=\"/admin/subject/<%= subject._id %"
+      ],
+      "controls": [
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "input",
+          "attributes": "\n                type=\"hidden\"\n                name=\"subjectID\"\n                value=\"<%= subject._id %"
+        },
+        {
+          "type": "input",
+          "attributes": "\n                      type=\"text\"\n                      class=\"form-control\"\n                      name=\"chapters[0][chapterName]\"\n                      required\n                    "
+        },
+        {
+          "type": "textarea",
+          "attributes": "\n                      class=\"form-control\"\n                      rows=\"4\"\n                      name=\"chapters[0][description]\"\n                      required\n                    "
+        },
+        {
+          "type": "button",
+          "attributes": "\n                  type=\"button\"\n                  class=\"btn btn-success\"\n                  onclick=\"addChapter()\"\n                "
+        },
+        {
+          "type": "button",
+          "attributes": "\n                  type=\"submit\"\n                  class=\"btn btn-primary\"\n                "
+        },
+        {
+          "type": "button",
+          "attributes": "\n        type=\"button\"\n        class=\"btn btn-sm btn-danger\"\n        onclick=\"this.closest('.chapter-card').remove(); updateNumbers();\"\n      "
+        },
+        {
+          "type": "input",
+          "attributes": "\n        type=\"text\"\n        class=\"form-control\"\n        name=\"chapters[${chapterIndex}][chapterName]\"\n        required\n      "
+        },
+        {
+          "type": "textarea",
+          "attributes": "\n        class=\"form-control\"\n        rows=\"4\"\n        name=\"chapters[${chapterIndex}][description]\"\n        required\n      "
+        }
+      ]
+    },
+    {
+      "file": "views\\addContent.ejs",
+      "links": [],
+      "forms": [
+        " action=\"/admin/addLecture\" method=\"POST\" class=\"card form-panel border-0 needs-validation\" novalidate",
+        " action=\"/admin/addNote\" method=\"POST\" class=\"card form-panel border-0 needs-validation\" novalidate",
+        " action=\"/admin/addSheet\" method=\"POST\" class=\"card form-panel border-0 needs-validation\" novalidate"
+      ],
+      "controls": [
+        {
+          "type": "button",
+          "attributes": " type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\""
+        },
+        {
+          "type": "button",
+          "attributes": " type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\""
+        },
+        {
+          "type": "button",
+          "attributes": " class=\"nav-link active\" id=\"lecture-tab\" data-bs-toggle=\"pill\" data-bs-target=\"#lecture\" type=\"button\" role=\"tab\" aria-controls=\"lecture\" aria-selected=\"true\""
+        },
+        {
+          "type": "button",
+          "attributes": " class=\"nav-link\" id=\"notes-tab\" data-bs-toggle=\"pill\" data-bs-target=\"#notes\" type=\"button\" role=\"tab\" aria-controls=\"notes\" aria-selected=\"false\""
+        },
+        {
+          "type": "button",
+          "attributes": " class=\"nav-link\" id=\"sheet-tab\" data-bs-toggle=\"pill\" data-bs-target=\"#sheet\" type=\"button\" role=\"tab\" aria-controls=\"sheet\" aria-selected=\"false\""
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"chapterID\" value=\"<%= selectedChapterID %"
+        },
+        {
+          "type": "input",
+          "attributes": " id=\"lectureTitle\" name=\"title\" type=\"text\" class=\"form-control form-control-lg\" placeholder=\"System of Linear Equations\" required"
+        },
+        {
+          "type": "input",
+          "attributes": " id=\"lectureUrl\" name=\"url\" type=\"url\" class=\"form-control form-control-lg\" placeholder=\"https://youtube.com/...\" required"
+        },
+        {
+          "type": "input",
+          "attributes": " id=\"lectureDuration\" name=\"duration\" type=\"text\" class=\"form-control form-control-lg\" placeholder=\"38:54\" required"
+        },
+        {
+          "type": "input",
+          "attributes": " id=\"lectureFaculty\" name=\"faculty\" type=\"text\" class=\"form-control form-control-lg\" placeholder=\"Prof. Name\" required"
+        },
+        {
+          "type": "button",
+          "attributes": " type=\"submit\" class=\"btn btn-primary btn-lg\""
+        },
+        {
+          "type": "button",
+          "attributes": " type=\"reset\" class=\"btn btn-outline-secondary btn-lg\""
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"chapterID\" value=\"<%= selectedChapterID %"
+        },
+        {
+          "type": "input",
+          "attributes": " id=\"notesTitle\" name=\"title\" type=\"text\" class=\"form-control form-control-lg\" placeholder=\"Complete Chapter Notes\" required"
+        },
+        {
+          "type": "input",
+          "attributes": " id=\"notesUrl\" name=\"url\" type=\"url\" class=\"form-control form-control-lg\" placeholder=\"https://drive.google.com/...\" required"
+        },
+        {
+          "type": "input",
+          "attributes": " id=\"notesPage\" name=\"page\" type=\"number\" min=\"1\" class=\"form-control form-control-lg\" placeholder=\"42\" required"
+        },
+        {
+          "type": "input",
+          "attributes": " id=\"notesDesignedBy\" name=\"designedBy\" type=\"text\" class=\"form-control form-control-lg\" placeholder=\"Saarthi Team\" required"
+        },
+        {
+          "type": "button",
+          "attributes": " type=\"submit\" class=\"btn btn-primary btn-lg\""
+        },
+        {
+          "type": "button",
+          "attributes": " type=\"reset\" class=\"btn btn-outline-secondary btn-lg\""
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"chapterID\" value=\"<%= selectedChapterID %"
+        },
+        {
+          "type": "input",
+          "attributes": " id=\"sheetTitle\" name=\"title\" type=\"text\" class=\"form-control form-control-lg\" placeholder=\"Practice Sheet 01\" required"
+        },
+        {
+          "type": "input",
+          "attributes": " id=\"sheetUrl\" name=\"url\" type=\"url\" class=\"form-control form-control-lg\" placeholder=\"https://drive.google.com/...\" required"
+        },
+        {
+          "type": "input",
+          "attributes": " id=\"sheetPage\" name=\"page\" type=\"number\" min=\"1\" class=\"form-control form-control-lg\" placeholder=\"12\" required"
+        },
+        {
+          "type": "select",
+          "attributes": " id=\"sheetLevel\" name=\"level\" class=\"form-select form-select-lg\" required"
+        },
+        {
+          "type": "button",
+          "attributes": " type=\"submit\" class=\"btn btn-primary btn-lg\""
+        },
+        {
+          "type": "button",
+          "attributes": " type=\"reset\" class=\"btn btn-outline-secondary btn-lg\""
+        }
+      ]
+    },
+    {
+      "file": "views\\addExam.ejs",
+      "links": [
+        {
+          "target": "/exams",
+          "label": "Back"
+        }
+      ],
+      "forms": [
+        " action=\"/admin/addExam\" method=\"POST\""
+      ],
+      "controls": [
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "input",
+          "attributes": "\n            type=\"text\"\n            class=\"form-control\"\n            name=\"examName\"\n            placeholder=\"JEE, NEET, IOE...\"\n            required\n          "
+        },
+        {
+          "type": "button",
+          "attributes": "\n              type=\"button\"\n              class=\"btn btn-sm btn-primary\"\n              id=\"addSubjectBtn\"\n            "
+        },
+        {
+          "type": "input",
+          "attributes": "\n                type=\"text\"\n                name=\"subjects\"\n                class=\"form-control\"\n                placeholder=\"Physics\" required\n              "
+        },
+        {
+          "type": "button",
+          "attributes": "\n                type=\"button\"\n                class=\"btn btn-outline-danger remove-subject\"\n              "
+        },
+        {
+          "type": "input",
+          "attributes": " class=\"form-check-input\" type=\"radio\" name=\"courseType\" value=\"Crash Course\""
+        },
+        {
+          "type": "input",
+          "attributes": " class=\"form-check-input\" type=\"radio\" name=\"courseType\" value=\"Complete Course\""
+        },
+        {
+          "type": "input",
+          "attributes": " class=\"form-check-input\" type=\"radio\" name=\"courseType\" value=\"Practice Materials\""
+        },
+        {
+          "type": "input",
+          "attributes": "\n      class=\"form-check-input\"\n      type=\"radio\"\n      name=\"courseType\"\n      id=\"otherRadio\"\n      value=\"Other\" required\n    "
+        },
+        {
+          "type": "input",
+          "attributes": "\n      type=\"text\"\n      class=\"form-control\"\n      name=\"otherCourseType\"\n      placeholder=\"Enter custom course type\"\n    "
+        },
+        {
+          "type": "input",
+          "attributes": "\n            type=\"text\"\n            class=\"form-control\"\n            name=\"icon\"\n           \n          "
+        },
+        {
+          "type": "button",
+          "attributes": " type=\"submit\" class=\"btn btn-success\""
+        },
+        {
+          "type": "button",
+          "attributes": " type=\"reset\" class=\"btn btn-outline-secondary\""
+        },
+        {
+          "type": "input",
+          "attributes": "\n        type=\"text\"\n        name=\"subjects\"\n        class=\"form-control\"\n        placeholder=\"Subject Name\"\n      "
+        },
+        {
+          "type": "button",
+          "attributes": "\n        type=\"button\"\n        class=\"btn btn-outline-danger remove-subject\"\n      "
+        }
+      ]
+    },
+    {
+      "file": "views\\addQuestion.ejs",
+      "links": [],
+      "forms": [
+        " action=\"/admin/addQuestion\" method=\"POST\" enctype=\"multipart/form-data\" class=\"needs-validation\" novalidate"
+      ],
+      "controls": [
+        {
+          "type": "input",
+          "attributes": " type=\"text\" id=\"aiPrompt\" class=\"form-control\" placeholder=\"e.g., Photoelectric effect threshold wavelength numerical\""
+        },
+        {
+          "type": "button",
+          "attributes": " type=\"button\" id=\"btnGenerateAI\" class=\"btn btn-primary w-100\""
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"text\" value=\"<%=id%"
+        },
+        {
+          "type": "textarea",
+          "attributes": "\n                        name=\"question_text\"\n                        class=\"form-control\"\n                        rows=\"3\"\n                        placeholder=\"Enter Question\""
+        },
+        {
+          "type": "input",
+          "attributes": "\n                        type=\"file\"\n                        name=\"question_img\"\n                        class=\"form-control\"\n                        accept=\"image/*\""
+        },
+        {
+          "type": "input",
+          "attributes": "\n                                type=\"text\"\n                                name=\"optionAtext\"\n                                class=\"form-control\"\n                                placeholder=\"Option A\""
+        },
+        {
+          "type": "input",
+          "attributes": "\n                            type=\"file\"\n                            name=\"optionAImage\"\n                            class=\"form-control\"\n                            accept=\"image/*\""
+        },
+        {
+          "type": "input",
+          "attributes": "\n                                type=\"text\"\n                                name=\"optionBtext\"\n                                class=\"form-control\"\n                                placeholder=\"Option B\""
+        },
+        {
+          "type": "input",
+          "attributes": "\n                            type=\"file\"\n                            name=\"optionBImage\"\n                            class=\"form-control\"\n                            accept=\"image/*\""
+        },
+        {
+          "type": "input",
+          "attributes": "\n                                type=\"text\"\n                                name=\"optionCtext\"\n                                class=\"form-control\"\n                                placeholder=\"Option C\""
+        },
+        {
+          "type": "input",
+          "attributes": "\n                            type=\"file\"\n                            name=\"optionCImage\"\n                            class=\"form-control\"\n                            accept=\"image/*\""
+        },
+        {
+          "type": "input",
+          "attributes": "\n                                type=\"text\"\n                                name=\"optionDtext\"\n                                class=\"form-control\"\n                                placeholder=\"Option D\""
+        },
+        {
+          "type": "input",
+          "attributes": "\n                            type=\"file\"\n                            name=\"optionDImage\"\n                            class=\"form-control\"\n                            accept=\"image/*\""
+        },
+        {
+          "type": "select",
+          "attributes": " class=\"form-select\" name=\"correctOption\" required"
+        },
+        {
+          "type": "select",
+          "attributes": " class=\"form-select\" name=\"subject\""
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"text\" name=\"chapter\" class=\"form-control\" placeholder=\"Chapter Name\""
+        },
+        {
+          "type": "select",
+          "attributes": " class=\"form-select\" name=\"level\""
+        },
+        {
+          "type": "input",
+          "attributes": "\n                        type=\"text\"\n                        name=\"tags\"\n                        class=\"form-control\"\n                        placeholder=\"Example: Mechanics, Newton Laws, Numerical\""
+        },
+        {
+          "type": "input",
+          "attributes": "\n                                type=\"text\"\n                                name=\"solution_text\"\n                                class=\"form-control\"\n                                placeholder=\"Solution\""
+        },
+        {
+          "type": "input",
+          "attributes": "\n                            type=\"file\"\n                            name=\"solution\"\n                            class=\"form-control\"\n                            accept=\"image/*\""
+        },
+        {
+          "type": "button",
+          "attributes": " class=\"btn btn-primary\""
+        }
+      ]
+    },
+    {
+      "file": "views\\addQuote.ejs",
+      "links": [
+        {
+          "target": "/admin",
+          "label": "Back to Admin"
+        }
+      ],
+      "forms": [
+        " action=\"/admin/addQuote\" method=\"POST\""
+      ],
+      "controls": [
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "textarea",
+          "attributes": " name=\"content\" class=\"form-control\" rows=\"4\" placeholder=\"Type the quote content here...\" required"
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"text\" name=\"author\" class=\"form-control\" placeholder=\"Anonymous, Albert Einstein, Curator...\""
+        },
+        {
+          "type": "button",
+          "attributes": " type=\"submit\" class=\"btn btn-success\""
+        },
+        {
+          "type": "button",
+          "attributes": " type=\"reset\" class=\"btn btn-outline-secondary\""
+        }
+      ]
+    },
+    {
+      "file": "views\\addSub.ejs",
+      "links": [],
+      "forms": [
+        " action=\"/admin/exam/<%= exam._id %"
+      ],
+      "controls": [
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "input",
+          "attributes": "\n              type=\"text\"\n              class=\"form-control\"\n              name=\"subjects[<%= index %"
+        },
+        {
+          "type": "textarea",
+          "attributes": " required\n              class=\"form-control\"\n              rows=\"3\"\n              name=\"subjects[<%= index %"
+        },
+        {
+          "type": "input",
+          "attributes": " required\n              type=\"number\"\n              min=\"0\"\n              class=\"form-control\"\n              name=\"subjects[<%= index %"
+        },
+        {
+          "type": "input",
+          "attributes": "\n            type=\"hidden\"\n            name=\"subjects[<%= index %"
+        },
+        {
+          "type": "button",
+          "attributes": " class=\"btn btn-success\""
+        }
+      ]
+    },
+    {
+      "file": "views\\addSub1.ejs",
+      "links": [],
+      "forms": [
+        " action=\"/admin/subject/<%= exam._id %"
+      ],
+      "controls": [
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "input",
+          "attributes": "\n              type=\"text\"\n              class=\"form-control\"\n              name=\"subject[subjectName]\"\n              placeholder=\"Physics\"\n              required\n            "
+        },
+        {
+          "type": "input",
+          "attributes": "\n              type=\"text\"\n              class=\"form-control\"\n              name=\"subject[icon]\"\n              placeholder=\"\"\n            "
+        },
+        {
+          "type": "textarea",
+          "attributes": " required\n              class=\"form-control\"\n              rows=\"3\"\n              name=\"subject[description]\"\n              \n            "
+        },
+        {
+          "type": "input",
+          "attributes": " required\n              type=\"number\"\n              min=\"0\"\n              class=\"form-control\"\n              name=\"subject[chapterCount]\"\n            "
+        },
+        {
+          "type": "button",
+          "attributes": " class=\"btn btn-success\""
+        }
+      ]
+    },
+    {
+      "file": "views\\addUpdate.ejs",
+      "links": [
+        {
+          "target": "/admin",
+          "label": "Back to Admin"
+        }
+      ],
+      "forms": [
+        " action=\"/admin/addUpdate\" method=\"POST\""
+      ],
+      "controls": [
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"text\" name=\"title\" class=\"form-control\" placeholder=\"Registration Open, Date sheet released...\" required"
+        },
+        {
+          "type": "select",
+          "attributes": " name=\"category\" class=\"form-select\" required"
+        },
+        {
+          "type": "textarea",
+          "attributes": " name=\"content\" class=\"form-control\" rows=\"5\" placeholder=\"Detail explanation of the update...\" required"
+        },
+        {
+          "type": "select",
+          "attributes": " name=\"examID\" class=\"form-select\""
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"checkbox\" name=\"isImportant\" class=\"form-check-input\" id=\"isImportantCheck\""
+        },
+        {
+          "type": "button",
+          "attributes": " type=\"submit\" class=\"btn btn-success\""
+        },
+        {
+          "type": "button",
+          "attributes": " type=\"reset\" class=\"btn btn-outline-secondary\""
+        }
+      ]
+    },
+    {
+      "file": "views\\adminDashboard.ejs",
+      "links": [
+        {
+          "target": "/admin/materials",
+          "label": "Manage materials"
+        },
+        {
+          "target": "/admin/addExam",
+          "label": "Add exam"
+        },
+        {
+          "target": "/admin/quiz/create",
+          "label": "Create quiz"
+        },
+        {
+          "target": "/admin/questionBank",
+          "label": "Question bank"
+        },
+        {
+          "target": "/admin/addUpdate",
+          "label": "Post announcement"
+        },
+        {
+          "target": "/admin/publishing",
+          "label": "Review publishing"
+        },
+        {
+          "target": "/admin/publishing",
+          "label": ""
+        },
+        {
+          "target": "/admin/materials?chapter=<%= c._id %>",
+          "label": "Add materials"
+        },
+        {
+          "target": "/admin/exam/edit/<%= exam._id %>",
+          "label": "Edit exam"
+        },
+        {
+          "target": "/admin/subject/<%= exam._id %>/add",
+          "label": "Add subject"
+        },
+        {
+          "target": "/admin/<%= exam._id %>/addQuestion",
+          "label": "Add question"
+        },
+        {
+          "target": "/admin/subject/<%= subject._id %>/edit",
+          "label": "Edit subject"
+        },
+        {
+          "target": "/admin/subject/<%= subject._id %>/addChapter",
+          "label": "Add chapter"
+        },
+        {
+          "target": "/admin/chapter/<%= ch._id %>/edit",
+          "label": "Edit chapter"
+        },
+        {
+          "target": "/admin/materials?chapter=<%= ch._id %>",
+          "label": "Materials"
+        },
+        {
+          "target": "/learn/<%= ch._id %>?preview=1",
+          "label": "Preview"
+        },
+        {
+          "target": "/admin/publishing",
+          "label": "Quiz publishing"
+        }
+      ],
+      "forms": [
+        " method=\"post\" action=\"/admin/users/<%= u._id %"
+      ],
+      "controls": [
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "button",
+          "attributes": " class=\"studio-button secondary\""
+        }
+      ]
+    },
+    {
+      "file": "views\\chapter.ejs",
+      "links": [
+        {
+          "target": "/admin/subject/<%=subjectData._id%>/addChapter",
+          "label": "Add Chapter"
+        },
+        {
+          "target": "/exams",
+          "label": "Back"
+        },
+        {
+          "target": "/admin/chapter/<%= chapter._id %>/edit",
+          "label": "Edit"
+        },
+        {
+          "target": "/content/<%= chapter._id %>",
+          "label": "Open study content\n            \n              Continue"
+        }
+      ],
+      "forms": [],
+      "controls": []
+    },
+    {
+      "file": "views\\content.ejs",
+      "links": [
+        {
+          "target": "/admin/content/<%= chapterData._id%>/addContent",
+          "label": "Add Content"
+        },
+        {
+          "target": "/admin/lecture/<%= lecture._id %>/edit",
+          "label": "Edit"
+        },
+        {
+          "target": "<%= note.url %>",
+          "label": "Open Notes"
+        },
+        {
+          "target": "/admin/note/<%= note._id %>/edit",
+          "label": "Edit"
+        },
+        {
+          "target": "/quiz/attempt/<%= bestAttempt._id %>",
+          "label": "Results"
+        },
+        {
+          "target": "/quiz/<%= quiz._id %>",
+          "label": "Retake"
+        },
+        {
+          "target": "/quiz/<%= quiz._id %>",
+          "label": "Start Quiz"
+        },
+        {
+          "target": "<%= sheet.url %>",
+          "label": "Open Practice Sheet"
+        },
+        {
+          "target": "/admin/sheet/<%= sheet._id %>/edit",
+          "label": "Edit"
+        }
+      ],
+      "forms": [],
+      "controls": [
+        {
+          "type": "button",
+          "attributes": " type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\""
+        },
+        {
+          "type": "button",
+          "attributes": " type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\""
+        },
+        {
+          "type": "button",
+          "attributes": " class=\"nav-link active\" id=\"lectures-tab\" data-bs-toggle=\"tab\" data-bs-target=\"#lectures\" type=\"button\" role=\"tab\" aria-controls=\"lectures\" aria-selected=\"true\""
+        },
+        {
+          "type": "button",
+          "attributes": " class=\"nav-link\" id=\"notes-tab\" data-bs-toggle=\"tab\" data-bs-target=\"#notes\" type=\"button\" role=\"tab\" aria-controls=\"notes\" aria-selected=\"false\""
+        },
+        {
+          "type": "button",
+          "attributes": " class=\"nav-link\" id=\"practice-tab\" data-bs-toggle=\"tab\" data-bs-target=\"#practice\" type=\"button\" role=\"tab\" aria-controls=\"practice\" aria-selected=\"false\""
+        },
+        {
+          "type": "button",
+          "attributes": "\n    class=\"btn btn-primary px-4\"\n    type=\"button\"\n    data-bs-toggle=\"collapse\"\n    data-bs-target=\"#lectureVideo<%= index %"
+        }
+      ]
+    },
+    {
+      "file": "views\\dashboard.ejs",
+      "links": [
+        {
+          "target": "/subject/<%= exam._id %>",
+          "label": "Explore Course"
+        },
+        {
+          "target": "/updates",
+          "label": "View All Announcements"
+        }
+      ],
+      "forms": [],
+      "controls": []
+    },
+    {
+      "file": "views\\editChapter.ejs",
+      "links": [],
+      "forms": [
+        " action=\"/admin/chapter/<%= chapter._id %"
+      ],
+      "controls": [
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "input",
+          "attributes": "\n                      type=\"text\"\n                      class=\"form-control\"\n                      name=\"chapter[chapterName]\"\n                      value=\"<%=chapter.chapterName%"
+        },
+        {
+          "type": "textarea",
+          "attributes": "\n                      class=\"form-control\"\n                      rows=\"4\"\n                      name=\"chapter[description]\"\n                      required\n                    "
+        },
+        {
+          "type": "button",
+          "attributes": "\n                  type=\"submit\"\n                  class=\"btn btn-primary\"\n                "
+        }
+      ]
+    },
+    {
+      "file": "views\\editExam.ejs",
+      "links": [
+        {
+          "target": "/exams",
+          "label": "Back"
+        }
+      ],
+      "forms": [
+        " action=\"/admin/exam/edit/<%=exam._id%"
+      ],
+      "controls": [
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "input",
+          "attributes": "\n            type=\"text\"\n            class=\"form-control\"\n            name=\"examName\"\n            placeholder=\"JEE, NEET, IOE...\"\n            value=\"<%=examName %"
+        },
+        {
+          "type": "input",
+          "attributes": " class=\"form-check-input\" type=\"radio\" name=\"courseType\" value=\"Crash Course\""
+        },
+        {
+          "type": "input",
+          "attributes": " class=\"form-check-input\" type=\"radio\" name=\"courseType\" value=\"Complete Course\""
+        },
+        {
+          "type": "input",
+          "attributes": " class=\"form-check-input\" type=\"radio\" name=\"courseType\" value=\"Practice Materials\""
+        },
+        {
+          "type": "input",
+          "attributes": "\n      class=\"form-check-input\"\n      type=\"radio\"\n      name=\"courseType\"\n      id=\"otherRadio\"\n      value=\"Other\" required\n    "
+        },
+        {
+          "type": "input",
+          "attributes": "\n      type=\"text\"\n      class=\"form-control\"\n      name=\"otherCourseType\"\n      placeholder=\"Enter custom course type\"\n    "
+        },
+        {
+          "type": "input",
+          "attributes": "\n            type=\"text\"\n            class=\"form-control\"\n            name=\"icon\"\n           value=\"<%=icon%"
+        },
+        {
+          "type": "button",
+          "attributes": " type=\"submit\" class=\"btn btn-success\""
+        },
+        {
+          "type": "button",
+          "attributes": " type=\"reset\" class=\"btn btn-outline-secondary\""
+        },
+        {
+          "type": "input",
+          "attributes": "\n        type=\"text\"\n        name=\"subjects\"\n        class=\"form-control\"\n        placeholder=\"Subject Name\"\n      "
+        },
+        {
+          "type": "button",
+          "attributes": "\n        type=\"button\"\n        class=\"btn btn-outline-danger remove-subject\"\n      "
+        }
+      ]
+    },
+    {
+      "file": "views\\editLecture.ejs",
+      "links": [],
+      "forms": [
+        " action=\"/admin/lecture/<%=lecture._id%"
+      ],
+      "controls": [
+        {
+          "type": "button",
+          "attributes": " type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\""
+        },
+        {
+          "type": "button",
+          "attributes": " type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\""
+        },
+        {
+          "type": "button",
+          "attributes": " class=\"nav-link active\" id=\"lecture-tab\" data-bs-toggle=\"pill\" data-bs-target=\"#lecture\" type=\"button\" role=\"tab\" aria-controls=\"lecture\" aria-selected=\"true\""
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"chapterID\" value=\"<%= selectedChapterID %"
+        },
+        {
+          "type": "input",
+          "attributes": " id=\"lectureTitle\" name=\"title\" type=\"text\" class=\"form-control form-control-lg\" placeholder=\"System of Linear Equations\" required value=\"<%=lecture.title%"
+        },
+        {
+          "type": "input",
+          "attributes": " id=\"lectureUrl\" name=\"url\" type=\"url\" class=\"form-control form-control-lg\" placeholder=\"https://youtube.com/...\" value=\"<%=lecture.url %"
+        },
+        {
+          "type": "input",
+          "attributes": " id=\"lectureDuration\" name=\"duration\" type=\"text\" class=\"form-control form-control-lg\" placeholder=\"38:54\" value=\"<%=lecture.duration%"
+        },
+        {
+          "type": "input",
+          "attributes": " id=\"lectureFaculty\" name=\"faculty\" type=\"text\" class=\"form-control form-control-lg\" placeholder=\"Prof. Name\" value=\"<%=lecture.faculty%"
+        },
+        {
+          "type": "button",
+          "attributes": " type=\"submit\" class=\"btn btn-primary btn-lg\""
+        },
+        {
+          "type": "button",
+          "attributes": " type=\"reset\" class=\"btn btn-outline-secondary btn-lg\""
+        }
+      ]
+    },
+    {
+      "file": "views\\editNote.ejs",
+      "links": [],
+      "forms": [
+        " action=\"/admin/note/<%=note._id%"
+      ],
+      "controls": [
+        {
+          "type": "button",
+          "attributes": " type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\""
+        },
+        {
+          "type": "button",
+          "attributes": " type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\""
+        },
+        {
+          "type": "button",
+          "attributes": " class=\"nav-link\" id=\"notes-tab\" data-bs-toggle=\"pill\" data-bs-target=\"#notes\" type=\"button\" role=\"tab\" aria-controls=\"notes\" aria-selected=\"false\""
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"chapterID\" value=\"<%= selectedChapterID %"
+        },
+        {
+          "type": "input",
+          "attributes": " id=\"notesTitle\" name=\"title\" type=\"text\" class=\"form-control form-control-lg\" placeholder=\"Complete Chapter Notes\" value=\"<%=note.title%"
+        },
+        {
+          "type": "input",
+          "attributes": " id=\"notesUrl\" name=\"url\" type=\"url\" value=\"<%=note.url%"
+        },
+        {
+          "type": "input",
+          "attributes": " id=\"notesPage\" name=\"page\" type=\"number\" min=\"1\" class=\"form-control form-control-lg\" placeholder=\"42\" value=\"<%=note.page%"
+        },
+        {
+          "type": "input",
+          "attributes": " id=\"notesDesignedBy\" name=\"designedBy\" type=\"text\" class=\"form-control form-control-lg\" placeholder=\"Saarthi Team\" value=\"<%=note.designedBy%"
+        },
+        {
+          "type": "button",
+          "attributes": " type=\"submit\" class=\"btn btn-primary btn-lg\""
+        },
+        {
+          "type": "button",
+          "attributes": " type=\"reset\" class=\"btn btn-outline-secondary btn-lg\""
+        }
+      ]
+    },
+    {
+      "file": "views\\editQuestion.ejs",
+      "links": [
+        {
+          "target": "/admin/questionBank",
+          "label": "Back to Question Bank"
+        },
+        {
+          "target": "/admin/questionBank",
+          "label": "Cancel"
+        }
+      ],
+      "forms": [
+        " action=\"/admin/question/edit/<%= question._id %"
+      ],
+      "controls": [
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "select",
+          "attributes": " class=\"form-select\" name=\"course\" id=\"courseSelect\" required"
+        },
+        {
+          "type": "textarea",
+          "attributes": "\n                        name=\"question_text\"\n                        class=\"form-control\"\n                        rows=\"3\"\n                        placeholder=\"Enter Question\"\n                        required"
+        },
+        {
+          "type": "input",
+          "attributes": "\n                        type=\"file\"\n                        name=\"question_img\"\n                        class=\"form-control\"\n                        accept=\"image/*\""
+        },
+        {
+          "type": "input",
+          "attributes": "\n                                type=\"text\"\n                                name=\"optionAtext\"\n                                class=\"form-control\"\n                                value=\"<%= question.options[0] ? question.options[0].text : '' %"
+        },
+        {
+          "type": "input",
+          "attributes": "\n                            type=\"file\"\n                            name=\"optionAImage\"\n                            class=\"form-control\"\n                            accept=\"image/*\""
+        },
+        {
+          "type": "input",
+          "attributes": "\n                                type=\"text\"\n                                name=\"optionBtext\"\n                                class=\"form-control\"\n                                value=\"<%= question.options[1] ? question.options[1].text : '' %"
+        },
+        {
+          "type": "input",
+          "attributes": "\n                            type=\"file\"\n                            name=\"optionBImage\"\n                            class=\"form-control\"\n                            accept=\"image/*\""
+        },
+        {
+          "type": "input",
+          "attributes": "\n                                type=\"text\"\n                                name=\"optionCtext\"\n                                class=\"form-control\"\n                                value=\"<%= question.options[2] ? question.options[2].text : '' %"
+        },
+        {
+          "type": "input",
+          "attributes": "\n                            type=\"file\"\n                            name=\"optionCImage\"\n                            class=\"form-control\"\n                            accept=\"image/*\""
+        },
+        {
+          "type": "input",
+          "attributes": "\n                                type=\"text\"\n                                name=\"optionDtext\"\n                                class=\"form-control\"\n                                value=\"<%= question.options[3] ? question.options[3].text : '' %"
+        },
+        {
+          "type": "input",
+          "attributes": "\n                            type=\"file\"\n                            name=\"optionDImage\"\n                            class=\"form-control\"\n                            accept=\"image/*\""
+        },
+        {
+          "type": "select",
+          "attributes": " class=\"form-select\" name=\"correctOption\" required"
+        },
+        {
+          "type": "select",
+          "attributes": " class=\"form-select\" name=\"subject\" id=\"subjectSelect\" required"
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"text\" name=\"chapter\" class=\"form-control\" value=\"<%= question.chapter %"
+        },
+        {
+          "type": "select",
+          "attributes": " class=\"form-select\" name=\"level\""
+        },
+        {
+          "type": "input",
+          "attributes": "\n                        type=\"text\"\n                        name=\"tags\"\n                        class=\"form-control\"\n                        value=\"<%= question.tags ? question.tags.join(', ') : '' %"
+        },
+        {
+          "type": "input",
+          "attributes": "\n                                type=\"text\"\n                                name=\"solution_text\"\n                                class=\"form-control\"\n                                value=\"<%= question.solution ? question.solution.text : '' %"
+        },
+        {
+          "type": "input",
+          "attributes": "\n                            type=\"file\"\n                            name=\"solution\"\n                            class=\"form-control\"\n                            accept=\"image/*\""
+        },
+        {
+          "type": "button",
+          "attributes": " class=\"btn btn-primary rounded-pill px-4\""
+        }
+      ]
+    },
+    {
+      "file": "views\\editSheet.ejs",
+      "links": [],
+      "forms": [
+        " action=\"/admin/sheet/<%=sheet._id%"
+      ],
+      "controls": [
+        {
+          "type": "button",
+          "attributes": " type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\""
+        },
+        {
+          "type": "button",
+          "attributes": " type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\""
+        },
+        {
+          "type": "button",
+          "attributes": " class=\"nav-link\" id=\"sheet-tab\" data-bs-toggle=\"pill\" data-bs-target=\"#sheet\" type=\"button\" role=\"tab\" aria-controls=\"sheet\" aria-selected=\"false\""
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"chapterID\" value=\"<%= selectedChapterID %"
+        },
+        {
+          "type": "input",
+          "attributes": " id=\"sheetTitle\" name=\"title\" type=\"text\" class=\"form-control form-control-lg\" value=\"<%=sheet.title%"
+        },
+        {
+          "type": "input",
+          "attributes": " id=\"sheetUrl\" name=\"url\" type=\"url\" class=\"form-control form-control-lg\" value=\"<%=sheet.url%"
+        },
+        {
+          "type": "input",
+          "attributes": " id=\"sheetPage\" name=\"page\" type=\"number\" min=\"1\" class=\"form-control form-control-lg\" value=\"<%=sheet.page%"
+        },
+        {
+          "type": "select",
+          "attributes": " id=\"sheetLevel\" name=\"level\" class=\"form-select form-select-lg\" required"
+        },
+        {
+          "type": "button",
+          "attributes": " type=\"submit\" class=\"btn btn-primary btn-lg\""
+        },
+        {
+          "type": "button",
+          "attributes": " type=\"reset\" class=\"btn btn-outline-secondary btn-lg\""
+        }
+      ]
+    },
+    {
+      "file": "views\\editSub.ejs",
+      "links": [],
+      "forms": [
+        " action=\"/admin/subject/<%=subject._id%"
+      ],
+      "controls": [
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "input",
+          "attributes": "\n              type=\"text\"\n              class=\"form-control\"\n              name=\"subjects[name]\"\n               value=\"<%=subject.subjectName%"
+        },
+        {
+          "type": "textarea",
+          "attributes": " required\n              class=\"form-control\"\n              rows=\"3\"\n              name=\"subjects[description]\"\n              \n            "
+        },
+        {
+          "type": "input",
+          "attributes": "\n              type=\"text\"\n              class=\"form-control\"\n              name=\"subjects[icon]\"\n              placeholder=\"\"\n              value=\"<%=subject.icon%"
+        },
+        {
+          "type": "input",
+          "attributes": " required\n              type=\"number\"\n              min=\"0\"\n              class=\"form-control\"\n              name=\"subjects[chapterCount]\"\n              value=\"<%=subject.chapterCount%"
+        },
+        {
+          "type": "button",
+          "attributes": " class=\"btn btn-success\""
+        }
+      ]
+    },
+    {
+      "file": "views\\error.ejs",
+      "links": [
+        {
+          "target": "/dashboard",
+          "label": "Open dashboard"
+        }
+      ],
+      "forms": [],
+      "controls": [
+        {
+          "type": "button",
+          "attributes": " type=\"button\" class=\"studio-button secondary\" onclick=\"history.back()\""
+        }
+      ]
+    },
+    {
+      "file": "views\\exams.ejs",
+      "links": [
+        {
+          "target": "/library?exam=<%= exam.id %>",
+          "label": "Browse"
+        }
+      ],
+      "forms": [],
+      "controls": []
+    },
+    {
+      "file": "views\\forgot-password.ejs",
+      "links": [
+        {
+          "target": "/auth/login",
+          "label": "← Back to Login"
+        }
+      ],
+      "forms": [
+        " action=\"/auth/forgot-password\" method=\"POST\""
+      ],
+      "controls": [
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"email\" name=\"email\" class=\"form-control\" placeholder=\"you@example.com\" required"
+        },
+        {
+          "type": "button",
+          "attributes": " type=\"submit\" class=\"btn btn-primary w-100\""
+        }
+      ]
+    },
+    {
+      "file": "views\\includes\\flash.ejs",
+      "links": [],
+      "forms": [],
+      "controls": [
+        {
+          "type": "button",
+          "attributes": " \n    type=\"button\" \n    class=\"btn-close\" \n    data-bs-dismiss=\"alert\" \n    aria-label=\"Close\""
+        },
+        {
+          "type": "button",
+          "attributes": " \n    type=\"button\" \n    class=\"btn-close\" \n    data-bs-dismiss=\"alert\" \n    aria-label=\"Close\""
+        }
+      ]
+    },
+    {
+      "file": "views\\includes\\footer.ejs",
+      "links": [],
+      "forms": [],
+      "controls": []
+    },
+    {
+      "file": "views\\includes\\navbar.ejs",
+      "links": [
+        {
+          "target": "/",
+          "label": "."
+        },
+        {
+          "target": "/",
+          "label": "Home"
+        },
+        {
+          "target": "/#exams",
+          "label": "Exams"
+        },
+        {
+          "target": "/library",
+          "label": "Learning studio"
+        },
+        {
+          "target": "/updates",
+          "label": "Updates"
+        },
+        {
+          "target": "/admin/publishing",
+          "label": "Admin"
+        },
+        {
+          "target": "/dashboard",
+          "label": ""
+        },
+        {
+          "target": "/auth/login",
+          "label": "Login"
+        },
+        {
+          "target": "/auth/login?tab=register",
+          "label": "Sign Up"
+        }
+      ],
+      "forms": [
+        " action=\"/auth/logout\" method=\"POST\" class=\"m-0\""
+      ],
+      "controls": [
+        {
+          "type": "button",
+          "attributes": " class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navMain\""
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "button",
+          "attributes": " type=\"submit\" class=\"btn btn-sm btn-outline-danger\""
+        }
+      ]
+    },
+    {
+      "file": "views\\index.ejs",
+      "links": [
+        {
+          "target": "<%= user?'/dashboard':'/auth/login' %>",
+          "label": ""
+        },
+        {
+          "target": "#exams",
+          "label": "Browse exams"
+        },
+        {
+          "target": "/admin/addExam",
+          "label": "Add exam"
+        },
+        {
+          "target": "/subject/<%= exam._id %>",
+          "label": "View subjects"
+        },
+        {
+          "target": "/updates",
+          "label": "View all"
+        }
+      ],
+      "forms": [],
+      "controls": []
+    },
+    {
+      "file": "views\\layouts\\boilerplate.ejs",
+      "links": [
+        {
+          "target": "#page-content",
+          "label": "Skip to content"
+        }
+      ],
+      "forms": [],
+      "controls": []
+    },
+    {
+      "file": "views\\login.ejs",
+      "links": [
+        {
+          "target": "/auth/forgot-password",
+          "label": "Forgot your password?"
+        },
+        {
+          "target": "/",
+          "label": "← Back to home"
+        }
+      ],
+      "forms": [
+        " action=\"<%= tab==='register'?'/auth/register':'/auth/login' %"
+      ],
+      "controls": [
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "input",
+          "attributes": " id=\"authName\" name=\"username\" autocomplete=\"name\" placeholder=\"Your name\" required"
+        },
+        {
+          "type": "input",
+          "attributes": " id=\"authEmail\" type=\"email\" name=\"email\" autocomplete=\"email\" placeholder=\"you@example.com\" required"
+        },
+        {
+          "type": "input",
+          "attributes": " id=\"authPassword\" type=\"password\" name=\"password\" autocomplete=\"<%= tab==='register'?'new-password':'current-password' %"
+        },
+        {
+          "type": "input",
+          "attributes": " id=\"authConfirm\" type=\"password\" name=\"confirm\" autocomplete=\"new-password\" placeholder=\"Repeat your password\" required"
+        },
+        {
+          "type": "button",
+          "attributes": " class=\"studio-button\" type=\"submit\""
+        }
+      ]
+    },
+    {
+      "file": "views\\questionBank.ejs",
+      "links": [
+        {
+          "target": "/admin",
+          "label": "Dashboard"
+        },
+        {
+          "target": "/admin#hierarchy",
+          "label": "Go to Curriculum"
+        },
+        {
+          "target": "/admin/question/edit/<%= qsn._id %>",
+          "label": "Edit"
+        }
+      ],
+      "forms": [
+        " action=\"/admin/question/delete/<%= qsn._id %"
+      ],
+      "controls": [
+        {
+          "type": "input",
+          "attributes": " \n                            type=\"text\" \n                            id=\"searchBar\" \n                            class=\"form-control border-start-0\" \n                            placeholder=\"Search questions by text...\""
+        },
+        {
+          "type": "select",
+          "attributes": " id=\"examFilter\" class=\"form-select\""
+        },
+        {
+          "type": "select",
+          "attributes": " id=\"subjectFilter\" class=\"form-select\""
+        },
+        {
+          "type": "select",
+          "attributes": " id=\"levelFilter\" class=\"form-select\""
+        },
+        {
+          "type": "button",
+          "attributes": " \n                                            class=\"accordion-button collapsed py-2 px-0 bg-transparent text-primary fw-semibold\" \n                                            type=\"button\" \n                                            data-bs-toggle=\"collapse\" \n                                            data-bs-target=\"#qsnCollapse<%= idx %"
+        },
+        {
+          "type": "button",
+          "attributes": " \n                                            class=\"accordion-button collapsed py-2 px-0 bg-transparent text-primary fw-semibold\" \n                                            type=\"button\" \n                                            data-bs-toggle=\"collapse\" \n                                            data-bs-target=\"#solCollapse<%= idx %"
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "button",
+          "attributes": " type=\"submit\" class=\"btn btn-sm btn-outline-danger rounded-pill px-3\""
+        }
+      ]
+    },
+    {
+      "file": "views\\quiz\\create.ejs",
+      "links": [
+        {
+          "target": "/admin",
+          "label": "Back"
+        }
+      ],
+      "forms": [
+        " action=\"/admin/quiz/create\" method=\"POST\" class=\"needs-validation\" novalidate"
+      ],
+      "controls": [
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"text\" id=\"quizTitle\" name=\"title\" class=\"form-control form-control-lg border-2\" placeholder=\"e.g. Weekly Assessment - Matrices\" required"
+        },
+        {
+          "type": "select",
+          "attributes": " id=\"examSelect\" class=\"form-select border-2\" required"
+        },
+        {
+          "type": "select",
+          "attributes": " id=\"subjectSelect\" class=\"form-select border-2\" disabled required"
+        },
+        {
+          "type": "select",
+          "attributes": " id=\"chapterSelect\" name=\"chapterID\" class=\"form-select border-2\" disabled required"
+        },
+        {
+          "type": "button",
+          "attributes": " type=\"submit\" class=\"btn btn-primary btn-lg rounded-pill px-4\" id=\"submitBtn\" disabled"
+        },
+        {
+          "type": "input",
+          "attributes": " class=\"form-check-input question-checkbox\" type=\"checkbox\" name=\"questions\" value=\"${escapeHtml(qsn._id)}\" id=\"qCheckbox${idx}\" style=\"transform: scale(1.2);\""
+        }
+      ]
+    },
+    {
+      "file": "views\\quiz\\result.ejs",
+      "links": [
+        {
+          "target": "/content/<%= attempt.quiz.chapterID._id %>",
+          "label": "Back to Curriculum"
+        }
+      ],
+      "forms": [],
+      "controls": []
+    },
+    {
+      "file": "views\\quiz\\take.ejs",
+      "links": [
+        {
+          "target": "/content/<%= quiz.chapterID %>",
+          "label": "Quit Anyway"
+        }
+      ],
+      "forms": [
+        " action=\"/quiz/<%= quiz._id %"
+      ],
+      "controls": [
+        {
+          "type": "button",
+          "attributes": " class=\"btn btn-outline-danger btn-sm rounded-pill px-3\" data-bs-toggle=\"modal\" data-bs-target=\"#quitModal\""
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"radio\" name=\"answers[<%= qsn._id %"
+        },
+        {
+          "type": "button",
+          "attributes": " type=\"button\" class=\"btn btn-outline-secondary rounded-pill px-4\" id=\"prevBtn\" disabled"
+        },
+        {
+          "type": "button",
+          "attributes": " type=\"button\" class=\"btn btn-primary rounded-pill px-4\" id=\"nextBtn\""
+        },
+        {
+          "type": "button",
+          "attributes": " type=\"submit\" class=\"btn btn-success rounded-pill px-4 d-none\" id=\"submitBtn\""
+        },
+        {
+          "type": "button",
+          "attributes": " type=\"button\" class=\"btn btn-outline-secondary rounded-pill px-4\" data-bs-dismiss=\"modal\""
+        }
+      ]
+    },
+    {
+      "file": "views\\reset-password.ejs",
+      "links": [
+        {
+          "target": "/auth/login",
+          "label": "← Back to Login"
+        }
+      ],
+      "forms": [
+        " action=\"/auth/reset-password\" method=\"POST\""
+      ],
+      "controls": [
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"email\" name=\"email\" class=\"form-control\" value=\"<%=email%"
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"number\" name=\"otpEntered\" class=\"form-control\" placeholder=\"Enter 6-digit OTP\" required"
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"password\" name=\"password\" class=\"form-control\" placeholder=\"Min 6 characters\" minlength=\"6\" required"
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"password\" name=\"confirm\" class=\"form-control\" placeholder=\"Repeat your new password\" required"
+        },
+        {
+          "type": "button",
+          "attributes": " type=\"submit\" class=\"btn btn-primary w-100\""
+        }
+      ]
+    },
+    {
+      "file": "views\\study\\dashboard.ejs",
+      "links": [
+        {
+          "target": "/library",
+          "label": "Browse library ↗"
+        },
+        {
+          "target": "/library",
+          "label": "Explore more chapters"
+        },
+        {
+          "target": "/learn/<%= p.chapter._id %>",
+          "label": ""
+        },
+        {
+          "target": "<%= metrics.weakTopics.length?'/insights':'/library' %>",
+          "label": "View recommendations"
+        },
+        {
+          "target": "/planner",
+          "label": "Plan week ↗"
+        }
+      ],
+      "forms": [
+        " action=\"/study-goal\" method=\"post\" class=\"studio-form\""
+      ],
+      "controls": [
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "input",
+          "attributes": " name=\"exam\" maxlength=\"120\" value=\"<%= profile?.exam||'' %"
+        },
+        {
+          "type": "input",
+          "attributes": " name=\"targetDate\" type=\"date\" value=\"<%= profile?.targetDate||'' %"
+        },
+        {
+          "type": "input",
+          "attributes": " name=\"weeklyGoal\" type=\"number\" min=\"1\" max=\"50\" value=\"<%= profile?.weeklyGoal||5 %"
+        },
+        {
+          "type": "button",
+          "attributes": " class=\"studio-button\""
+        }
+      ]
+    },
+    {
+      "file": "views\\study\\insights.ejs",
+      "links": [
+        {
+          "target": "/practice/run/<%= r._id %>",
+          "label": "%"
+        },
+        {
+          "target": "/library?q=<%= encodeURIComponent(a.question.chapter||'') %>",
+          "label": "Find chapter resources →"
+        },
+        {
+          "target": "/quiz/attempt/<%= a._id %>",
+          "label": "/  correct"
+        }
+      ],
+      "forms": [
+        " action=\"/revision\" method=\"post\""
+      ],
+      "controls": [
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "button",
+          "attributes": " class=\"studio-button\""
+        }
+      ]
+    },
+    {
+      "file": "views\\study\\library.ejs",
+      "links": [
+        {
+          "target": "/library?saved=1",
+          "label": "Saved chapters"
+        },
+        {
+          "target": "/admin/materials",
+          "label": "Manage learning materials"
+        },
+        {
+          "target": "/admin",
+          "label": "Manage exams and chapters"
+        },
+        {
+          "target": "/learn/<%= ch._id %>",
+          "label": "Open chapter →"
+        },
+        {
+          "target": "/learn/<%= r.chapterID %>",
+          "label": "Open in chapter →"
+        }
+      ],
+      "forms": [
+        " class=\"studio-form mb-4\" method=\"get\""
+      ],
+      "controls": [
+        {
+          "type": "input",
+          "attributes": " name=\"q\" value=\"<%= q %"
+        },
+        {
+          "type": "select",
+          "attributes": " name=\"kind\""
+        },
+        {
+          "type": "button",
+          "attributes": " class=\"studio-button\""
+        }
+      ]
+    },
+    {
+      "file": "views\\study\\material-form.ejs",
+      "links": [
+        {
+          "target": "/materials/<%= material.fileId %>",
+          "label": "Preview current PDF"
+        }
+      ],
+      "forms": [
+        " action=\"<%= material?.legacyType?'/admin/material-edit/'+material.legacyType+'/'+material._id:'/admin/materials'+(material?'/'+material._id:'') %"
+      ],
+      "controls": [
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"chapter\" value=\"<%= chapter._id %"
+        },
+        {
+          "type": "select",
+          "attributes": " name=\"kind\""
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"number\" name=\"position\" min=\"0\" max=\"9999\" step=\"1\" value=\"<%= material?.position||0 %"
+        },
+        {
+          "type": "input",
+          "attributes": " name=\"title\" required maxlength=\"180\" value=\"<%= material?.title||'' %"
+        },
+        {
+          "type": "textarea",
+          "attributes": " name=\"description\" rows=\"3\" maxlength=\"5000\" placeholder=\"What will students learn? Include any instructions.\""
+        },
+        {
+          "type": "input",
+          "attributes": " name=\"url\" type=\"url\" value=\"<%= material?.url||'' %"
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"checkbox\" name=\"removePdf\""
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"file\" name=\"pdf\" accept=\"application/pdf,.pdf\""
+        },
+        {
+          "type": "input",
+          "attributes": " name=\"instructor\" maxlength=\"100\" value=\"<%= material?.instructor||'' %"
+        },
+        {
+          "type": "input",
+          "attributes": " name=\"duration\" maxlength=\"40\" value=\"<%= material?.duration||'' %"
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"checkbox\" name=\"published\" <%= !material||material.published?'checked':'' %"
+        },
+        {
+          "type": "button",
+          "attributes": " class=\"studio-button\" type=\"submit\""
+        }
+      ]
+    },
+    {
+      "file": "views\\study\\material-manager.ejs",
+      "links": [
+        {
+          "target": "/learn/<%= selected?._id %>?preview=1",
+          "label": "Student preview"
+        },
+        {
+          "target": "/admin/addExam",
+          "label": "Add an exam"
+        },
+        {
+          "target": "/admin",
+          "label": "Manage curriculum"
+        },
+        {
+          "target": "/learn/<%= selected._id %>",
+          "label": "the student chapter"
+        }
+      ],
+      "forms": [
+        " method=\"get\" class=\"studio-form chapter-picker\"",
+        " method=\"post\" action=\"/admin/material-archive/<%= m.legacyType||'resource' %"
+      ],
+      "controls": [
+        {
+          "type": "select",
+          "attributes": " name=\"chapter\""
+        },
+        {
+          "type": "button",
+          "attributes": " class=\"studio-button secondary\""
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"archived\" value=\"<%= archived?'off':'on' %"
+        },
+        {
+          "type": "button",
+          "attributes": " class=\"studio-button secondary\""
+        }
+      ]
+    },
+    {
+      "file": "views\\study\\nav.ejs",
+      "links": [
+        {
+          "target": "/dashboard",
+          "label": "."
+        },
+        {
+          "target": "/admin/materials",
+          "label": "\" >Learning materials"
+        },
+        {
+          "target": "/admin/publishing",
+          "label": "\" >Quiz publishing"
+        },
+        {
+          "target": "/admin/questionBank",
+          "label": "Question bank"
+        },
+        {
+          "target": "/admin/site-settings",
+          "label": "\" >Site settings"
+        },
+        {
+          "target": "/library",
+          "label": "Find a chapter ↗"
+        }
+      ],
+      "forms": [
+        " action=\"/auth/logout\" method=\"post\""
+      ],
+      "controls": [
+        {
+          "type": "button",
+          "attributes": " type=\"button\" class=\"motion-toggle\" data-motion-toggle aria-pressed=\"false\""
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "button",
+          "attributes": " aria-label=\"Log out\" title=\"Log out\""
+        }
+      ]
+    },
+    {
+      "file": "views\\study\\planner.ejs",
+      "links": [],
+      "forms": [
+        " method=\"post\" action=\"/planner/<%= t._id %",
+        " method=\"post\" class=\"studio-form\""
+      ],
+      "controls": [
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "input",
+          "attributes": " name=\"title\" maxlength=\"160\" value=\"<%= t.title %"
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"date\" name=\"date\" value=\"<%= t.date %"
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"checkbox\" name=\"done\" <%= t.done?'checked':'' %"
+        },
+        {
+          "type": "button",
+          "attributes": " class=\"studio-button\""
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "input",
+          "attributes": " name=\"title\" maxlength=\"160\" required placeholder=\"Revise electrostatics and solve 10 questions\""
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"date\" name=\"date\" required"
+        },
+        {
+          "type": "button",
+          "attributes": " class=\"studio-button\""
+        }
+      ]
+    },
+    {
+      "file": "views\\study\\practice.ejs",
+      "links": [
+        {
+          "target": "/insights",
+          "label": "View performance ↗"
+        },
+        {
+          "target": "/practice/run/<%= r._id %>",
+          "label": "↗"
+        }
+      ],
+      "forms": [
+        " action=\"/practice/start/<%= q._id %"
+      ],
+      "controls": [
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "button",
+          "attributes": " class=\"studio-button\""
+        }
+      ]
+    },
+    {
+      "file": "views\\study\\preview.ejs",
+      "links": [
+        {
+          "target": "/admin/publishing",
+          "label": "← Quiz publishing"
+        }
+      ],
+      "forms": [],
+      "controls": []
+    },
+    {
+      "file": "views\\study\\publishing.ejs",
+      "links": [
+        {
+          "target": "/admin/quiz/create",
+          "label": "Create a test +"
+        },
+        {
+          "target": "/admin/publishing/<%= q._id %>/preview",
+          "label": "Preview test →"
+        }
+      ],
+      "forms": [
+        " class=\"studio-form\" action=\"/admin/publishing/<%= q._id %",
+        " action=\"/admin/import-csv\" method=\"post\" class=\"studio-form\"",
+        " class=\"studio-row\" action=\"/admin/users/<%= u._id %"
+      ],
+      "controls": [
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "select",
+          "attributes": " name=\"status\""
+        },
+        {
+          "type": "input",
+          "attributes": " name=\"durationMinutes\" type=\"number\" min=\"1\" max=\"240\" value=\"<%= q.durationMinutes||20 %"
+        },
+        {
+          "type": "input",
+          "attributes": " name=\"marks\" type=\"number\" min=\"1\" max=\"10\" step=\"0.25\" value=\"<%= q.marks||1 %"
+        },
+        {
+          "type": "input",
+          "attributes": " name=\"penalty\" type=\"number\" min=\"0\" max=\"10\" step=\"0.25\" value=\"<%= q.penalty||0 %"
+        },
+        {
+          "type": "button",
+          "attributes": " class=\"studio-button\""
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "select",
+          "attributes": " name=\"chapterID\" required"
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"file\" accept=\".csv,text/csv\" id=\"csvFile\""
+        },
+        {
+          "type": "textarea",
+          "attributes": " id=\"csvText\" name=\"csv\" rows=\"7\" required"
+        },
+        {
+          "type": "input",
+          "attributes": " name=\"confirm\" type=\"checkbox\" value=\"yes\" required"
+        },
+        {
+          "type": "button",
+          "attributes": " class=\"studio-button\""
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"checkbox\" name=\"editor\" <%= u.editor?'checked':'' %"
+        },
+        {
+          "type": "button",
+          "attributes": " class=\"studio-button\""
+        }
+      ]
+    },
+    {
+      "file": "views\\study\\result.ejs",
+      "links": [
+        {
+          "target": "/insights",
+          "label": "Explore your performance →"
+        }
+      ],
+      "forms": [],
+      "controls": []
+    },
+    {
+      "file": "views\\study\\site-settings.ejs",
+      "links": [],
+      "forms": [
+        " action=\"/admin/site-settings\" method=\"post\" class=\"studio-form\""
+      ],
+      "controls": [
+        {
+          "type": "input",
+          "attributes": " name=\"_csrf\" type=\"hidden\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "input",
+          "attributes": " name=\"name\" maxlength=\"60\" value=\"<%= site.name %"
+        },
+        {
+          "type": "button",
+          "attributes": " class=\"studio-button\""
+        }
+      ]
+    },
+    {
+      "file": "views\\study\\test.ejs",
+      "links": [],
+      "forms": [
+        " id=\"submitTest\" method=\"post\" action=\"/practice/run/<%= run._id %"
+      ],
+      "controls": [
+        {
+          "type": "button",
+          "attributes": " type=\"button\" data-jump=\"<%= i %"
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"radio\" name=\"q<%= q._id %"
+        },
+        {
+          "type": "button",
+          "attributes": " type=\"button\" class=\"btn btn-outline-secondary clear-answer\""
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"checkbox\" class=\"flag\" <%= run.flags.includes(String(q._id))?'checked':'' %"
+        },
+        {
+          "type": "button",
+          "attributes": " id=\"previous\" class=\"btn btn-outline-secondary\""
+        },
+        {
+          "type": "button",
+          "attributes": " id=\"next\" class=\"studio-button\""
+        },
+        {
+          "type": "button",
+          "attributes": " id=\"finish\" class=\"studio-button\""
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        }
+      ]
+    },
+    {
+      "file": "views\\study\\workspace.ejs",
+      "links": [
+        {
+          "target": "/library",
+          "label": "Back to learning library"
+        },
+        {
+          "target": "/admin/materials?chapter=<%= chapter._id %>",
+          "label": "Manage this chapter"
+        },
+        {
+          "target": "/admin/materials?chapter=<%= chapter._id %>",
+          "label": "Back to materials"
+        },
+        {
+          "target": "<%= l.url %>",
+          "label": "Open video in a new tab"
+        },
+        {
+          "target": "<%= url %>",
+          "label": ""
+        },
+        {
+          "target": "/admin/materials?chapter=<%= chapter._id %>",
+          "label": "Add the first lesson"
+        }
+      ],
+      "forms": [
+        " class=\"studio-form\" method=\"post\" data-preserve-work",
+        " action=\"/practice/start/<%= q._id %"
+      ],
+      "controls": [
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"checkbox\" name=\"completed\" <%= progress?.completed?'checked':'' %"
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"checkbox\" name=\"bookmarked\" <%= progress?.bookmarked?'checked':'' %"
+        },
+        {
+          "type": "textarea",
+          "attributes": " rows=\"8\" name=\"notes\" maxlength=\"10000\" placeholder=\"Capture an idea or a question to return to.\""
+        },
+        {
+          "type": "button",
+          "attributes": " class=\"studio-button\""
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "button",
+          "attributes": " class=\"studio-button secondary\""
+        }
+      ]
+    },
+    {
+      "file": "views\\subject.ejs",
+      "links": [
+        {
+          "target": "/admin/subject/<%= selectedExam._id %>/add",
+          "label": "Add Subject"
+        },
+        {
+          "target": "/admin/<%= selectedExam._id %>/addQuestion",
+          "label": "Add Question"
+        },
+        {
+          "target": "/exams",
+          "label": "Back"
+        },
+        {
+          "target": "/subject/<%=subject._id%>/chapter ",
+          "label": "Start Learning"
+        },
+        {
+          "target": "/admin/subject/<%= subject._id %>/edit",
+          "label": "Edit"
+        }
+      ],
+      "forms": [],
+      "controls": []
+    },
+    {
+      "file": "views\\updates.ejs",
+      "links": [
+        {
+          "target": "/admin/addUpdate",
+          "label": "Add New Update"
+        },
+        {
+          "target": "/updates",
+          "label": "Clear"
+        }
+      ],
+      "forms": [
+        " method=\"GET\" class=\"d-flex gap-3 flex-wrap mb-5\""
+      ],
+      "controls": [
+        {
+          "type": "select",
+          "attributes": " name=\"exam\" class=\"form-select\" style=\"width:200px\" onchange=\"this.form.submit()\""
+        },
+        {
+          "type": "select",
+          "attributes": " name=\"category\" class=\"form-select\" style=\"width:220px\" onchange=\"this.form.submit()\""
+        }
+      ]
+    },
+    {
+      "file": "views\\verify-email.ejs",
+      "links": [],
+      "forms": [
+        " action=\"/auth/verify-email\" method=\"POST\""
+      ],
+      "controls": [
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"email\" class=\"form-control\" id=\"exampleInputEmail1\"  aria-describedby=\"emailHelp\" value=\"<%=email%"
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"number\" class=\"form-control\" id=\"exampleInputPassword1\" name=\"otpEntered\""
+        },
+        {
+          "type": "button",
+          "attributes": " type=\"submit\" class=\"btn btn-primary\""
+        }
+      ]
+    }
+  ]
+}

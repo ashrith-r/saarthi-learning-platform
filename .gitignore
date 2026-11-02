@@ -1,0 +1,13 @@
+
+# Environment
+.env
+.env.*
+!.env.example
+
+node_modules/
+*.log
+coverage/
+.DS_Store
+Thumbs.db
+.local/
+.impeccable/review/

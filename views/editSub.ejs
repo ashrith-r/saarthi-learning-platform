@@ -1,0 +1,74 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<div class="container py-5">
+
+  <h2 class="mb-4">
+    Edit Subjects for <%= exam.examName %>
+  </h2>
+
+  <form action="/admin/subject/<%=subject._id%>/edit" method="POST"><input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+
+      <div class="card mb-4 shadow-sm">
+
+        <div class="card-header fw-bold">
+          <%= subject.subjectName %>
+        </div>
+
+        <div class="card-body">
+
+          <div class="mb-3">
+            <label>Subject Name</label>
+            <input
+              type="text"
+              class="form-control"
+              name="subjects[name]"
+               value="<%=subject.subjectName%>"
+            >
+          </div>
+
+          <div class="mb-3">
+            <label>Description</label>
+            <textarea required
+              class="form-control"
+              rows="3"
+              name="subjects[description]"
+              
+            ><%=subject.description%>
+            </textarea>
+          </div>
+ <div class="mb-3">
+            <label>Subject Icon</label>
+            <input
+              type="text"
+              class="form-control"
+              name="subjects[icon]"
+              placeholder=""
+              value="<%=subject.icon%>"
+            >
+          </div>
+          <div class="mb-3">
+            <label>Total Chapters</label>
+            <input required
+              type="number"
+              min="0"
+              class="form-control"
+              name="subjects[chapterCount]"
+              value="<%=subject.chapterCount%>"
+            >
+          </div>
+
+        
+        </div>
+
+      </div>
+
+
+
+    <button class="btn btn-success">
+      Edit Subject Details
+    </button>
+
+  </form>
+
+</div>

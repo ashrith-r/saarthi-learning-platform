@@ -1,0 +1,348 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<%
+
+  const selectedChapterID = selectedChapter._id 
+  const selectedChapterName = selectedChapter.chapterName
+
+  %>
+
+<style>
+  .content-admin-page {
+    min-height: 100vh;
+    background:
+      radial-gradient(circle at top left, rgba(13, 110, 253, 0.14), transparent 34rem),
+      radial-gradient(circle at 92% 16%, rgba(32, 201, 151, 0.12), transparent 26rem),
+      linear-gradient(180deg, #f8fbff 0%, #ffffff 44%, #f7fafc 100%);
+  }
+
+  .admin-hero {
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(13, 110, 253, 0.12);
+    border-radius: 1.5rem;
+    box-shadow: 0 24px 70px rgba(16, 24, 40, 0.10);
+    backdrop-filter: blur(12px);
+  }
+
+  .admin-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: #0d6efd;
+    background: rgba(13, 110, 253, 0.10);
+    border: 1px solid rgba(13, 110, 253, 0.14);
+    border-radius: 999px;
+    padding: 0.45rem 0.8rem;
+    font-size: 0.86rem;
+    font-weight: 800;
+  }
+
+  .admin-tabs {
+    background: #fff;
+    border: 1px solid #e8edf3;
+    border-radius: 1rem;
+    padding: 0.35rem;
+    box-shadow: 0 12px 30px rgba(16, 24, 40, 0.06);
+  }
+
+  .admin-tabs .nav-link {
+    border: 0;
+    border-radius: 0.75rem;
+    color: #667085;
+    font-weight: 700;
+    padding: 0.85rem 1.1rem;
+  }
+
+  .admin-tabs .nav-link.active {
+    color: #0d6efd;
+    background: rgba(13, 110, 253, 0.10);
+  }
+
+  .form-panel,
+  .tips-panel {
+    border: 1px solid #e8edf3;
+    border-radius: 1rem;
+    box-shadow: 0 18px 42px rgba(16, 24, 40, 0.08);
+  }
+
+  .resource-icon {
+    width: 58px;
+    height: 58px;
+    display: grid;
+    place-items: center;
+    border-radius: 1rem;
+  }
+</style>
+<body>
+  
+<main class="content-admin-page py-5">
+  <div class="container">
+    <% if (typeof success !== "undefined" && success.length) { %>
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <%= success[0] %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% } %>
+
+    <% if (typeof error !== "undefined" && error.length) { %>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <%= error[0] %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% } %>
+
+    <section class="admin-hero p-4 p-md-5 mb-4">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-8">
+          <div class="admin-kicker mb-3">
+            <i class="bi bi-cloud-upload-fill"></i>
+            Admin content upload
+          </div>
+          <h1 class="fw-bold display-6 mb-3"><%=selectedChapterName%></h1>
+          <p class="lead text-muted mb-0">
+            Manage the chapter’s lecture videos and reference materials.
+          </p>
+        </div>
+        <div class="col-lg-4">
+          <div class="bg-primary-subtle text-primary rounded-4 p-4">
+            <div class="fw-bold mb-1">
+              <i class="bi bi-info-circle me-1"></i>Required for all
+            </div>
+            <div class="small">Chapter is already selected, so only resource details are needed.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="alert alert-primary d-flex align-items-center gap-3 border-0 shadow-sm mb-4" role="alert">
+      <i class="bi bi-journal-bookmark fs-4"></i>
+      <div>
+        <div class="fw-bold">Adding content for: <%= selectedChapterName %></div>
+        <div class="small">Chapter ID will be submitted automatically.</div>
+      </div>
+    </div>
+
+    <ul class="nav nav-pills admin-tabs mb-4" id="resourceTabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="lecture-tab" data-bs-toggle="pill" data-bs-target="#lecture" type="button" role="tab" aria-controls="lecture" aria-selected="true">
+          <i class="bi bi-play-circle me-1"></i>Lecture
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="notes-tab" data-bs-toggle="pill" data-bs-target="#notes" type="button" role="tab" aria-controls="notes" aria-selected="false">
+          <i class="bi bi-file-earmark-text me-1"></i>Notes
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="sheet-tab" data-bs-toggle="pill" data-bs-target="#sheet" type="button" role="tab" aria-controls="sheet" aria-selected="false">
+          <i class="bi bi-pencil-square me-1"></i>Practice Sheet
+        </button>
+      </li>
+    </ul>
+
+    <div class="row g-4">
+      <div class="col-lg-8">
+        <div class="tab-content" id="resourceTabsContent">
+          <section class="tab-pane fade show active" id="lecture" role="tabpanel" aria-labelledby="lecture-tab" tabindex="0">
+            <form action="/admin/addLecture" method="POST" class="card form-panel border-0 needs-validation" novalidate><input type="hidden" name="_csrf" value="<%= csrfToken %>">
+              <input type="hidden" name="chapterID" value="<%= selectedChapterID %>">
+              <div class="card-body p-4 p-md-5">
+                <div class="d-flex align-items-center gap-3 mb-4">
+                  <div class="resource-icon bg-primary-subtle text-primary">
+                    <i class="bi bi-play-circle fs-3"></i>
+                  </div>
+                  <div>
+                    <h2 class="h4 fw-bold mb-1">Add Lecture</h2>
+                    <p class="text-muted mb-0">Provide a title, video URL, duration and instructor.</p>
+                  </div>
+                </div>
+
+                <div class="row g-3">
+                  <div class="col-12">
+                    <label for="lectureTitle" class="form-label fw-semibold">Lecture Title</label>
+                    <input id="lectureTitle" name="title" type="text" class="form-control form-control-lg" placeholder="System of Linear Equations" required>
+                    <div class="invalid-feedback">Please enter lecture title.</div>
+                  </div>
+
+                  <div class="col-12">
+                    <label for="lectureUrl" class="form-label fw-semibold">Video URL</label>
+                    <input id="lectureUrl" name="url" type="url" class="form-control form-control-lg" placeholder="https://youtube.com/..." required>
+                    <div class="invalid-feedback">Please enter a valid URL.</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="lectureDuration" class="form-label fw-semibold">Duration</label>
+                    <input id="lectureDuration" name="duration" type="text" class="form-control form-control-lg" placeholder="38:54" required>
+                    <div class="invalid-feedback">Please enter duration.</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="lectureFaculty" class="form-label fw-semibold">Faculty</label>
+                    <input id="lectureFaculty" name="faculty" type="text" class="form-control form-control-lg" placeholder="Prof. Name" required>
+                    <div class="invalid-feedback">Please enter faculty name.</div>
+                  </div>
+                </div>
+
+                <div class="d-flex flex-column flex-sm-row gap-3 mt-4">
+                  <button type="submit" class="btn btn-primary btn-lg">
+                    <i class="bi bi-check-circle me-1"></i>Save Lecture
+                  </button>
+                  <button type="reset" class="btn btn-outline-secondary btn-lg">Reset</button>
+                </div>
+              </div>
+            </form>
+          </section>
+
+          <section class="tab-pane fade" id="notes" role="tabpanel" aria-labelledby="notes-tab" tabindex="0">
+            <form action="/admin/addNote" method="POST" class="card form-panel border-0 needs-validation" novalidate><input type="hidden" name="_csrf" value="<%= csrfToken %>">
+              <input type="hidden" name="chapterID" value="<%= selectedChapterID %>">
+              <div class="card-body p-4 p-md-5">
+                <div class="d-flex align-items-center gap-3 mb-4">
+                  <div class="resource-icon bg-success-subtle text-success">
+                    <i class="bi bi-file-earmark-text fs-3"></i>
+                  </div>
+                  <div>
+                    <h2 class="h4 fw-bold mb-1">Add Notes</h2>
+                    <p class="text-muted mb-0">Provide a title, document URL, page count and author.</p>
+                  </div>
+                </div>
+
+                <div class="row g-3">
+                  <div class="col-12">
+                    <label for="notesTitle" class="form-label fw-semibold">Notes Title</label>
+                    <input id="notesTitle" name="title" type="text" class="form-control form-control-lg" placeholder="Complete Chapter Notes" required>
+                    <div class="invalid-feedback">Please enter notes title.</div>
+                  </div>
+
+                  <div class="col-12">
+                    <label for="notesUrl" class="form-label fw-semibold">Notes URL</label>
+                    <input id="notesUrl" name="url" type="url" class="form-control form-control-lg" placeholder="https://drive.google.com/..." required>
+                    <div class="invalid-feedback">Please enter a valid URL.</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="notesPage" class="form-label fw-semibold">Number of Pages</label>
+                    <input id="notesPage" name="page" type="number" min="1" class="form-control form-control-lg" placeholder="42" required>
+                    <div class="invalid-feedback">Please enter page count.</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="notesDesignedBy" class="form-label fw-semibold">Designed By</label>
+                    <input id="notesDesignedBy" name="designedBy" type="text" class="form-control form-control-lg" placeholder="Saarthi Team" required>
+                    <div class="invalid-feedback">Please enter designer name.</div>
+                  </div>
+                </div>
+
+                <div class="d-flex flex-column flex-sm-row gap-3 mt-4">
+                  <button type="submit" class="btn btn-primary btn-lg">
+                    <i class="bi bi-check-circle me-1"></i>Save Notes
+                  </button>
+                  <button type="reset" class="btn btn-outline-secondary btn-lg">Reset</button>
+                </div>
+              </div>
+            </form>
+          </section>
+
+          <section class="tab-pane fade" id="sheet" role="tabpanel" aria-labelledby="sheet-tab" tabindex="0">
+            <form action="/admin/addSheet" method="POST" class="card form-panel border-0 needs-validation" novalidate><input type="hidden" name="_csrf" value="<%= csrfToken %>">
+              <input type="hidden" name="chapterID" value="<%= selectedChapterID %>">
+              <div class="card-body p-4 p-md-5">
+                <div class="d-flex align-items-center gap-3 mb-4">
+                  <div class="resource-icon bg-warning-subtle text-warning">
+                    <i class="bi bi-pencil-square fs-3"></i>
+                  </div>
+                  <div>
+                    <h2 class="h4 fw-bold mb-1">Add Practice Sheet</h2>
+                    <p class="text-muted mb-0">Provide a title, worksheet URL, page count and difficulty.</p>
+                  </div>
+                </div>
+
+                <div class="row g-3">
+                  <div class="col-12">
+                    <label for="sheetTitle" class="form-label fw-semibold">Sheet Title</label>
+                    <input id="sheetTitle" name="title" type="text" class="form-control form-control-lg" placeholder="Practice Sheet 01" required>
+                    <div class="invalid-feedback">Please enter sheet title.</div>
+                  </div>
+
+                  <div class="col-12">
+                    <label for="sheetUrl" class="form-label fw-semibold">Sheet URL</label>
+                    <input id="sheetUrl" name="url" type="url" class="form-control form-control-lg" placeholder="https://drive.google.com/..." required>
+                    <div class="invalid-feedback">Please enter a valid URL.</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="sheetPage" class="form-label fw-semibold">Number of Pages</label>
+                    <input id="sheetPage" name="page" type="number" min="1" class="form-control form-control-lg" placeholder="12" required>
+                    <div class="invalid-feedback">Please enter page count.</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="sheetLevel" class="form-label fw-semibold">Level</label>
+                    <select id="sheetLevel" name="level" class="form-select form-select-lg" required>
+                      <option value="" selected disabled>Select level</option>
+                      <option value="Easy">Easy</option>
+                      <option value="Medium">Medium</option>
+                      <option value="Hard">Hard</option>
+                      <option value="Exam Level">Exam Level</option>
+                    </select>
+                    <div class="invalid-feedback">Please select level.</div>
+                  </div>
+                </div>
+
+                <div class="d-flex flex-column flex-sm-row gap-3 mt-4">
+                  <button type="submit" class="btn btn-primary btn-lg">
+                    <i class="bi bi-check-circle me-1"></i>Save Practice Sheet
+                  </button>
+                  <button type="reset" class="btn btn-outline-secondary btn-lg">Reset</button>
+                </div>
+              </div>
+            </form>
+          </section>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <aside class="card tips-panel border-0">
+          <div class="card-body p-4">
+            <div class="resource-icon bg-primary-subtle text-primary mb-3">
+              <i class="bi bi-lightning-charge-fill fs-3"></i>
+            </div>
+            <h2 class="h5 fw-bold mb-3">Upload Checklist</h2>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item px-0">
+                <i class="bi bi-check2 text-success me-2"></i>Chapter is selected automatically.
+              </li>
+              <li class="list-group-item px-0">
+                <i class="bi bi-check2 text-success me-2"></i>Use clear resource titles.
+              </li>
+              <li class="list-group-item px-0">
+                <i class="bi bi-check2 text-success me-2"></i>Paste a working public URL.
+              </li>
+              <li class="list-group-item px-0">
+                <i class="bi bi-check2 text-success me-2"></i>Complete all required fields.
+              </li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+
+<script>
+  document.querySelectorAll(".needs-validation").forEach(form => {
+    form.addEventListener("submit", event => {
+      if (!form.checkValidity()) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+
+      form.classList.add("was-validated");
+    });
+
+    form.addEventListener("reset", () => {
+      setTimeout(() => form.classList.remove("was-validated"), 0);
+    });
+  });
+</script>

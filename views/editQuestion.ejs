@@ -1,0 +1,306 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<div class="container mt-4 mb-5">
+    <div class="card shadow-sm">
+        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+            <h3 class="mb-0 fs-4">Edit Question</h3>
+            <a href="/admin/questionBank" class="btn btn-sm btn-outline-light rounded-pill">
+                <i class="bi bi-arrow-left me-1"></i>Back to Question Bank
+            </a>
+        </div>
+
+        <div class="card-body">
+            <form action="/admin/question/edit/<%= question._id %>" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate><input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                
+                <!-- Target Exam (Course) -->
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Target Exam (Course)</label>
+                    <select class="form-select" name="course" id="courseSelect" required>
+                        <% exams.forEach(exam => { %>
+                            <option value="<%= exam._id %>" <%= question.course.toString() === exam._id.toString() ? 'selected' : '' %>><%= exam.examName %></option>
+                        <% }) %>
+                    </select>
+                </div>
+
+                <!-- Question Text -->
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Question Text</label>
+                    <textarea
+                        name="question_text"
+                        class="form-control"
+                        rows="3"
+                        placeholder="Enter Question"
+                        required><%= question.question_text %></textarea>
+                </div>
+
+                <!-- Question Image -->
+                <div class="mb-4">
+                    <label class="form-label fw-bold">Question Image</label>
+                    <% if (question.question_img && question.question_img.url) { %>
+                        <div class="mb-2 position-relative d-inline-block">
+                            <img src="<%= question.question_img.url %>" alt="Question Image" class="img-thumbnail" style="max-height: 120px;">
+                            <span class="badge bg-secondary position-absolute top-0 start-100 translate-middle">Current</span>
+                        </div>
+                    <% } %>
+                    <input
+                        type="file"
+                        name="question_img"
+                        class="form-control"
+                        accept="image/*">
+                    <div class="form-text">
+                        Upload a new image only if you want to replace the current one.
+                    </div>
+                </div>
+
+                <hr>
+
+                <h5 class="mb-3 fw-bold">Options</h5>
+
+                <!-- Option A -->
+                <div class="card mb-3 border-light shadow-none">
+                    <div class="card-body bg-light rounded">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h6 class="mb-0 fw-bold">Option A</h6>
+                            <% if (question.options[0] && question.correctOption && question.correctOption.toString() === question.options[0]._id.toString()) { %>
+                                <span class="badge bg-success">Correct Option</span>
+                            <% } %>
+                        </div>
+
+                        <div class="mb-2">
+                            <input
+                                type="text"
+                                name="optionAtext"
+                                class="form-control"
+                                value="<%= question.options[0] ? question.options[0].text : '' %>"
+                                placeholder="Option A text">
+                        </div>
+
+                        <% if (question.options[0] && question.options[0].img && question.options[0].img.url) { %>
+                            <div class="mb-2 position-relative d-inline-block">
+                                <img src="<%= question.options[0].img.url %>" alt="Option A Image" class="img-thumbnail" style="max-height: 100px;">
+                            </div>
+                        <% } %>
+                        <input
+                            type="file"
+                            name="optionAImage"
+                            class="form-control"
+                            accept="image/*">
+                    </div>
+                </div>
+
+                <!-- Option B -->
+                <div class="card mb-3 border-light shadow-none">
+                    <div class="card-body bg-light rounded">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h6 class="mb-0 fw-bold">Option B</h6>
+                            <% if (question.options[1] && question.correctOption && question.correctOption.toString() === question.options[1]._id.toString()) { %>
+                                <span class="badge bg-success">Correct Option</span>
+                            <% } %>
+                        </div>
+
+                        <div class="mb-2">
+                            <input
+                                type="text"
+                                name="optionBtext"
+                                class="form-control"
+                                value="<%= question.options[1] ? question.options[1].text : '' %>"
+                                placeholder="Option B text">
+                        </div>
+
+                        <% if (question.options[1] && question.options[1].img && question.options[1].img.url) { %>
+                            <div class="mb-2 position-relative d-inline-block">
+                                <img src="<%= question.options[1].img.url %>" alt="Option B Image" class="img-thumbnail" style="max-height: 100px;">
+                            </div>
+                        <% } %>
+                        <input
+                            type="file"
+                            name="optionBImage"
+                            class="form-control"
+                            accept="image/*">
+                    </div>
+                </div>
+
+                <!-- Option C -->
+                <div class="card mb-3 border-light shadow-none">
+                    <div class="card-body bg-light rounded">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h6 class="mb-0 fw-bold">Option C</h6>
+                            <% if (question.options[2] && question.correctOption && question.correctOption.toString() === question.options[2]._id.toString()) { %>
+                                <span class="badge bg-success">Correct Option</span>
+                            <% } %>
+                        </div>
+
+                        <div class="mb-2">
+                            <input
+                                type="text"
+                                name="optionCtext"
+                                class="form-control"
+                                value="<%= question.options[2] ? question.options[2].text : '' %>"
+                                placeholder="Option C text">
+                        </div>
+
+                        <% if (question.options[2] && question.options[2].img && question.options[2].img.url) { %>
+                            <div class="mb-2 position-relative d-inline-block">
+                                <img src="<%= question.options[2].img.url %>" alt="Option C Image" class="img-thumbnail" style="max-height: 100px;">
+                            </div>
+                        <% } %>
+                        <input
+                            type="file"
+                            name="optionCImage"
+                            class="form-control"
+                            accept="image/*">
+                    </div>
+                </div>
+
+                <!-- Option D -->
+                <div class="card mb-4 border-light shadow-none">
+                    <div class="card-body bg-light rounded">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h6 class="mb-0 fw-bold">Option D</h6>
+                            <% if (question.options[3] && question.correctOption && question.correctOption.toString() === question.options[3]._id.toString()) { %>
+                                <span class="badge bg-success">Correct Option</span>
+                            <% } %>
+                        </div>
+
+                        <div class="mb-2">
+                            <input
+                                type="text"
+                                name="optionDtext"
+                                class="form-control"
+                                value="<%= question.options[3] ? question.options[3].text : '' %>"
+                                placeholder="Option D text">
+                        </div>
+
+                        <% if (question.options[3] && question.options[3].img && question.options[3].img.url) { %>
+                            <div class="mb-2 position-relative d-inline-block">
+                                <img src="<%= question.options[3].img.url %>" alt="Option D Image" class="img-thumbnail" style="max-height: 100px;">
+                            </div>
+                        <% } %>
+                        <input
+                            type="file"
+                            name="optionDImage"
+                            class="form-control"
+                            accept="image/*">
+                    </div>
+                </div>
+
+                <!-- Correct Option -->
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Correct Option</label>
+                    <select class="form-select" name="correctOption" required>
+                        <option disabled value="">Choose Correct Option</option>
+                        <option value="0" <%= (question.options[0] && question.correctOption && question.correctOption.toString() === question.options[0]._id.toString()) ? 'selected' : '' %>>Option A</option>
+                        <option value="1" <%= (question.options[1] && question.correctOption && question.correctOption.toString() === question.options[1]._id.toString()) ? 'selected' : '' %>>Option B</option>
+                        <option value="2" <%= (question.options[2] && question.correctOption && question.correctOption.toString() === question.options[2]._id.toString()) ? 'selected' : '' %>>Option C</option>
+                        <option value="3" <%= (question.options[3] && question.correctOption && question.correctOption.toString() === question.options[3]._id.toString()) ? 'selected' : '' %>>Option D</option>
+                    </select>
+                </div>
+
+                <!-- Subject -->
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Subject</label>
+                    <select class="form-select" name="subject" id="subjectSelect" required>
+                        <% sub.forEach(subject => { %>
+                            <option value="<%= subject %>" <%= question.subject === subject ? 'selected' : '' %>><%= subject %></option>
+                        <% }) %>
+                    </select>
+                </div>
+
+                <!-- Chapter -->
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Chapter</label>
+                    <input type="text" name="chapter" class="form-control" value="<%= question.chapter %>" placeholder="Chapter Name" required>
+                </div>
+
+                <!-- Difficulty -->
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Difficulty</label>
+                    <select class="form-select" name="level">
+                        <option value="Easy" <%= question.level === 'Easy' ? 'selected' : '' %>>Easy</option>
+                        <option value="Medium" <%= question.level === 'Medium' ? 'selected' : '' %>>Medium</option>
+                        <option value="Hard" <%= question.level === 'Hard' ? 'selected' : '' %>>Hard</option>
+                    </select>
+                </div>
+
+                <!-- Tags -->
+                <div class="mb-4">
+                    <label class="form-label fw-bold">Tags</label>
+                    <input
+                        type="text"
+                        name="tags"
+                        class="form-control"
+                        value="<%= question.tags ? question.tags.join(', ') : '' %>"
+                        placeholder="Example: Mechanics, Newton Laws, Numerical">
+                    <div class="form-text">
+                        Separate multiple tags with commas.
+                    </div>
+                </div>
+
+                <!-- Solution Section -->
+                <div class="card mb-4 border-light shadow-none">
+                    <div class="card-body bg-light rounded">
+                        <label class="form-label fw-bold">Solution Explanation</label>
+                        <div class="mb-2">
+                            <input
+                                type="text"
+                                name="solution_text"
+                                class="form-control"
+                                value="<%= question.solution ? question.solution.text : '' %>"
+                                placeholder="Solution explanation text">
+                        </div>
+
+                        <% if (question.solution && question.solution.img && question.solution.img.url) { %>
+                            <div class="mb-2 position-relative d-inline-block">
+                                <img src="<%= question.solution.img.url %>" alt="Solution Image" class="img-thumbnail" style="max-height: 100px;">
+                            </div>
+                        <% } %>
+                        <input
+                            type="file"
+                            name="solution"
+                            class="form-control"
+                            accept="image/*">
+                    </div>
+                </div>
+
+                <div class="d-flex gap-2">
+                    <button class="btn btn-primary rounded-pill px-4">
+                        Update Question
+                    </button>
+                    <a href="/admin/questionBank" class="btn btn-outline-secondary rounded-pill px-4">
+                        Cancel
+                    </a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<script id="exams-data" type="application/json">
+    <%- JSON.stringify(exams) %>
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const exams = JSON.parse(document.getElementById('exams-data').textContent);
+        const courseSelect = document.getElementById('courseSelect');
+        const subjectSelect = document.getElementById('subjectSelect');
+
+        courseSelect.addEventListener('change', function() {
+            const selectedExamId = this.value;
+            const selectedExam = exams.find(e => e._id === selectedExamId);
+            
+            // Clear subjects
+            subjectSelect.innerHTML = '';
+            
+            if (selectedExam && selectedExam.subjects) {
+                selectedExam.subjects.forEach(subject => {
+                    const opt = document.createElement('option');
+                    opt.value = subject;
+                    opt.textContent = subject;
+                    subjectSelect.appendChild(opt);
+                });
+            }
+        });
+    });
+</script>

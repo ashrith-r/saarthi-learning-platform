@@ -1,0 +1,20 @@
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: development
+      MONGO_URL: mongodb://mongo:27017/saarthi
+      JWT_SECRET: ${JWT_SECRET:?Set JWT_SECRET in .env}
+      SESSION_SECRET: ${SESSION_SECRET:?Set SESSION_SECRET in .env}
+    depends_on:
+      - mongo
+    restart: unless-stopped
+  mongo:
+    image: mongo:8
+    volumes:
+      - saarthi-data:/data/db
+    restart: unless-stopped
+volumes:
+  saarthi-data:

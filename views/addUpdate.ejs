@@ -1,0 +1,111 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<% //newChange %>
+<main class="container py-5">
+<% //newChange %>
+  <div class="d-flex justify-content-between align-items-center mb-4">
+<% //newChange %>
+    <div>
+<% //newChange %>
+      <h2 class="fw-bold">Add New Update</h2>
+<% //newChange %>
+      <p class="text-muted mb-0">Post a new update or notice for students.</p>
+<% //newChange %>
+    </div>
+<% //newChange %>
+    <a href="/admin" class="btn btn-outline-secondary">
+<% //newChange %>
+      <i class="bi bi-arrow-left"></i> Back to Admin
+<% //newChange %>
+    </a>
+<% //newChange %>
+  </div>
+<% //newChange %>
+  <div class="card shadow-sm border-0">
+<% //newChange %>
+    <div class="card-body p-4">
+<% //newChange %>
+      <form action="/admin/addUpdate" method="POST"><input type="hidden" name="_csrf" value="<%= csrfToken %>">
+<% //newChange %>
+        <div class="mb-3">
+<% //newChange %>
+          <label class="form-label fw-semibold">Title</label>
+<% //newChange %>
+          <input type="text" name="title" class="form-control" placeholder="Registration Open, Date sheet released..." required>
+<% //newChange %>
+        </div>
+<% //newChange %>
+        <div class="mb-3">
+<% //newChange %>
+          <label class="form-label fw-semibold">Category</label>
+<% //newChange %>
+          <select name="category" class="form-select" required>
+<% //newChange %>
+            <option value="General">General</option>
+<% //newChange %>
+            <option value="JEE">JEE</option>
+<% //newChange %>
+            <option value="NEET">NEET</option>
+<% //newChange %>
+            <option value="IOE">IOE</option>
+<% //newChange %>
+            <option value="Admission">Admission</option>
+<% //newChange %>
+            <option value="Exam Schedule">Exam Schedule</option>
+<% //newChange %>
+          </select>
+<% //newChange %>
+        </div>
+<% //newChange %>
+        <div class="mb-3">
+<% //newChange %>
+          <label class="form-label fw-semibold">Content</label>
+<% //newChange %>
+          <textarea name="content" class="form-control" rows="5" placeholder="Detail explanation of the update..." required></textarea>
+<% //newChange %>
+        </div>
+<% //newChange %>
+        <div class="mb-3">
+<% //newChange %>
+          <label class="form-label fw-semibold">Associated Exam (Optional)</label>
+<% //newChange %>
+          <select name="examID" class="form-select">
+<% //newChange %>
+            <option value="">None (General Update)</option>
+<% //newChange %>
+            <% exams.forEach(exam => { %>
+<% //newChange %>
+              <option value="<%= exam._id %>"><%= exam.examName %></option>
+<% //newChange %>
+            <% }) %>
+<% //newChange %>
+          </select>
+<% //newChange %>
+        </div>
+<% //newChange %>
+        <div class="form-check mb-4">
+<% //newChange %>
+          <input type="checkbox" name="isImportant" class="form-check-input" id="isImportantCheck">
+<% //newChange %>
+          <label class="form-check-label fw-semibold" for="isImportantCheck">Mark as Important (Highlight on Home)</label>
+<% //newChange %>
+        </div>
+<% //newChange %>
+        <div class="d-flex gap-2">
+<% //newChange %>
+          <button type="submit" class="btn btn-success">
+<% //newChange %>
+            <i class="bi bi-check-circle"></i> Save Update
+<% //newChange %>
+          </button>
+<% //newChange %>
+          <button type="reset" class="btn btn-outline-secondary">Reset</button>
+<% //newChange %>
+        </div>
+<% //newChange %>
+      </form>
+<% //newChange %>
+    </div>
+<% //newChange %>
+  </div>
+<% //newChange %>
+</main>
