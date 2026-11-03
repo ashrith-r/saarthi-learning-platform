@@ -39,9 +39,9 @@ The syntax check compiles JavaScript and EJS templates. Regression tests cover q
 - Review the unresolved dependency audit findings and the remaining work in `REVIEW.md`.
 - Existing OTPs without the new purpose field will be rejected. Request a fresh code after updating.
 
-## Push to your friend's repository later
+## Repository
 
-This source folder has no Git history. Once you have access, clone your friend's repository into a separate folder and create a feature branch. Copy the reviewed source files into that clone, excluding `.env` and `node_modules`. Check the diff, run the checks above, commit, and push the feature branch for a pull request. Preserve the repository's existing history and configuration.
+The project is tracked at <https://github.com/ashrith-r/saarthi-learning-platform> on the `main` branch. Create a feature branch for future changes, run the checks above, and open a pull request when they are ready. Keep `.env` and `node_modules` out of Git.
 
 The included GitHub Actions workflow runs syntax checks and regression tests on pushes and pull requests.
 
