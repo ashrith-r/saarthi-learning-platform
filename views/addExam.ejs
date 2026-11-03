@@ -8,7 +8,7 @@
       <p class="text-muted mb-0">Create a new exam and its subjects.</p>
     </div>
 
-    <a href="/exams" class="btn btn-outline-secondary">
+    <a href="/admin" class="btn btn-outline-secondary">
       <i class="bi bi-arrow-left"></i> Back
     </a>
   </div>
@@ -40,96 +40,16 @@
             type="text"
             class="form-control"
             name="examName"
-            placeholder="JEE, NEET, IOE..."
+            placeholder="Enter the exam name"
             required
           >
         </div>
 
-        <!-- Subjects
         <div class="mb-4">
-
-          <div class="d-flex justify-content-between align-items-center mb-2">
-            <label class="form-label fw-semibold mb-0">
-              Subjects
-            </label>
-
-            <button
-              type="button"
-              class="btn btn-sm btn-primary"
-              id="addSubjectBtn"
-            >
-              <i class="bi bi-plus-lg"></i>
-              Add Subject
-            </button>
-          </div>
-
-          <div id="subjectFields">
-
-            <div class="input-group mb-2 subject-row">
-              <input
-                type="text"
-                name="subjects"
-                class="form-control"
-                placeholder="Physics" required
-              >
-
-              <button
-                type="button"
-                class="btn btn-outline-danger remove-subject"
-              >
-                <i class="bi bi-trash"></i>
-              </button>
-            </div>
-
-            
-
-        
-
-          </div>
-        </div> -->
-
-<div class="mb-4">
-  <label class="form-label fw-semibold">
-    Select Course Type:
-  </label>
-
-  <div class="form-check">
-    <input class="form-check-input" type="radio" name="courseType" value="Crash Course">
-    <label class="form-check-label">Crash Course</label>
-  </div>
-
-  <div class="form-check">
-    <input class="form-check-input" type="radio" name="courseType" value="Complete Course">
-    <label class="form-check-label">Complete Course</label>
-  </div>
-
-  <div class="form-check">
-    <input class="form-check-input" type="radio" name="courseType" value="Practice Materials">
-    <label class="form-check-label">Practice Materials</label>
-  </div>
-
-  <div class="form-check">
-    <input
-      class="form-check-input"
-      type="radio"
-      name="courseType"
-      id="otherRadio"
-      value="Other" required
-    >
-    <label class="form-check-label" for="otherRadio">
-      Other
-    </label>
-  </div>
-
-  <div id="otherInputWrapper" class="mt-2 d-none">
-    <input
-      type="text"
-      class="form-control"
-      name="otherCourseType"
-      placeholder="Enter custom course type"
-    >
-  </div>
-</div>
+          <label class="form-label fw-semibold" for="courseType">Course type</label>
+          <input id="courseType" type="text" class="form-control" name="courseType" list="course-types" maxlength="120" required>
+          <datalist id="course-types"><% courseTypes.forEach(type => { %><option value="<%= type %>"><% }) %></datalist>
+        </div>
         <!-- Icon -->
         <div class="mb-4">
           <label class="form-label fw-semibold">
@@ -140,12 +60,10 @@
             type="text"
             class="form-control"
             name="icon"
-           
+            maxlength="64"
           >
 
-          <div class="form-text">
-            Example:,
-          </div>
+          <div class="form-text">Optional Bootstrap icon name, such as stars.</div>
         </div>
 
         <!-- Buttons -->
@@ -166,60 +84,3 @@
   </div>
 
 </main>
-
-<script>
-  const radios = document.querySelectorAll('input[name="courseType"]');
-  const otherInputWrapper = document.getElementById('otherInputWrapper');
-
-  radios.forEach(radio => {
-    radio.addEventListener('change', () => {
-      if (radio.value === 'Other' && radio.checked) {
-        otherInputWrapper.classList.remove('d-none');
-      } else {
-        otherInputWrapper.classList.add('d-none');
-      }
-    });
-  });
-  const subjectFields = document.getElementById("subjectFields");
-  const addSubjectBtn = document.getElementById("addSubjectBtn");
-
-  addSubjectBtn.addEventListener("click", () => {
-
-    const div = document.createElement("div");
-
-    div.className = "input-group mb-2 subject-row";
-
-    div.innerHTML = `
-      <input
-        type="text"
-        name="subjects"
-        class="form-control"
-        placeholder="Subject Name"
-      >
-
-      <button
-        type="button"
-        class="btn btn-outline-danger remove-subject"
-      >
-        <i class="bi bi-trash"></i>
-      </button>
-    `;
-
-    subjectFields.appendChild(div);
-  });
-
-  subjectFields.addEventListener("click", (e) => {
-
-    const btn = e.target.closest(".remove-subject");
-
-    if (!btn) return;
-
-    const rows = document.querySelectorAll(".subject-row");
-
-    if (rows.length > 1) {
-      btn.closest(".subject-row").remove();
-    } else {
-      rows[0].querySelector("input").value = "";
-    }
-  });
-</script>

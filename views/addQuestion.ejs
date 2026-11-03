@@ -19,7 +19,7 @@
                     </p>
                     <div class="row g-2">
                         <div class="col-sm-9">
-                            <input type="text" id="aiPrompt" class="form-control" placeholder="e.g., Photoelectric effect threshold wavelength numerical">
+                            <input type="text" id="aiPrompt" class="form-control" placeholder="Describe the topic and question you need">
                         </div>
                         <div class="col-sm-3">
                             <button type="button" id="btnGenerateAI" <%= process.env.GEMINI_API_KEY?'':'disabled' %> class="btn btn-primary w-100">
@@ -174,7 +174,7 @@
     <div class="mb-3">
                     <label class="form-label">Chapter</label>
 
-                    <input type="text" name="chapter" class="form-control" placeholder="Chapter Name">
+                    <input type="text" name="chapter" class="form-control" placeholder="Enter chapter name">
                 </div>
                 <!-- Difficulty -->
                 <div class="mb-3">
@@ -195,7 +195,7 @@
                         type="text"
                         name="tags"
                         class="form-control"
-                        placeholder="Example: Mechanics, Newton Laws, Numerical">
+                        placeholder="Enter topic tags separated by commas">
                     <div class="form-text">
                         Separate multiple tags with commas.
                     </div>

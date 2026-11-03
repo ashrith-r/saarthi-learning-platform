@@ -30,7 +30,7 @@
 <% //newChange %>
           <label class="form-label fw-semibold">Title</label>
 <% //newChange %>
-          <input type="text" name="title" class="form-control" placeholder="Registration Open, Date sheet released..." required>
+          <input type="text" name="title" class="form-control" placeholder="Enter an announcement title" maxlength="180" required>
 <% //newChange %>
         </div>
 <% //newChange %>
@@ -38,21 +38,10 @@
 <% //newChange %>
           <label class="form-label fw-semibold">Category</label>
 <% //newChange %>
-          <select name="category" class="form-select" required>
-<% //newChange %>
-            <option value="General">General</option>
-<% //newChange %>
-            <option value="JEE">JEE</option>
-<% //newChange %>
-            <option value="NEET">NEET</option>
-<% //newChange %>
-            <option value="IOE">IOE</option>
-<% //newChange %>
-            <option value="Admission">Admission</option>
-<% //newChange %>
-            <option value="Exam Schedule">Exam Schedule</option>
-<% //newChange %>
-          </select>
+          <input type="text" name="category" class="form-control" list="update-categories" maxlength="80" required>
+          <datalist id="update-categories">
+            <% categories.forEach(category => { %><option value="<%= category %>"><% }) %>
+          </datalist>
 <% //newChange %>
         </div>
 <% //newChange %>
@@ -60,7 +49,7 @@
 <% //newChange %>
           <label class="form-label fw-semibold">Content</label>
 <% //newChange %>
-          <textarea name="content" class="form-control" rows="5" placeholder="Detail explanation of the update..." required></textarea>
+          <textarea name="content" class="form-control" rows="5" placeholder="Write the announcement details." maxlength="10000" required></textarea>
 <% //newChange %>
         </div>
 <% //newChange %>

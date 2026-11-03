@@ -37,7 +37,7 @@ export async function importCsv(req,res){
  for(const [i,r] of rows.entries()){
   if(!r.question||!['A','B','C','D'].every(k=>r[k])||!['A','B','C','D'].includes(r.answer)){errors.push('Row '+(i+2)+': provide question, A, B, C, D and answer letter A–D.');continue;}
   const q=new Question({course:chapter.subjectID.examID,subject:chapter.subjectID.subjectName,chapter:chapter.chapterName,question_text:r.question,options:['A','B','C','D'].map(k=>({text:r[k]})),tags:(r.tags||'').split('|').filter(Boolean),solution:{text:r.solution||''},createdBy:req.user._id});q.correctOption=q.options[['A','B','C','D'].indexOf(r.answer)]._id;
-  const error=q.validateSync();if(error)errors.push('Row '+(i+2)+': '+error.message);else docs.push(q);
+  try{await q.validate();docs.push(q);}catch(error){errors.push('Row '+(i+2)+': '+error.message);}
  }
  if(req.body.confirm==='yes'&&!errors.length){await Question.insertMany(docs);await Audit.create({actor:req.user._id,action:'CSV import',details:docs.length+' questions'});req.flash('success',docs.length+' questions imported.');return res.redirect('/admin/questionBank');}
  return menu(req,res,{errors,count:docs.length,chapterID:String(chapter._id),questions:docs.map(d=>d.question_text)},csv);

@@ -10,9 +10,9 @@ This record distinguishes browser exercises, database-backed HTTP checks, source
 
 ## Automated evidence
 
-The final database suite passes 32 reported tests: 30 workflow cases, one production restart case and the enclosing workflow test. The unit/HTTP suite passes 27 tests. Syntax checks cover 118 JavaScript/EJS files. The internal-link crawl verifies the destinations discovered in rendered admin/student pages, following redirects and rejecting error responses. Reproduce with `npm run check`, `npm test`, `npm run test:integration` and `node scripts/inventory.js`.
+The final database suite passes 32 reported tests: 30 workflow cases, one production restart case and the enclosing workflow test. The unit/HTTP suite passes 28 tests. Syntax checks pass for 115 JavaScript files and EJS templates. The internal-link crawl verifies the destinations discovered in rendered admin/student pages, following redirects and rejecting error responses. Reproduce with `npm run check`, `npm test`, `npm run test:integration` and `node scripts/inventory.js`.
 
-The generated source inventory initially found 85 route declarations, 51 templates, 109 links, 44 forms and 307 controls. This includes retained historical templates that no longer have a rendered GET route; these counts are an inventory, not a claim that 307 distinct controls were clicked. Generated inventories and link results are in `verification/`. Actual workflow results follow.
+The current generated source inventory finds 84 route declarations, 48 templates, 105 links, 43 forms and 287 controls. These counts describe source elements, not a claim that every control was clicked. Generated inventories and link results are in `verification/`. Actual workflow results follow.
 
 | Area / role | Action and expected result | Observed result / method |
 |---|---|---|
@@ -24,6 +24,7 @@ The generated source inventory initially found 85 route declarations, 51 templat
 | Isolation | A second account cannot read attempts or update another account's planner task | Pass, DB checks |
 | Admin shell | Editors and curriculum forms render one dark workspace | Pass, 15 editor destinations checked by HTTP; admin and quiz builder inspected in browser |
 | Curriculum | Create/edit exam, subject and chapter; relationships persist and student page changes | Pass, DB checks including invalid and missing records |
+| Dynamic categories and course types | Add a new announcement category and curriculum course type; subsequent admin forms suggest saved values and public filters/pages render saved records | Pass, DB checks |
 | Materials | Create, edit, publish and hide a resource; student page reflects visibility | Pass, DB checks; browser created a link and found it through student search |
 | Legacy materials | Existing lecture opens in the unified manager, saves order/title and retains metadata | Pass, DB checks |
 | Ordering | Lower positions precede higher positions within video/document groups | Pass, DB assertions on rendered student order |

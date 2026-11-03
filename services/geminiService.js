@@ -7,20 +7,20 @@ export async function generateQuestionFromAI({ prompt, subject, chapter, difficu
     throw new Error("GEMINI_API_KEY is not defined in the environment variables.");
   }
 
-  const systemInstruction = `You are a professional educational assessment creator for academic exams (like JEE, NEET, IOE). Generate a single multiple-choice question on the specified topic.
+  const systemInstruction = `You are an educational assessment writer. Generate one accurate multiple-choice question using the supplied topic, subject, chapter and difficulty context. Do not assume a specific exam board or add unsupported curriculum details.
 You must respond with a valid JSON object matching the following structure:
 {
   "question_text": "The text of the question. Must be clear and grammatically correct.",
   "options": ["Option A text", "Option B text", "Option C text", "Option D text"],
-  "correctOption": 0, // 0 for Option A, 1 for Option B, 2 for Option C, 3 for Option D
-  "tags": ["tag1", "tag2"], // list of 1-3 relevant sub-topic tags
+  "correctOption": 0,
+  "tags": ["tag1", "tag2"],
   "solution_text": "A detailed step-by-step explanation showing how to solve the question.",
   "chapter": "Suggested chapter name"
 }`;
 
   const userPrompt = `Generate an MCQ.
 Topic/Prompt: ${prompt}
-Subject: ${subject || "General"}
+Subject: ${subject || "Not specified"}
 Chapter Context: ${chapter || ""}
 Difficulty Level: ${difficulty || "Medium"}
 
@@ -47,6 +47,16 @@ Remember: Return ONLY valid JSON, do not wrap it in markdown code blocks like \`
     }
 
     const parsedData = JSON.parse(resultText.trim());
+    if (!parsedData || typeof parsedData !== 'object' || Array.isArray(parsedData) ||
+      typeof parsedData.question_text !== 'string' || !parsedData.question_text.trim() ||
+      !Array.isArray(parsedData.options) || parsedData.options.length !== 4 ||
+      parsedData.options.some(option => typeof option !== 'string' || !option.trim()) ||
+      !Number.isInteger(parsedData.correctOption) || parsedData.correctOption < 0 || parsedData.correctOption > 3 ||
+      !Array.isArray(parsedData.tags) || parsedData.tags.length < 1 || parsedData.tags.length > 3 ||
+      parsedData.tags.some(tag => typeof tag !== 'string' || !tag.trim()) ||
+      typeof parsedData.solution_text !== 'string' || !parsedData.solution_text.trim()) {
+      throw new Error('AI returned an incomplete question. Review the prompt and try again.');
+    }
     return parsedData;
   } catch (error) {
     console.error("Gemini Generation Error:", error.response?.data || error.message);

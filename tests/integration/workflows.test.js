@@ -108,16 +108,23 @@ test('database-backed student and administrator demo journeys', {timeout:1200000
  await t.test('curriculum create and edit preserves relationships and validates input',async()=>{
   const {default:Exam}=await import('../../models/exam.js'),{default:Subject}=await import('../../models/subjects.js'),{default:Chapter}=await import('../../models/chapter.js');
   assert.equal((await request('/admin/addExam',{cookies:admin,method:'POST',body:{examName:'',courseType:'Engineering'}})).status,400);
-  assert.equal((await request('/admin/addExam',{cookies:admin,method:'POST',body:{examName:'Audit exam',courseType:'Engineering'}})).status,302);
+  assert.equal((await request('/admin/addExam',{cookies:admin,method:'POST',body:{examName:'Audit exam',courseType:'Custom academic track',icon:'stars'}})).status,302);
+  assert.equal((await request('/admin/addExam',{cookies:admin,method:'POST',body:{examName:'Other course type exam',courseType:'Other'}})).status,302);
+  assert.ok(await Exam.exists({examName:'Other course type exam',courseType:'Other'}));
   const exam=await Exam.findOne({examName:'Audit exam'});
-  assert.equal((await request('/admin/exam/edit/'+exam._id,{cookies:admin,method:'POST',body:{examName:'Audit exam edited',courseType:'Engineering'}})).status,302);
-  assert.equal((await request('/admin/subject/'+exam._id+'/add',{cookies:admin,method:'POST',body:{'subject[subjectName]':'Audit subject','subject[description]':'Subject description','subject[chapterCount]':'1'}})).status,302);
+  assert.equal((await request('/admin/addExam',{cookies:admin})).status,200);
+  assert.match(await (await request('/admin/addExam',{cookies:admin})).text(),/value="Custom academic track"/);
+  assert.equal((await request('/admin/exam/edit/'+exam._id,{cookies:admin,method:'POST',body:{examName:'Audit exam edited',courseType:'Custom academic track',icon:'moon'}})).status,302);
+  assert.match(await (await request('/')).text(),/bi bi-moon/);
+  assert.equal((await request('/admin/subject/'+exam._id+'/add',{cookies:admin,method:'POST',body:{'subject[subjectName]':'Audit subject','subject[description]':'Subject description','subject[chapterCount]':'1','subject[icon]':'book-half'}})).status,302);
   const subject=await Subject.findOne({examID:exam._id});assert.ok(subject);
+  assert.match(await (await request('/subject/'+exam._id)).text(),/bi bi-book-half/);
   assert.equal((await request('/admin/subject/'+subject._id+'/addChapter',{cookies:admin,method:'POST',body:{subjectID:String(subject._id),'chapters[0][chapterName]':'Audit chapter','chapters[0][description]':'Chapter description'}})).status,302);
   const chapter=await Chapter.findOne({subjectID:subject._id});assert.ok(chapter);
   assert.equal((await request('/admin/chapter/'+chapter._id+'/edit',{cookies:admin,method:'POST',body:{'chapter[chapterName]':'Edited chapter','chapter[description]':'Edited description'}})).status,302);
   assert.equal((await request('/admin/subject/'+subject._id+'/edit',{cookies:admin,method:'POST',body:{'subjects[name]':'Edited subject','subjects[description]':'Description','subjects[chapterCount]':'1'}})).status,302);
   assert.match(await (await request('/subject/'+subject._id+'/chapter')).text(),/Edited chapter/);
+  assert.equal((await request('/subject/'+subject._id+'/chapter%20')).status,404);
   assert.equal((await request('/admin/chapter/'+new mongoose.Types.ObjectId()+'/edit',{cookies:admin})).status,404);
  });
  await t.test('ordered materials, private preview, archive and restore affect student visibility',async()=>{
@@ -180,12 +187,15 @@ test('database-backed student and administrator demo journeys', {timeout:1200000
   assert.equal((await request('/admin/question/delete/'+question._id,{method:'POST',cookies:admin})).status,409);
  });
  await t.test('announcements and admin metrics reflect saved records, with no quote workflow',async()=>{
-  assert.equal((await request('/admin/addUpdate',{method:'POST',cookies:admin,body:{title:'Audit notice',category:'General',content:'Test announcement'}})).status,302);
-  assert.match(await (await request('/updates')).text(),/Audit notice/);
+  assert.equal((await request('/admin/addUpdate',{method:'POST',cookies:admin,body:{title:'Audit notice',category:'Scholarships',content:'Test announcement'}})).status,302);
+  assert.equal((await request('/admin/addUpdate',{method:'POST',cookies:admin,body:{title:'Invalid notice',category:'',content:'Missing category'}})).status,400);
+  const updateForm=await (await request('/admin/addUpdate',{cookies:admin})).text();assert.match(updateForm,/value="Scholarships"/);
+  const updates=await (await request('/updates')).text();assert.match(updates,/Audit notice/);assert.match(updates,/Scholarships/);
+  assert.match(await (await request('/updates?category=Scholarships')).text(),/Audit notice/);
   const html=await (await request('/admin',{cookies:admin})).text();assert.match(html,/Tests awaiting publication/);assert.match(html,/Audit draft/);assert.ok(!html.includes('New Quote of Day'));
  });
  await t.test('all rendered internal links resolve for their authorized role',async()=>{
-  const {mkdirSync,writeFileSync}=await import('node:fs');const pages=['/admin','/admin/materials','/admin/publishing','/admin/questionBank','/admin/quiz/create','/dashboard','/library','/planner','/insights','/practice','/updates','/learn/'+quiz.chapterID];
+  const {mkdirSync,writeFileSync}=await import('node:fs');const {default:Exam}=await import('../../models/exam.js'),{default:Subject}=await import('../../models/subjects.js');const exam=await Exam.findOne(),subject=await Subject.findOne();const pages=['/','/subject/'+exam._id,'/subject/'+subject._id+'/chapter','/admin','/admin/materials','/admin/publishing','/admin/site-settings','/admin/addExam','/admin/addUpdate','/admin/questionBank','/admin/quiz/create','/admin/exam/edit/'+exam._id,'/admin/subject/'+exam._id+'/add','/admin/subject/'+subject._id+'/edit','/admin/subject/'+subject._id+'/addChapter','/admin/chapter/'+quiz.chapterID+'/edit','/admin/'+exam._id+'/addQuestion','/admin/question/edit/'+quiz.questions[0]._id,'/dashboard','/library','/planner','/insights','/practice','/updates','/learn/'+quiz.chapterID];
   const links=new Set(pages);for(const path of pages){const html=await (await request(path,{cookies:admin})).text();for(const match of html.matchAll(/href="(\/[^"<>]*)"/g)){const link=match[1].replaceAll('&amp;','&').split('#')[0];if(link&&!link.startsWith('//'))links.add(link);}}
   const records=[];for(const link of links){let path=link,response;for(let i=0;i<4;i++){response=await request(path,{cookies:admin});if(response.status===302){path=response.headers.get('location');continue;}break;}records.push({link,status:response.status});assert.ok(response.status>=200&&response.status<400,link+' -> '+response.status);}
   mkdirSync('.local/verification',{recursive:true});writeFileSync('.local/verification/http-links.json',JSON.stringify(records,null,2));

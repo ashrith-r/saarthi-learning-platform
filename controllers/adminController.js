@@ -9,27 +9,22 @@ import subjectModel from "../models/subjects.js";
 import { convertYoutubeLink,getImage } from "../utils.js";
 import updateModel from "../models/update.js";
 import userModel from "../models/user.js";
-import quoteModel from "../models/quote.js";
 import questionModel from "../models/questionBank.js";
 import quizModel from "../models/quiz.js";
 import quizAttemptModel from "../models/quizAttempt.js";
 import { generateQuestionFromAI } from "../services/geminiService.js";
 
 export async function renderAddExam(req,res) {
-
-  
-  res.render("addExam")
+  const courseTypes = await examModel.distinct("courseType");
+  res.render("addExam", { courseTypes: courseTypes.filter(value => typeof value === "string" && value.trim()).sort((a, b) => a.localeCompare(b)) });
 }
 
 export async function addExam(req,res) {
-
     let {examName,courseType, otherCourseType,icon}=req.body;
-    
-if (courseType === "Other") {
-  courseType = otherCourseType;
- }
-
-if(!icon || icon.trim() === "") icon = ""
+    examName=examName.trim();
+    const alternativeCourseType=typeof otherCourseType==='string'?otherCourseType.trim():'';
+    courseType=courseType === "Other" && alternativeCourseType ? alternativeCourseType : courseType.trim();
+    icon=typeof icon==='string'?icon.trim():'';
     let data = await examModel.create({
       examName,courseType,icon,
       createdBy: req.user._id,
@@ -129,8 +124,9 @@ export async function editExamRender(req,res) {
   let examName = exam.examName;
   let courseType=exam.courseType;
   let icon = exam.icon;
+  let courseTypes = await examModel.distinct("courseType");
   res.render("editExam",{
-    examName,courseType,icon,exam
+    examName,courseType,icon,exam,courseTypes:courseTypes.filter(value=>typeof value==='string'&&value.trim()).sort((a,b)=>a.localeCompare(b))
   })
   
 }
@@ -139,14 +135,10 @@ export async function editExam(req,res) {
   try {
     let { examName, courseType, otherCourseType, icon } = req.body;
     const { id } = req.params;
-
-    if (courseType === "Other") {
-      courseType = otherCourseType;
-    }
-
-    if (!icon || icon.trim() === "") {
-      icon = "";
-    }
+    examName=examName.trim();
+    const alternativeCourseType=typeof otherCourseType==='string'?otherCourseType.trim():'';
+    courseType=courseType === "Other" && alternativeCourseType ? alternativeCourseType : courseType.trim();
+    icon=typeof icon==='string'?icon.trim():'';
 
     await examModel.findByIdAndUpdate(
       id,
@@ -318,11 +310,22 @@ let sheet = await noteModel.findByIdAndUpdate(id,{
 res.redirect(`/content/${chapterID}`) 
 }
 export async function renderAddUpdate(req, res) {
-  const exams = await examModel.find();
-  res.render("addUpdate", { exams });
+  const [exams, categoryValues] = await Promise.all([
+    examModel.find(),
+    updateModel.distinct("category", { category: { $type: "string", $ne: "" } })
+  ]);
+  const categories = categoryValues.filter(value => value.trim()).sort((a, b) => a.localeCompare(b));
+  res.render("addUpdate", { exams, categories });
 }
 export async function addUpdate(req, res) {
-  const { title, category, content, examID, isImportant } = req.body;
+  const title = typeof req.body.title === "string" ? req.body.title.trim() : "";
+  const category = typeof req.body.category === "string" ? req.body.category.trim() : "";
+  const content = typeof req.body.content === "string" ? req.body.content.trim() : "";
+  const { examID, isImportant } = req.body;
+  if (!title || title.length > 180 || !category || category.length > 80 || !content || content.length > 10000) {
+    return res.status(400).send("Enter a title, category and announcement under the listed length limits.");
+  }
+  if (examID && !await examModel.exists({ _id: examID })) return res.status(400).send("Choose an existing exam.");
   await updateModel.create({
     title,
     category,
@@ -368,33 +371,6 @@ export async function toggleAdminStatus(req, res) {
   } catch (error) {
     console.error("Error toggling admin status:", error);
     req.flash("error", "Failed to update user administrative status");
-    res.redirect("/admin");
-  }
-}
-
-export async function renderAddQuote(req, res) {
-  res.render("addQuote");
-}
-
-export async function addQuote(req, res) {
-  try {
-    let { content, author } = req.body;
-    if (!author || author.trim() === "") {
-      author = "Anonymous";
-    }
-
-    await quoteModel.create({
-      content,
-      author,
-      createdBy: req.user._id,
-      updatedBy: req.user._id
-    });
-
-    req.flash("success", "Quote of the Day added successfully!");
-    res.redirect("/admin");
-  } catch (error) {
-    console.error("Error creating quote:", error);
-    req.flash("error", "Failed to add Quote of the Day");
     res.redirect("/admin");
   }
 }

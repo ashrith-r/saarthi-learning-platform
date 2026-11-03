@@ -74,6 +74,7 @@ The application renders server-side EJS pages and uses a small client-side scrip
 | ADMIN-04 | Record settings changes | Publishing mutations retain previous settings and write an actor/action audit event |
 | IMPORT-01 | Validate CSV questions | CSV format, answer letter and required options are validated; up to 100 rows are previewed before confirmation |
 | AI-01 | Assist question drafting | Existing AI generation is optional and produces editable candidate content; staff review before publication |
+| NOTICE-01 | Maintain announcements | Content staff can add announcements with a new or existing category; the public category filter reflects saved categories |
 
 ## 6. Principal use cases
 
@@ -162,6 +163,7 @@ Performance and accessibility targets are acceptance goals, not claims of measur
 | Scoring/answer sanitation/answer-key secrecy | tests/testEngine.test.js |
 | Learning, tasks, ownership, autosave, expiry, revision | tests/integration/workflows.test.js |
 | Publishing, draft exclusion, CSV preview | tests/integration/workflows.test.js |
+| Curriculum forms, editable categories/course types, material visibility and rendered internal links | tests/integration/workflows.test.js |
 | JavaScript/EJS syntax | npm run check |
 | Appearance/mobile/browser interaction | Manual presentation rehearsal; capture evidence before release |
 | Optional providers and hosting | Deployment acceptance checklist in DEPLOYMENT.md |
@@ -214,5 +216,7 @@ Visual baseline: the current world is the dark blue/orange observatory in DESIGN
 LearningResource and legacy resource records now include position (default 0) and archived (default false). Archived records are retained. Student visibility requires published and not archived; staff may review records and documents. Resource order is applied independently to video and document groups.
 
 The browser timezone is a non-sensitive preference cookie, validated through Intl before use; invalid or absent values use UTC. Planner day boundaries use this timezone. Activity streaks remain explicitly based on UTC days. Dashboard totals retain earlier and timed attempts; the performance view identifies the timed-analysis scope and links earlier results separately.
+
+Dashboard milestone thresholds are measured from the signed-in account's saved records: “First chapter” requires 1 completed chapter; “Learning momentum” requires 5 completed chapters; “Test explorer” requires 1 submitted timed or legacy test; “Plan in motion” requires 1 completed study task. Exam course types and announcement categories are editable values; existing values are suggestions drawn from stored records, not fixed lists. The opt-in demo seed is the only bundled academic example dataset. Workflow labels, validation rules, default settings and visual assets remain application behavior.
 
 The exact executed workflow matrix, fixture handling, capture dimensions and unresolved environment checks are in WORKFLOW-AUDIT.md. This local verification is not certification of live email, external playback, image/AI providers, public TLS, hosting, Docker, load capacity or backup restoration.

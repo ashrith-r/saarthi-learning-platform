@@ -9,8 +9,6 @@ import sessionModel from "../models/session.js";
 import config from "../config/config.js";
 import examModel from "../models/exam.js";
 import updateModel from "../models/update.js";
-import testimonialModel from "../models/testimonial.js";
-import quoteModel from "../models/quote.js";
 
 const ACCESS_TOKEN_MAX_AGE = 5 * 60 * 1000;
 const REFRESH_TOKEN_MAX_AGE = 15 * 24 * 60 * 60 * 1000;
@@ -61,14 +59,10 @@ export async function renderIndex(req,res) {
   try {
     const exams = await examModel.find();
     const dbUpdates = await updateModel.find().sort({ date: -1 }).limit(10);
-    const testimonials = await testimonialModel.find();
-    const quote = await quoteModel.findOne().sort({ createdAt: -1 });
 
     return res.render("index.ejs", {
       exams,
-      updates: dbUpdates,
-      testimonials,
-      quote
+      updates: dbUpdates
     });
   } catch (error) {
     console.error("Error loading home page:", error);

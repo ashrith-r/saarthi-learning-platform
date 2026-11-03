@@ -1,3 +1,10 @@
+export const MILESTONE_THRESHOLDS = Object.freeze({
+  firstChapter: 1,
+  learningMomentum: 5,
+  testExplorer: 1,
+  planInMotion: 1
+});
+
 export function summarize(progress, attempts, tasks, now = new Date()) {
   const completed = progress.filter(p => p.completed).length;
   const answered = attempts.reduce((n, a) => n + a.totalQuestions, 0);
@@ -16,7 +23,7 @@ export function summarize(progress, attempts, tasks, now = new Date()) {
   return { completed, weekly, streak, accuracy: answered ? Math.round(correct / answered * 100) : 0,
     tests: attempts.length, saved: progress.filter(p => p.bookmarked).length,
     tasksDone: tasks.filter(t => t.done).length, weakTopics,
-    badges: [completed >= 1 && 'First chapter', completed >= 5 && 'Learning momentum', attempts.length >= 1 && 'Test explorer', tasks.some(t => t.done) && 'Plan in motion'].filter(Boolean) };
+    badges: [completed >= MILESTONE_THRESHOLDS.firstChapter && 'First chapter', completed >= MILESTONE_THRESHOLDS.learningMomentum && 'Learning momentum', attempts.length >= MILESTONE_THRESHOLDS.testExplorer && 'Test explorer', tasks.filter(t => t.done).length >= MILESTONE_THRESHOLDS.planInMotion && 'Plan in motion'].filter(Boolean) };
 }
 export function validDate(value) {
   return typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value) &&

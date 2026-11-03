@@ -6,17 +6,20 @@ const updateSchema = new Schema({
   title: {
     type: String,
     required: [true, "Title is required"],
-    trim: true
+    trim: true,
+    maxlength: 180
   },
   category: {
     type: String,
     required: [true, "Category is required"],
-    trim: true
+    trim: true,
+    maxlength: 80
   },
   content: {
     type: String,
     required: [true, "Content is required"],
-    trim: true
+    trim: true,
+    maxlength: 10000
   },
   date: {
     type: Date,

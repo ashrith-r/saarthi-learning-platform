@@ -93,42 +93,18 @@ export async function renderUpdates(req, res) {
   if (category) {
     query.category = category;
   }
-  const updates = await updateModel.find(query).sort({ date: -1 });
-  const exams = await examModel.find();
-  const categories = ["JEE", "NEET", "IOE", "General", "Admission", "Exam Schedule"];
+  const [updates, exams, categoryValues] = await Promise.all([
+    updateModel.find(query).sort({ date: -1 }),
+    examModel.find(),
+    updateModel.distinct("category", { category: { $type: "string", $ne: "" } })
+  ]);
+  const categories = categoryValues.filter(value => value.trim()).sort((a, b) => a.localeCompare(b));
   res.render("updates.ejs", {
     updates,
     exams,
     categories,
     filters
   });
-}
-
-export async function renderStudentDashboard(req, res) {
-  try {
-    const exams = await examModel.find();
-    const importantUpdates = await updateModel.find({ isImportant: true })
-      .sort({ date: -1 })
-      .limit(5);
-
-    const totalLectures = await lectureModel.countDocuments();
-    const totalNotes = await noteModel.countDocuments();
-    const totalSheets = await sheetModel.countDocuments();
-
-    res.render("dashboard", {
-      exams,
-      importantUpdates,
-      stats: {
-        lectures: totalLectures,
-        notes: totalNotes,
-        sheets: totalSheets
-      }
-    });
-  } catch (error) {
-    console.error("Error loading Student Dashboard:", error);
-    req.flash("error", "Failed to load dashboard data");
-    res.redirect("/");
-  }
 }
 
 export async function renderTakeQuiz(req, res) {

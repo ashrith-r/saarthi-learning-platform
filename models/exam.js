@@ -20,7 +20,8 @@ const examSchema = new Schema({
 ,
   icon:{
     type:String,
-    default:""
+    default:"",
+    maxlength:64
   },
   createdBy: {
     type: Schema.Types.ObjectId,

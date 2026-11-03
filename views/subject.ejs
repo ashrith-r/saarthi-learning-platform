@@ -93,7 +93,7 @@
     </a>
   <% } %>
 
-  <a href="/exams" class="btn btn-outline-secondary">
+  <a href="/" class="btn btn-outline-secondary">
     <i class="bi bi-arrow-left"></i>
     Back
   </a>
@@ -105,7 +105,7 @@
 
   <div class="row g-4">
 
-    <% subjectList.forEach(subject => { %>
+    <% subjectList.forEach(subject => { const iconName = /^[a-z0-9-]{1,60}$/i.test(subject.icon || '') ? String(subject.icon).replace(/^bi-/i, '') : 'book'; %>
 
       <div class="col-md-6 col-xl-4">
 
@@ -119,7 +119,7 @@
   class="rounded-circle bg-light d-flex justify-content-center align-items-center"
   style="width:80px;height:80px;font-size:40px;"
 >
-  <i class="bi bi-book" aria-hidden="true"></i>
+  <i class="bi bi-<%= iconName %>" aria-hidden="true"></i>
 </div>
 
               <span class="badge bg-primary fs-6">
@@ -139,7 +139,7 @@
             <div class="d-grid">
 
               <a
-                href="/subject/<%=subject._id%>/chapter "
+                href="/subject/<%=subject._id%>/chapter"
                 class="btn btn-primary"
               >
                 Start Learning

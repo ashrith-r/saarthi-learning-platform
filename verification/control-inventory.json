@@ -328,11 +328,6 @@
     {
       "file": "render_index",
       "method": "GET",
-      "path": "/dashboard"
-    },
-    {
-      "file": "render_index",
-      "method": "GET",
       "path": "/quiz/:id"
     },
     {
@@ -614,7 +609,7 @@
       "file": "views\\addExam.ejs",
       "links": [
         {
-          "target": "/exams",
+          "target": "/admin",
           "label": "Back"
         }
       ],
@@ -628,43 +623,15 @@
         },
         {
           "type": "input",
-          "attributes": "\n            type=\"text\"\n            class=\"form-control\"\n            name=\"examName\"\n            placeholder=\"JEE, NEET, IOE...\"\n            required\n          "
-        },
-        {
-          "type": "button",
-          "attributes": "\n              type=\"button\"\n              class=\"btn btn-sm btn-primary\"\n              id=\"addSubjectBtn\"\n            "
+          "attributes": "\n            type=\"text\"\n            class=\"form-control\"\n            name=\"examName\"\n            placeholder=\"Enter the exam name\"\n            required\n          "
         },
         {
           "type": "input",
-          "attributes": "\n                type=\"text\"\n                name=\"subjects\"\n                class=\"form-control\"\n                placeholder=\"Physics\" required\n              "
-        },
-        {
-          "type": "button",
-          "attributes": "\n                type=\"button\"\n                class=\"btn btn-outline-danger remove-subject\"\n              "
+          "attributes": " id=\"courseType\" type=\"text\" class=\"form-control\" name=\"courseType\" list=\"course-types\" maxlength=\"120\" required"
         },
         {
           "type": "input",
-          "attributes": " class=\"form-check-input\" type=\"radio\" name=\"courseType\" value=\"Crash Course\""
-        },
-        {
-          "type": "input",
-          "attributes": " class=\"form-check-input\" type=\"radio\" name=\"courseType\" value=\"Complete Course\""
-        },
-        {
-          "type": "input",
-          "attributes": " class=\"form-check-input\" type=\"radio\" name=\"courseType\" value=\"Practice Materials\""
-        },
-        {
-          "type": "input",
-          "attributes": "\n      class=\"form-check-input\"\n      type=\"radio\"\n      name=\"courseType\"\n      id=\"otherRadio\"\n      value=\"Other\" required\n    "
-        },
-        {
-          "type": "input",
-          "attributes": "\n      type=\"text\"\n      class=\"form-control\"\n      name=\"otherCourseType\"\n      placeholder=\"Enter custom course type\"\n    "
-        },
-        {
-          "type": "input",
-          "attributes": "\n            type=\"text\"\n            class=\"form-control\"\n            name=\"icon\"\n           \n          "
+          "attributes": "\n            type=\"text\"\n            class=\"form-control\"\n            name=\"icon\"\n            maxlength=\"64\"\n          "
         },
         {
           "type": "button",
@@ -673,14 +640,6 @@
         {
           "type": "button",
           "attributes": " type=\"reset\" class=\"btn btn-outline-secondary\""
-        },
-        {
-          "type": "input",
-          "attributes": "\n        type=\"text\"\n        name=\"subjects\"\n        class=\"form-control\"\n        placeholder=\"Subject Name\"\n      "
-        },
-        {
-          "type": "button",
-          "attributes": "\n        type=\"button\"\n        class=\"btn btn-outline-danger remove-subject\"\n      "
         }
       ]
     },
@@ -697,7 +656,7 @@
         },
         {
           "type": "button",
-          "attributes": " type=\"button\" id=\"btnGenerateAI\" class=\"btn btn-primary w-100\""
+          "attributes": " type=\"button\" id=\"btnGenerateAI\" <%= process.env.GEMINI_API_KEY?'':'disabled' %"
         },
         {
           "type": "input",
@@ -782,40 +741,6 @@
       ]
     },
     {
-      "file": "views\\addQuote.ejs",
-      "links": [
-        {
-          "target": "/admin",
-          "label": "Back to Admin"
-        }
-      ],
-      "forms": [
-        " action=\"/admin/addQuote\" method=\"POST\""
-      ],
-      "controls": [
-        {
-          "type": "input",
-          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
-        },
-        {
-          "type": "textarea",
-          "attributes": " name=\"content\" class=\"form-control\" rows=\"4\" placeholder=\"Type the quote content here...\" required"
-        },
-        {
-          "type": "input",
-          "attributes": " type=\"text\" name=\"author\" class=\"form-control\" placeholder=\"Anonymous, Albert Einstein, Curator...\""
-        },
-        {
-          "type": "button",
-          "attributes": " type=\"submit\" class=\"btn btn-success\""
-        },
-        {
-          "type": "button",
-          "attributes": " type=\"reset\" class=\"btn btn-outline-secondary\""
-        }
-      ]
-    },
-    {
       "file": "views\\addSub.ejs",
       "links": [],
       "forms": [
@@ -865,7 +790,7 @@
         },
         {
           "type": "input",
-          "attributes": "\n              type=\"text\"\n              class=\"form-control\"\n              name=\"subject[icon]\"\n              placeholder=\"\"\n            "
+          "attributes": "\n              type=\"text\"\n              class=\"form-control\"\n              name=\"subject[icon]\"\n              placeholder=\"Bootstrap icon name (optional)\"\n              maxlength=\"64\"\n            "
         },
         {
           "type": "textarea",
@@ -899,15 +824,15 @@
         },
         {
           "type": "input",
-          "attributes": " type=\"text\" name=\"title\" class=\"form-control\" placeholder=\"Registration Open, Date sheet released...\" required"
+          "attributes": " type=\"text\" name=\"title\" class=\"form-control\" placeholder=\"Enter an announcement title\" maxlength=\"180\" required"
         },
         {
-          "type": "select",
-          "attributes": " name=\"category\" class=\"form-select\" required"
+          "type": "input",
+          "attributes": " type=\"text\" name=\"category\" class=\"form-control\" list=\"update-categories\" maxlength=\"80\" required"
         },
         {
           "type": "textarea",
-          "attributes": " name=\"content\" class=\"form-control\" rows=\"5\" placeholder=\"Detail explanation of the update...\" required"
+          "attributes": " name=\"content\" class=\"form-control\" rows=\"5\" placeholder=\"Write the announcement details.\" maxlength=\"10000\" required"
         },
         {
           "type": "select",
@@ -1021,7 +946,7 @@
           "label": "Add Chapter"
         },
         {
-          "target": "/exams",
+          "target": "/",
           "label": "Back"
         },
         {
@@ -1105,21 +1030,6 @@
       ]
     },
     {
-      "file": "views\\dashboard.ejs",
-      "links": [
-        {
-          "target": "/subject/<%= exam._id %>",
-          "label": "Explore Course"
-        },
-        {
-          "target": "/updates",
-          "label": "View All Announcements"
-        }
-      ],
-      "forms": [],
-      "controls": []
-    },
-    {
       "file": "views\\editChapter.ejs",
       "links": [],
       "forms": [
@@ -1148,7 +1058,7 @@
       "file": "views\\editExam.ejs",
       "links": [
         {
-          "target": "/exams",
+          "target": "/admin",
           "label": "Back"
         }
       ],
@@ -1162,31 +1072,15 @@
         },
         {
           "type": "input",
-          "attributes": "\n            type=\"text\"\n            class=\"form-control\"\n            name=\"examName\"\n            placeholder=\"JEE, NEET, IOE...\"\n            value=\"<%=examName %"
+          "attributes": "\n            type=\"text\"\n            class=\"form-control\"\n            name=\"examName\"\n            placeholder=\"Enter the exam name\"\n            value=\"<%=examName %"
         },
         {
           "type": "input",
-          "attributes": " class=\"form-check-input\" type=\"radio\" name=\"courseType\" value=\"Crash Course\""
+          "attributes": " id=\"courseType\" type=\"text\" class=\"form-control\" name=\"courseType\" list=\"course-types\" maxlength=\"120\" value=\"<%= courseType %"
         },
         {
           "type": "input",
-          "attributes": " class=\"form-check-input\" type=\"radio\" name=\"courseType\" value=\"Complete Course\""
-        },
-        {
-          "type": "input",
-          "attributes": " class=\"form-check-input\" type=\"radio\" name=\"courseType\" value=\"Practice Materials\""
-        },
-        {
-          "type": "input",
-          "attributes": "\n      class=\"form-check-input\"\n      type=\"radio\"\n      name=\"courseType\"\n      id=\"otherRadio\"\n      value=\"Other\" required\n    "
-        },
-        {
-          "type": "input",
-          "attributes": "\n      type=\"text\"\n      class=\"form-control\"\n      name=\"otherCourseType\"\n      placeholder=\"Enter custom course type\"\n    "
-        },
-        {
-          "type": "input",
-          "attributes": "\n            type=\"text\"\n            class=\"form-control\"\n            name=\"icon\"\n           value=\"<%=icon%"
+          "attributes": "\n            type=\"text\"\n            class=\"form-control\"\n            name=\"icon\"\n            maxlength=\"64\"\n            value=\"<%=icon%"
         },
         {
           "type": "button",
@@ -1195,14 +1089,6 @@
         {
           "type": "button",
           "attributes": " type=\"reset\" class=\"btn btn-outline-secondary\""
-        },
-        {
-          "type": "input",
-          "attributes": "\n        type=\"text\"\n        name=\"subjects\"\n        class=\"form-control\"\n        placeholder=\"Subject Name\"\n      "
-        },
-        {
-          "type": "button",
-          "attributes": "\n        type=\"button\"\n        class=\"btn btn-outline-danger remove-subject\"\n      "
         }
       ]
     },
@@ -1484,7 +1370,7 @@
         },
         {
           "type": "input",
-          "attributes": "\n              type=\"text\"\n              class=\"form-control\"\n              name=\"subjects[icon]\"\n              placeholder=\"\"\n              value=\"<%=subject.icon%"
+          "attributes": "\n              type=\"text\"\n              class=\"form-control\"\n              name=\"subjects[icon]\"\n              placeholder=\"Bootstrap icon name (optional)\"\n              maxlength=\"64\"\n              value=\"<%=subject.icon%"
         },
         {
           "type": "input",
@@ -1511,17 +1397,6 @@
           "attributes": " type=\"button\" class=\"studio-button secondary\" onclick=\"history.back()\""
         }
       ]
-    },
-    {
-      "file": "views\\exams.ejs",
-      "links": [
-        {
-          "target": "/library?exam=<%= exam.id %>",
-          "label": "Browse"
-        }
-      ],
-      "forms": [],
-      "controls": []
     },
     {
       "file": "views\\forgot-password.ejs",
@@ -1616,7 +1491,7 @@
       "controls": [
         {
           "type": "button",
-          "attributes": " class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navMain\""
+          "attributes": " class=\"navbar-toggler\" type=\"button\" aria-label=\"Toggle navigation\" aria-controls=\"navMain\" aria-expanded=\"false\" data-bs-toggle=\"collapse\" data-bs-target=\"#navMain\""
         },
         {
           "type": "input",
@@ -1645,7 +1520,7 @@
         },
         {
           "target": "/subject/<%= exam._id %>",
-          "label": "View subjects"
+          "label": "\">View subjects"
         },
         {
           "target": "/updates",
@@ -2487,11 +2362,11 @@
           "label": "Add Question"
         },
         {
-          "target": "/exams",
+          "target": "/",
           "label": "Back"
         },
         {
-          "target": "/subject/<%=subject._id%>/chapter ",
+          "target": "/subject/<%=subject._id%>/chapter",
           "label": "Start Learning"
         },
         {
