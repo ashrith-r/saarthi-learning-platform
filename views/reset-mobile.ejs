@@ -1,0 +1,12 @@
+<% layout('/layouts/boilerplate.ejs') %>
+<main class="container py-5"><section class="studio-card mx-auto" style="max-width:480px">
+  <h1>Reset password</h1><p role="status"><%= message %></p>
+  <form class="studio-form" action="/auth/reset-password/mobile" method="post">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <label for="resetMobileCode">SMS code<input id="resetMobileCode" type="text" name="otpEntered" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" required></label>
+    <label for="resetMobilePassword">New password<input id="resetMobilePassword" type="password" name="password" autocomplete="new-password" minlength="8" required></label>
+    <label for="resetMobileConfirm">Confirm password<input id="resetMobileConfirm" type="password" name="confirm" autocomplete="new-password" minlength="8" required></label>
+    <button class="studio-button">Reset password</button>
+  </form><p class="mt-3">Use at least 8 characters. All existing sessions will be signed out after the password changes.</p>
+  <a href="/auth/forgot-password?method=sms">Request another code</a>
+</section></main>

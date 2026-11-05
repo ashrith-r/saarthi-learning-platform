@@ -9,6 +9,7 @@ import sessionModel from "../models/session.js";
 import config from "../config/config.js";
 import examModel from "../models/exam.js";
 import updateModel from "../models/update.js";
+import {registerMobile, forgotMobile} from './mobileAuthController.js';
 
 const ACCESS_TOKEN_MAX_AGE = 5 * 60 * 1000;
 const REFRESH_TOKEN_MAX_AGE = 15 * 24 * 60 * 60 * 1000;
@@ -135,6 +136,7 @@ return res.redirect("/dashboard")
 
 
 export async function registerUser(req,res) {
+  if (req.body.verificationMethod === 'sms') return registerMobile(req, res);
   let {username,email,password,confirm}=req.body;
   username = String(username || "").trim();
   email = normalizeEmail(email);
@@ -235,7 +237,7 @@ export async function verifyEmail(req,res) {
   }
 
   const user = await userModel.findByIdAndUpdate(otpDoc.user,{
-    verified:true
+    verified:true, emailVerifiedAt: new Date()
   })
   await otpModel.deleteMany({
     user:otpDoc.user
@@ -251,11 +253,12 @@ return res.redirect("/dashboard")
 
 export async function renderForgotPassword(req,res) {
 
-  res.render("forgot-password")
+  res.render("forgot-password", {method: req.query.method === 'sms' ? 'sms' : 'email'})
   
 }
 
 export async function forgotPassword(req,res) {
+  if (req.body.verificationMethod === 'sms') return forgotMobile(req, res);
   
   let {email}=req.body;
   email = normalizeEmail(email);
@@ -263,7 +266,7 @@ export async function forgotPassword(req,res) {
    email: email
   })
   
-  if(!user)
+  if(!user || (user.verificationChannel === 'sms' && !user.emailVerifiedAt))
   {
     req.flash("error","Email Doesnt Exist")
     return res.redirect("/auth/login")

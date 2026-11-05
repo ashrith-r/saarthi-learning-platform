@@ -263,6 +263,31 @@
     {
       "file": "auth_routes",
       "method": "GET",
+      "path": "/mobile"
+    },
+    {
+      "file": "auth_routes",
+      "method": "POST",
+      "path": "/mobile/send"
+    },
+    {
+      "file": "auth_routes",
+      "method": "POST",
+      "path": "/mobile/verify"
+    },
+    {
+      "file": "auth_routes",
+      "method": "POST",
+      "path": "/mobile/resend"
+    },
+    {
+      "file": "auth_routes",
+      "method": "POST",
+      "path": "/reset-password/mobile"
+    },
+    {
+      "file": "auth_routes",
+      "method": "GET",
       "path": "/login"
     },
     {
@@ -517,7 +542,7 @@
         },
         {
           "type": "input",
-          "attributes": " id=\"lectureTitle\" name=\"title\" type=\"text\" class=\"form-control form-control-lg\" placeholder=\"System of Linear Equations\" required"
+          "attributes": " id=\"lectureTitle\" name=\"title\" type=\"text\" class=\"form-control form-control-lg\" placeholder=\"Enter lecture title\" required"
         },
         {
           "type": "input",
@@ -561,7 +586,7 @@
         },
         {
           "type": "input",
-          "attributes": " id=\"notesDesignedBy\" name=\"designedBy\" type=\"text\" class=\"form-control form-control-lg\" placeholder=\"Saarthi Team\" required"
+          "attributes": " id=\"notesDesignedBy\" name=\"designedBy\" type=\"text\" class=\"form-control form-control-lg\" placeholder=\"Enter creator name\" required"
         },
         {
           "type": "button",
@@ -581,7 +606,7 @@
         },
         {
           "type": "input",
-          "attributes": " id=\"sheetTitle\" name=\"title\" type=\"text\" class=\"form-control form-control-lg\" placeholder=\"Practice Sheet 01\" required"
+          "attributes": " id=\"sheetTitle\" name=\"title\" type=\"text\" class=\"form-control form-control-lg\" placeholder=\"Enter material title\" required"
         },
         {
           "type": "input",
@@ -652,7 +677,7 @@
       "controls": [
         {
           "type": "input",
-          "attributes": " type=\"text\" id=\"aiPrompt\" class=\"form-control\" placeholder=\"e.g., Photoelectric effect threshold wavelength numerical\""
+          "attributes": " type=\"text\" id=\"aiPrompt\" class=\"form-control\" placeholder=\"Describe the topic and question you need\""
         },
         {
           "type": "button",
@@ -716,7 +741,7 @@
         },
         {
           "type": "input",
-          "attributes": " type=\"text\" name=\"chapter\" class=\"form-control\" placeholder=\"Chapter Name\""
+          "attributes": " type=\"text\" name=\"chapter\" class=\"form-control\" placeholder=\"Enter chapter name\""
         },
         {
           "type": "select",
@@ -724,7 +749,7 @@
         },
         {
           "type": "input",
-          "attributes": "\n                        type=\"text\"\n                        name=\"tags\"\n                        class=\"form-control\"\n                        placeholder=\"Example: Mechanics, Newton Laws, Numerical\""
+          "attributes": "\n                        type=\"text\"\n                        name=\"tags\"\n                        class=\"form-control\"\n                        placeholder=\"Enter topic tags separated by commas\""
         },
         {
           "type": "input",
@@ -786,7 +811,7 @@
         },
         {
           "type": "input",
-          "attributes": "\n              type=\"text\"\n              class=\"form-control\"\n              name=\"subject[subjectName]\"\n              placeholder=\"Physics\"\n              required\n            "
+          "attributes": "\n              type=\"text\"\n              class=\"form-control\"\n              name=\"subject[subjectName]\"\n              placeholder=\"Enter subject name\"\n              required\n            "
         },
         {
           "type": "input",
@@ -1121,7 +1146,7 @@
         },
         {
           "type": "input",
-          "attributes": " id=\"lectureTitle\" name=\"title\" type=\"text\" class=\"form-control form-control-lg\" placeholder=\"System of Linear Equations\" required value=\"<%=lecture.title%"
+          "attributes": " id=\"lectureTitle\" name=\"title\" type=\"text\" class=\"form-control form-control-lg\" placeholder=\"Enter lecture title\" required value=\"<%=lecture.title%"
         },
         {
           "type": "input",
@@ -1186,7 +1211,7 @@
         },
         {
           "type": "input",
-          "attributes": " id=\"notesDesignedBy\" name=\"designedBy\" type=\"text\" class=\"form-control form-control-lg\" placeholder=\"Saarthi Team\" value=\"<%=note.designedBy%"
+          "attributes": " id=\"notesDesignedBy\" name=\"designedBy\" type=\"text\" class=\"form-control form-control-lg\" placeholder=\"Enter creator name\" value=\"<%=note.designedBy%"
         },
         {
           "type": "button",
@@ -1402,6 +1427,14 @@
       "file": "views\\forgot-password.ejs",
       "links": [
         {
+          "target": "/auth/forgot-password?method=sms",
+          "label": "\">Mobile SMS"
+        },
+        {
+          "target": "/auth/forgot-password",
+          "label": "\">Email"
+        },
+        {
           "target": "/auth/login",
           "label": "← Back to Login"
         }
@@ -1416,11 +1449,19 @@
         },
         {
           "type": "input",
-          "attributes": " type=\"email\" name=\"email\" class=\"form-control\" placeholder=\"you@example.com\" required"
+          "attributes": " type=\"hidden\" name=\"verificationMethod\" value=\"<%= method %"
+        },
+        {
+          "type": "input",
+          "attributes": " id=\"recoveryPhone\" type=\"tel\" name=\"phone\" class=\"form-control\" autocomplete=\"tel\" maxlength=\"40\" placeholder=\"+ followed by country code and number\" required"
+        },
+        {
+          "type": "input",
+          "attributes": " id=\"recoveryEmail\" type=\"email\" name=\"email\" class=\"form-control\" autocomplete=\"email\" placeholder=\"you@example.com\" required"
         },
         {
           "type": "button",
-          "attributes": " type=\"submit\" class=\"btn btn-primary w-100\""
+          "attributes": " type=\"submit\" class=\"btn btn-primary w-100\" <%= (method==='sms'&&!smsEnabled)||(method==='email'&&!emailEnabled)?'disabled':'' %"
         }
       ]
     },
@@ -1570,6 +1611,14 @@
           "attributes": " id=\"authEmail\" type=\"email\" name=\"email\" autocomplete=\"email\" placeholder=\"you@example.com\" required"
         },
         {
+          "type": "select",
+          "attributes": " id=\"verificationMethod\" name=\"verificationMethod\""
+        },
+        {
+          "type": "input",
+          "attributes": " id=\"authPhone\" type=\"tel\" name=\"phone\" autocomplete=\"tel\" maxlength=\"40\" placeholder=\"+ followed by country code and number\""
+        },
+        {
           "type": "input",
           "attributes": " id=\"authPassword\" type=\"password\" name=\"password\" autocomplete=\"<%= tab==='register'?'new-password':'current-password' %"
         },
@@ -1579,7 +1628,33 @@
         },
         {
           "type": "button",
-          "attributes": " class=\"studio-button\" type=\"submit\""
+          "attributes": " class=\"studio-button\" type=\"submit\" <%= tab==='register'&&!smsEnabled&&!emailEnabled?'disabled':'' %"
+        }
+      ]
+    },
+    {
+      "file": "views\\mobile-settings.ejs",
+      "links": [
+        {
+          "target": "/dashboard",
+          "label": "Back to dashboard"
+        }
+      ],
+      "forms": [
+        " action=\"/auth/mobile/send\" method=\"post\" class=\"studio-form\""
+      ],
+      "controls": [
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "input",
+          "attributes": " id=\"accountPhone\" type=\"tel\" name=\"phone\" autocomplete=\"tel\" maxlength=\"40\" placeholder=\"+ followed by country code and number\" required"
+        },
+        {
+          "type": "button",
+          "attributes": " class=\"studio-button\""
         }
       ]
     },
@@ -1655,7 +1730,7 @@
         },
         {
           "type": "input",
-          "attributes": " type=\"text\" id=\"quizTitle\" name=\"title\" class=\"form-control form-control-lg border-2\" placeholder=\"e.g. Weekly Assessment - Matrices\" required"
+          "attributes": " type=\"text\" id=\"quizTitle\" name=\"title\" class=\"form-control form-control-lg border-2\" placeholder=\"Enter assessment title\" required"
         },
         {
           "type": "select",
@@ -1733,6 +1808,40 @@
       ]
     },
     {
+      "file": "views\\reset-mobile.ejs",
+      "links": [
+        {
+          "target": "/auth/forgot-password?method=sms",
+          "label": "Request another code"
+        }
+      ],
+      "forms": [
+        " class=\"studio-form\" action=\"/auth/reset-password/mobile\" method=\"post\""
+      ],
+      "controls": [
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "input",
+          "attributes": " id=\"resetMobileCode\" type=\"text\" name=\"otpEntered\" inputmode=\"numeric\" autocomplete=\"one-time-code\" pattern=\"[0-9]{6}\" maxlength=\"6\" required"
+        },
+        {
+          "type": "input",
+          "attributes": " id=\"resetMobilePassword\" type=\"password\" name=\"password\" autocomplete=\"new-password\" minlength=\"8\" required"
+        },
+        {
+          "type": "input",
+          "attributes": " id=\"resetMobileConfirm\" type=\"password\" name=\"confirm\" autocomplete=\"new-password\" minlength=\"8\" required"
+        },
+        {
+          "type": "button",
+          "attributes": " class=\"studio-button\""
+        }
+      ]
+    },
+    {
       "file": "views\\reset-password.ejs",
       "links": [
         {
@@ -1754,11 +1863,11 @@
         },
         {
           "type": "input",
-          "attributes": " type=\"number\" name=\"otpEntered\" class=\"form-control\" placeholder=\"Enter 6-digit OTP\" required"
+          "attributes": " type=\"text\" name=\"otpEntered\" class=\"form-control\" inputmode=\"numeric\" autocomplete=\"one-time-code\" pattern=\"[0-9]{6}\" maxlength=\"6\" placeholder=\"Enter 6-digit OTP\" required"
         },
         {
           "type": "input",
-          "attributes": " type=\"password\" name=\"password\" class=\"form-control\" placeholder=\"Min 6 characters\" minlength=\"6\" required"
+          "attributes": " type=\"password\" name=\"password\" class=\"form-control\" placeholder=\"At least 8 characters\" autocomplete=\"new-password\" minlength=\"8\" required"
         },
         {
           "type": "input",
@@ -2029,6 +2138,10 @@
           "label": "\" >Site settings"
         },
         {
+          "target": "/auth/mobile",
+          "label": "Mobile verification"
+        },
+        {
           "target": "/library",
           "label": "Find a chapter ↗"
         }
@@ -2085,7 +2198,7 @@
         },
         {
           "type": "input",
-          "attributes": " name=\"title\" maxlength=\"160\" required placeholder=\"Revise electrostatics and solve 10 questions\""
+          "attributes": " name=\"title\" maxlength=\"160\" required placeholder=\"Enter a study session\""
         },
         {
           "type": "input",
@@ -2425,6 +2538,41 @@
         {
           "type": "button",
           "attributes": " type=\"submit\" class=\"btn btn-primary\""
+        }
+      ]
+    },
+    {
+      "file": "views\\verify-mobile.ejs",
+      "links": [
+        {
+          "target": "<%= user?'/auth/mobile':'/auth/login?tab=register' %>",
+          "label": "Change mobile number"
+        }
+      ],
+      "forms": [
+        " class=\"studio-form\" action=\"/auth/mobile/verify\" method=\"post\"",
+        " action=\"/auth/mobile/resend\" method=\"post\" class=\"mt-3\""
+      ],
+      "controls": [
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "input",
+          "attributes": " id=\"mobileCode\" name=\"otpEntered\" type=\"text\" inputmode=\"numeric\" autocomplete=\"one-time-code\" pattern=\"[0-9]{6}\" minlength=\"6\" maxlength=\"6\" required autofocus"
+        },
+        {
+          "type": "button",
+          "attributes": " class=\"studio-button\""
+        },
+        {
+          "type": "input",
+          "attributes": " type=\"hidden\" name=\"_csrf\" value=\"<%= csrfToken %"
+        },
+        {
+          "type": "button",
+          "attributes": " class=\"studio-button secondary\""
         }
       ]
     }

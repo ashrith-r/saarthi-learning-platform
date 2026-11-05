@@ -8,6 +8,9 @@ connectDB()
   .then(async () => {
     const {default:Run}=await import('./models/testRun.js');
     await Run.init();
+    const {default:User}=await import('./models/user.js');
+    const {MobileOtp,MobileOtpBudget}=await import('./models/mobileOtp.js');
+    await Promise.all([User.init(),MobileOtp.init(),MobileOtpBudget.init()]);
     startExpiryWorker();
     app.listen(PORT, () => console.log(`Saarthi running at http://localhost:${PORT}`));
   })

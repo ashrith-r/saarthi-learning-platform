@@ -44,6 +44,18 @@ The application renders server-side EJS pages and uses a small client-side scrip
 
 ## 5. Functional requirements and acceptance criteria
 
+### Mobile authentication extension — 5 November 2026
+
+AUTH-M01: Registration can verify account ownership through a mobile SMS code while retaining email as the login identifier. Store the phone only after proof, enforce international number format and uniqueness, and never treat SMS as proof of email ownership.
+
+AUTH-M02: Signed-in users can add or replace a recovery mobile; the existing number stays active until the replacement code is verified. Other accounts cannot claim the number without proof.
+
+AUTH-M03: Forgotten-password recovery accepts a verified mobile, sends a purpose-specific SMS code, validates matching passwords of at least eight characters, and revokes all sessions after success. Unknown numbers and provider failures share one public response. A code cannot be reused or substituted across registration, linking and recovery purposes.
+
+AUTH-M04: MongoDB stores keyed code digests with explicit ten-minute expiry, five-attempt limits, atomic consumption and TTL cleanup. Require 60 seconds between sends, five requests per destination per UTC hour across purposes and ten code-request posts per connection per 15 minutes. Missing SMS credentials must show an unavailable state and must never simulate successful delivery.
+
+OPS-M01: Production runs on a Node server with persistent MongoDB Atlas storage, environment-managed credentials, secure cookies and a database readiness endpoint at `/ready`. SMS carrier delivery and live deployment require separate acceptance evidence. Automated mobile-flow evidence is in `tests/integration/mobile-auth.test.js` and uses an isolated transport, not real SMS delivery.
+
 | ID | Requirement | Acceptance criteria |
 |---|---|---|
 | AUTH-01 | Register and verify an account | A purpose-specific, unexpired email code is required to verify; a consumed code cannot be reused |

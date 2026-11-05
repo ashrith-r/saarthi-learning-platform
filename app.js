@@ -17,6 +17,7 @@ import cookieParser from "cookie-parser";
 import authRouter from "./routes/auth_routes.js"
 import Route from "./routes/render_index.js";
 import config from "./config/config.js";
+import {smsConfigured} from './services/mobileOtp.js';
 const app = express();
 import { loadUser } from "./middleware/middleware.js";
 import studyRoute from "./routes/studyRoutes.js";
@@ -60,6 +61,8 @@ app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
   res.locals.user = null;
+  res.locals.smsEnabled = smsConfigured();
+  res.locals.emailEnabled = Boolean(config.BREVO_API_KEY && config.GOOGLE_USER);
   let timeZone=req.cookies.studyTimeZone||'UTC';
   try{if(typeof timeZone!=='string'||timeZone.length>100)throw new Error('Invalid timezone');new Intl.DateTimeFormat('en',{timeZone}).format();}catch{timeZone='UTC';}
   res.locals.timeZone=timeZone;
@@ -84,6 +87,13 @@ app.use(async (req,res,next)=>{
 });
 app.get('/api/content-version', (req,res)=>res.json({revision:res.locals.site.revision||0}));
 app.get("/health", (req,res)=>res.json({status:"ok"}));
+app.get('/ready', async (req, res) => {
+  try {
+    if (mongoose.connection.readyState !== 1) throw new Error('Database unavailable');
+    await mongoose.connection.db.command({ping: 1}, {timeoutMS: 3000});
+    res.json({status: 'ready'});
+  } catch { res.status(503).json({status: 'unavailable'}); }
+});
 app.use("/auth", rateLimit({windowMs:15*60*1000,limit:100,standardHeaders:"draft-8",legacyHeaders:false}), authRouter)
 app.use(studyRoute);
 app.use("/", Route)

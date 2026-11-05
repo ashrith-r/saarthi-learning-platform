@@ -1,5 +1,11 @@
 # Verification record — 3 November 2026
 
+## Mobile extension — 5 November 2026
+
+The current syntax check passes for 122 JavaScript files and EJS templates. All 28 unit checks and all 39 integration checks pass. The new mobile suite tests international number validation, registration and one-time consumption, session-bound verification, duplicate phone rejection, generic recovery responses, password/session revocation, purpose separation, explicit expiry, five-attempt lockout, resend cooldown, shared hourly budgets, verified number replacement and provider failure/unavailability. SMS delivery is simulated by replacing only the transport in tests; no real SMS or credentials were used in these checks. Live delivery needs separately configured Twilio credentials and a recipient test.
+
+The refreshed source inventory has 89 route declarations, 51 templates, 111 links, 47 forms and 304 controls. The earlier verification record below remains historical.
+
 This record distinguishes browser exercises, database-backed HTTP checks, source inspection and unavailable external verification. A passing route response alone is not recorded as a working workflow.
 
 ## Environment and preservation

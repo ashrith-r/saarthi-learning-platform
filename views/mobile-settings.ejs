@@ -1,0 +1,11 @@
+<% layout('/layouts/boilerplate.ejs') %>
+<main class="container py-5"><section class="studio-card mx-auto" style="max-width:560px">
+  <h1>Mobile verification</h1>
+  <% if(user.phoneVerifiedAt){ %><p>Verified mobile: <strong><%= user.phone %></strong></p><p>This number can receive password recovery codes.</p><% }else{ %><p>Verify your mobile number to receive password recovery codes by SMS.</p><% } %>
+  <% if(smsEnabled){ %><form action="/auth/mobile/send" method="post" class="studio-form"><input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <label for="accountPhone"><%= user.phoneVerifiedAt?'New mobile number':'Mobile number' %><input id="accountPhone" type="tel" name="phone" autocomplete="tel" maxlength="40" placeholder="+ followed by country code and number" required></label>
+    <small>Include the country code. Your current recovery number stays active until the new number is verified.</small>
+    <button class="studio-button">Send verification code</button>
+  </form><% }else{ %><p role="status">SMS verification is currently unavailable. Try again later.</p><% } %>
+  <a class="studio-link mt-3" href="/dashboard">Back to dashboard</a>
+</section></main>

@@ -1,5 +1,7 @@
 # Saarthi
 
+Mobile SMS verification and password recovery are supported through Twilio. New accounts can verify by SMS; existing users can link a number at `/auth/mobile`. Configure the provider credentials in `.env.example` through your host's secret settings. `render.yaml` prepares a Render web service backed by MongoDB Atlas; see [DEPLOYMENT.md](DEPLOYMENT.md) for setup, network access and live delivery verification.
+
 An exam preparation platform built with Node.js, Express, MongoDB and EJS. Students can browse exams, subjects and chapters, access lectures and study materials, and take quizzes with feedback on weak topics. Administrators manage learning resources, announcements, questions and quizzes. AI question generation is optional.
 
 ## Run locally

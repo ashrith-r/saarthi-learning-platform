@@ -2,6 +2,10 @@
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
+  phone: {type: String, match: /^\+[1-9]\d{7,14}$/},
+  phoneVerifiedAt: Date,
+  emailVerifiedAt: Date,
+  verificationChannel: {type: String, enum: ['email', 'sms'], default: 'email'},
   editor: { type: Boolean, default: false },
   username:{
     type:String,
@@ -35,6 +39,7 @@ const userSchema = new Schema({
 });
 
 
+userSchema.index({phone: 1}, {unique: true, sparse: true});
 const userModel = mongoose.model("userModel",userSchema);
 
 export default userModel;
