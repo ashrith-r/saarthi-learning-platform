@@ -1,5 +1,13 @@
 # Deployment runbook
 
+## Live deployment evidence — 5 November 2026
+
+The app is live at https://saarthi-learning-platform.onrender.com on Render's free Singapore web service, backed by the dedicated `saarthi` database in the free Atlas `saarthi` cluster in AWS Singapore. Authentication/session secrets and the restricted application's database credential are stored in Render's environment settings. Only the two outbound ranges shown in this service's Render dashboard at setup time, `74.220.52.0/24` and `74.220.60.0/24`, were added to the Atlas access list.
+
+The deployment reached `live`. Render's HTTP health-check path is `/ready`; public HTTPS checks returned 200 for `/ready`, `/health`, home, signup and SMS recovery. Logged-out protected routes redirected to login, foreign-origin form submissions returned 403, and session cookies carried Secure and HttpOnly. Render's production dependency installation reported zero vulnerabilities. No demo credentials or test accounts were seeded into this database.
+
+At initial live verification neither SMS nor email delivery credentials were configured, so registration/recovery displayed their unavailable states. Carrier delivery, live OTP registration/recovery and first-administrator bootstrap remain pending provider configuration and the user's verified account. The local isolated-transport tests cover the implemented mobile flows; they are not evidence of live carrier delivery.
+
 ## Render, MongoDB Atlas and mobile OTP
 
 The repository includes `render.yaml` for a Node web service in Singapore. It uses a free Render plan, host-generated authentication/session secrets, HTTPS cookies and an external persistent MongoDB Atlas database. Free hosting may sleep when idle; use an appropriate paid plan when availability requirements justify it. Do not run `demo:local` as the deployment start command: that database resets on restart. Use `npm start`.

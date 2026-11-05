@@ -7,7 +7,7 @@
       <% if(tab==='register'){ %><label for="authName">Full name<input id="authName" name="username" autocomplete="name" placeholder="Your name" required></label><% } %>
       <label for="authEmail">Email address<input id="authEmail" type="email" name="email" autocomplete="email" placeholder="you@example.com" required></label>
       <% if(tab==='register'){ %>
-        <label for="verificationMethod">Verify account using<select id="verificationMethod" name="verificationMethod"><option value="sms" <%= smsEnabled?'selected':'disabled' %>>Mobile SMS</option><option value="email" <%= !emailEnabled?'disabled':!smsEnabled?'selected':'' %>>Email</option></select></label>
+        <label for="verificationMethod">Verify account using<select id="verificationMethod" name="verificationMethod"><% if(!smsEnabled&&!emailEnabled){ %><option selected disabled>Verification unavailable</option><% } %><option value="sms" <%= smsEnabled?'selected':'disabled' %>>Mobile SMS</option><option value="email" <%= !emailEnabled?'disabled':!smsEnabled?'selected':'' %>>Email</option></select></label>
         <label for="authPhone">Mobile number for SMS<input id="authPhone" type="tel" name="phone" autocomplete="tel" maxlength="40" placeholder="+ followed by country code and number"></label>
         <small>Include your country code. With SMS verification, use your verified mobile number for recovery; your email remains your login ID.</small>
         <% if(!smsEnabled){ %><small>SMS verification is currently unavailable.<%= emailEnabled?' Email verification is available.':' Account verification is temporarily unavailable; try again later.' %></small><% } %>
