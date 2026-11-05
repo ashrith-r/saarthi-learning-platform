@@ -8,6 +8,10 @@ The refreshed source inventory has 89 route declarations, 51 templates, 111 link
 
 This record distinguishes browser exercises, database-backed HTTP checks, source inspection and unavailable external verification. A passing route response alone is not recorded as a working workflow.
 
+## Live Brevo email verification — 5 November 2026
+
+Source revision `8b3f93b` passed syntax checks across 123 JavaScript files/EJS templates, 31 unit tests and 39 integration tests. Provider privacy tests check successful requests, sanitized transport failures and missing configuration without sending mail. After deployment, the signup form offered email verification, Brevo logged acceptance of a real signup message, the recipient confirmed delivery and successful password recovery, and a signed-in verified workspace was observed. The selected verified account's administrator flag was checked in Atlas and the live admin dashboard opened successfully, including its first-administrator bootstrap audit entry. No passwords, OTPs or API keys were copied into this evidence. Live SMS remains unverified.
+
 ## Environment and preservation
 
 `npm run demo:local` starts a new `mongodb-memory-server` database, random authentication/session secrets and opt-in synthetic fixture accounts. Integration suites use separate temporary databases and close them after testing. No production database or user-created content was used. Browser-created resources, drafts and notes were reset by restarting the disposable demo. A final browser mock attempt was completed for the submission check and the disposable demo was reset again afterward; the running demo is back to its original fixtures. Historical quote records and replaced PDF binary data were preserved.

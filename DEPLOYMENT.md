@@ -8,6 +8,8 @@ The deployment reached `live`. Render's HTTP health-check path is `/ready`; publ
 
 At initial live verification neither SMS nor email delivery credentials were configured, so registration/recovery displayed their unavailable states. Carrier delivery, live OTP registration/recovery and first-administrator bootstrap remain pending provider configuration and the user's verified account. The local isolated-transport tests cover the implemented mobile flows; they are not evidence of live carrier delivery.
 
+Subsequent Brevo configuration on 5 November 2026 enabled email verification and recovery in the live deployment. Brevo accepted the signup email, the recipient confirmed receipt and successful password recovery, and a verified signed-in workspace was observed. The explicitly selected verified account was assigned the first administrator role; the live admin dashboard and its bootstrap audit event were checked. The private API key remains in Render environment settings. SMS delivery remains unconfigured; these results verify email OTP only. Production source revision for this verification was `8b3f93b`.
+
 ## Render, MongoDB Atlas and mobile OTP
 
 The repository includes `render.yaml` for a Node web service in Singapore. It uses a free Render plan, host-generated authentication/session secrets, HTTPS cookies and an external persistent MongoDB Atlas database. Free hosting may sleep when idle; use an appropriate paid plan when availability requirements justify it. Do not run `demo:local` as the deployment start command: that database resets on restart. Use `npm start`.
