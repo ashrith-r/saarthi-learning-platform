@@ -168,7 +168,7 @@ export async function registerUser(req,res) {
   try {
     await sendEmail(email,"OTP Verification","otp",html);
   } catch (error) {
-    console.error("❌ Email transmission failed. (If deployed on Render Free Tier, note that outbound SMTP ports 25/465/587 are blocked by default):", error);
+    console.error('Registration email could not be sent.', {code: error.code || 'EMAIL_DELIVERY_FAILED'});
     req.flash("error","Unable to send OTP right now. Please try again later.");
     return res.redirect("/auth/login?tab=register");
   }

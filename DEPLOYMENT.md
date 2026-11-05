@@ -38,6 +38,16 @@ Production flash/session state uses `connect-mongo`; authentication sessions, pr
 
 ## Optional integrations
 
+### Brevo email verification and password recovery
+
+The deployed application already supports Brevo's transactional HTTPS API. On the free Brevo plan, complete account onboarding, add a sender under Settings > Senders, Domains, IPs > Senders, and verify that sender email. Create a standard API key under Settings > SMTP & API > API Keys & MCP. Use Restricted access with All on Transactional email and None on unrelated resources; this resource requires All permission to send. Do not convert it to an MCP key or use an SMTP password in place of the API key.
+
+In the existing Render service's Environment settings, set `BREVO_API_KEY` to this secret and `GOOGLE_USER` to the exact verified sender email. `GOOGLE_USER` is a legacy variable name for the sender address; it does not require a Gmail password or Google OAuth credentials. Keep all existing database/session variables. Save and deploy so the variables become active. Then verify a real signup and password reset through the application; live delivery remains unverified until the recipient confirms receipt.
+
+Email transport failures log only a safe provider status. Provider request headers, authentication secrets and OTP email bodies must never be written to logs. `tests/email.test.js` verifies accepted requests, safe failures and missing-credential handling with a simulated transport. Together with the existing suite, 31 unit tests and 39 integration tests passed after this change; syntax checks covered 123 JavaScript files and EJS templates.
+
+References: [Brevo sender setup](https://help.brevo.com/hc/en-us/articles/208836149-Create-a-new-sender-From-name-and-From-email), [API keys](https://help.brevo.com/hc/en-us/articles/40159485019794-Create-and-manage-your-API-keys), [key permissions](https://help.brevo.com/hc/en-us/articles/40158277171474-About-API-key-permissions).
+
 - Brevo email: `BREVO_API_KEY`, verified sender in `GOOGLE_USER`.
 - Cloudinary: `CLOUD_NAME`, `CLOUD_API_KEY`, `CLOUD_API_SECRET`.
 - Gemini: `GEMINI_API_KEY`, a supported `GEMINI_MODEL` for your account.
